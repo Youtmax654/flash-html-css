@@ -1,0 +1,68 @@
+body {
+    background-color: rgb(15, 14, 46);
+    /* Couleur de fond de la page */
+    font-family: 'AR One Sans', sans-serif;
+    /* Donner la police d'écriture */
+}
+
+/* login.html */
+.login_register_banner {
+    max-width: 100%;
+    /* Prendre la longueur maximale de la fenêtre */
+    height: 250px;
+    /* Largeur de 250px */
+    background-image: url("../images/login_register_image.jpg");
+    /* Mettre l'image en fond */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Mettre la couleur en fond */
+    background-blend-mode: darken;
+    /* Mélanger le fond et la couleur */
+    background-attachment: fixed;
+    /* Fixer l'image background */
+    margin-top: 103px;
+    /* Placer la div sous le header */
+    background-position-y: -1200px;
+    /* Positionner l'image dans la div */
+}
+
+.login_register_banner h1 {
+    color: rgb(255, 255, 255);
+    /* Donner la couleur blanche au texte */
+    display: flex;
+    /* Aligner le texte */
+    justify-content: center;
+    /* Centrer le texte */
+    padding: 106px;
+    /* Centrer verticalement le texte */
+}
+
+.login_form form {
+    display: flex; /* Aligner le texte */
+    flex-direction: column; /* Mettre en colonne le formulaire */
+    width: 36%; /* Longueur du formulaire */
+    margin: 5em auto 0; /* Centrer le formulaire */
+}
+
+.login_form input:not(input:last-of-type) {
+    width: 35vw; /* Longueur des inputs sauf le submit */
+    height: 45px; /* Largeur des inputs sauf le submit */
+    margin-bottom: 20px; /* Espacement entre les inputs */
+    border-radius: 5px; /* Arrondir les bords des inputs */
+    background-color: rgb(39, 38, 69); /* Couleur de fonds des inputs */
+    border: none; /* Retirer les bordures */
+}
+
+.login_form input::placeholder {
+    position: absolute; /* Positionner par rapport à l'input */
+    left: 15px; /* Positionner depuis la gauche */
+    top: 25%; /* Positionner depuis le haut */
+}
+
+.login_form input:last-of-type {
+    width: 8vw; /* Longueur du submit */
+    height: 45px; /* Largeur du submit */
+    color: white; /* Couleur du texte du submit */
+    background-color: rgb(236, 146, 36); /* Couleur du fond du submit */
+    border: none; /* Retirer les bordures */
+    border-radius: 5px; /* Arrondir les bords du submit */
+}
