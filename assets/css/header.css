@@ -23,7 +23,7 @@
     align-items: center; /* Centrer les éléments verticalement */
     height: 63px; /* Donner la même largeur que le header*/
 }
-ul {
+.header-right ul {
     list-style: none; /* Retirer les points de la liste */
     display: flex; /* Aligne les éléments */
     justify-content: space-around; /* Mettre un espace autour de chaque élément */
