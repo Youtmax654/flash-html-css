@@ -1,0 +1,98 @@
+/* Mise en page du footer */
+footer {
+    color : rgba(180,187,217,255);
+    font-size: 1.2w;
+    align-items: center;
+}
+ /* Classe principale du footer */
+.footer-body {
+    display: flex;
+    /* alignement côte à côte des deux div (Informations, PowerOfMemory)*/
+    justify-content: space-around;
+    /* espacement entre les div*/
+    background-color: rgba(14, 11, 38, 255);
+}
+
+/* Classe information*/
+.Informations {
+    padding: 4%;
+    /* permet d'espacer les éléments des autres*/
+    padding-left: 20%;
+    /* espacement de 20% depuis le bord gauche de la page */
+}
+
+/* Personnalisation des titre des classes Informations et PowerOfMemory */
+.Informations .Titre, .PowerOfMemory .Titre {
+    font-size: 1.4vw;
+    color: white;
+}
+
+/* Classe PowerOfMemory */
+.PowerOfMemory {
+    padding: 4%;
+    /* permet d'espacer les éléments des autres */
+    padding-right: 20%;
+    /* espacement de 20% depuis le bord droite de la page */
+}
+
+/* Personnalisation de Tel, Email, Location en orange */
+.Tel strong, .Email strong, .Location strong {  
+    color: orange;
+}
+
+/* Classe Liste */
+.Liste {
+    list-style: none;
+    /* on enlève le style de base de la liste pour la personnaliser plus tard */
+    padding-left: 11%;
+    /* Permet d'aligner les points de la liste avec le titre */
+}
+
+/* Remplacement des points de base de la liste par de pouveaux points personnalisés */
+.Liste li::before {
+    content: "\2022";
+    /* Le contenu est un caractère spécial représenté par "\2022", qui est le code Unicode du caractère "•" */
+    color: orange;
+    font-weight: bold;
+    /* met en gars les point qui permettent de lister */
+    display: inline-block;
+    /* cela permettra au caractère "•" d'être affiché en ligne, mais d'occuper un espace rectangulaire avec une largeur et une hauteur définies. */
+    width: 1em;
+    /* les points seront de la taille basique de l'écriture */
+    margin-left: -1em;
+    /* Cela signifie que l'élément sera décalé vers la gauche d'une quantité équivalente à la taille actuelle de la police */
+
+}
+
+/* Classe qui ne prend en compte que les éléments de la liste */
+.Liste li {
+    margin: inherit;
+    /* permet d'appliquer à chaque ligne de la liste, les mêmes propriétés de marge que la classe Liste */
+    font-size: inherit;
+    /* pareil mais pour la taille des caractères */
+}
+
+/* Classe pour personnlaiser les images de logo*/
+.Images {
+    color: white;
+    display: inline-block;
+    /*  les éléments de cette classe seront affichés avec un modèle de mise en page en bloc, Les éléments en ligne s'affichent horizontalement, tandis que les éléments en bloc s'affichent verticalement et prennent toute la largeur disponible. */
+}
+
+/* Classe pour personnaliser les logos */
+.Images i {
+    background-color: orange;
+    padding: 0.5vw;
+    /* définit la taille des fonds de nos logos*/
+}
+
+/* Classe pour le copyright*/
+.footer-bottom {
+    background-color: rgba(13, 10, 37, 255); /* couleur un peu plus foncée */
+    display: flex; /* aligner le footer-body avec le footer-bottom */
+    justify-content: center; /* aligner l'élément au centre */
+    padding-bottom: 2%; /* espacement entre le footer-body et le footer-bottom */
+    padding-top: 3%; /* espacement entre le texte et le bord de la page  */
+    padding-right: 32%;
+    padding-left: 0%;
+}
