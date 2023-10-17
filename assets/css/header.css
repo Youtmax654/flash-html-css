@@ -9,8 +9,10 @@
     font-size: 15px;
     color: white;
     position: fixed;
+    top: 0;
     z-index: 1;
     width: 100%;
+    padding: 20px;
 }
 .header h3 {
     font-size: 20px;
@@ -28,10 +30,14 @@ ul {
 .header-right li a {
     color: white;
     text-decoration: none;
-    padding-top: 18px;
+    padding-top: 38px;
+    padding-bottom: 38px;
     margin-right: 20px;
+    border-top: 2px solid rgba(15,14,46,255);
+    transition: 0.2s;
 }
 .header-right li a:hover {
     color: orange;
     border-top: 2px solid orange;
+    transition: 0.5s;
 }
