@@ -11,6 +11,7 @@
     position: fixed;
     z-index: 1;
     width: 100%;
+    padding: 20px
 }
 .header h3 {
     font-size: 20px;
@@ -28,7 +29,7 @@ ul {
 .header-right li a {
     color: white;
     text-decoration: none;
-    padding-top: 18px;
+    padding-top: 38px;
     margin-right: 20px;
 }
 .header-right li a:hover {
