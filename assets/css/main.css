@@ -1,0 +1,5 @@
+.home-image img {
+    width: 100% ;
+    margin-top: -5%;
+    filter: brightness(0.5);
+}
