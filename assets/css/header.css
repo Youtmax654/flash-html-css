@@ -29,6 +29,7 @@
     z-index: 1; /* Mettre le header en avant dans la page */
     width: 100%; /* Définir la longueur du header */
     padding: 20px; /* Définir la taille du header */
+    background-color: rgb(15, 14, 46); /* Donner une couleur au header */
 }
 
 .header-right {

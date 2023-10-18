@@ -389,3 +389,22 @@ body {
     color: rgba(180,187,217,255);
     font-size: 1vw;
 }
+
+
+.tableGame{
+    margin: 50px auto;
+    border-spacing: 1vw;
+}
+.tableGame tr td img{
+    width: 6vw;
+    height: 6vw;
+    margin: 0 auto;
+    display: block;
+}
+table#big img{
+    width: 5vw;
+    height: 5vw;
+}
+.hidden{
+    display: none;
+}
