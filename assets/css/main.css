@@ -1,5 +1,252 @@
-.home-image img {
-    width: 100% ;
-    margin-top: -5%;
-    filter: brightness(0.5);
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    background-color: rgba(15, 14, 46, 255);
+    /* Couleur de fond de la page */
+}
+
+#welcome {
+    display: inline-block;
+    background-image: url("../images/fond.jpg");
+    background-attachment: fixed;
+    background-size: 100%;
+    width: 98.9vw;
+    height: 50vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: darken;
+}
+
+#welcome h1 {
+    font-family: 'Roboto', sans-serif;
+    display: block;
+    text-transform: uppercase;
+    color: white;
+    width: 40vw;
+    font-size: 4vw;
+    text-align: center;
+    font-weight: 1000;
+    margin: 20vw auto 0;
+}
+
+#welcome p {
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    color: rgb(207, 207, 207);
+    text-align: center;
+    font-weight: 100;
+    font-size: 1.3vw;
+}
+
+#welcome button {
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    background-color: orange;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+
+}
+
+#welcome button a {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.4vw;
+    display: block;
+    padding: 1vw 3vw;
+    text-decoration: none;
+}
+
+#IlluImg {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px 0 0 0;
+}
+
+#IlluImg #AllImg {
+    width: 63%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+#IlluImg .img:not(.img:first-of-type) {
+    width: 15vw;
+    height: 20vw;
+    overflow: hidden;
+}
+
+#IlluImg .img:first-of-type {
+    width: 30vw;
+    height: 20vw;
+}
+
+#IlluImg .img:first-of-type img {
+    width: 100%;
+    height: 100%;
+}
+
+#IlluImg .img:not(.img:first-of-type) img {
+    width: 200%;
+}
+
+#IlluImg .img:nth-of-type(2) img {
+    position: relative;
+    left: -6vw;
+}
+
+#IlluImg .img:nth-of-type(3) img {
+    position: relative;
+    left: -6vw;
+    top: -4vw;
+}
+#IlluImg>div:last-of-type{
+    width: 63%;
+    margin: 2vw auto;
+    display: flex;
+    justify-content: space-between;
+}
+#IlluImg div:last-of-type div{
+    display: flex;
+    flex-wrap: wrap;
+    width: 33%;
+}
+#IlluImg div:last-of-type div p {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+#IlluImg div:last-of-type div p:first-of-type {
+    color: rgba(55,36,160,255);
+    font-size: 2vw;
+}
+#IlluImg div:last-of-type div p:nth-of-type(2) {
+    color: white;
+    margin: 5px 1vw;
+    font-size: 1.3vw;
+}
+#IlluImg div:last-of-type div p:last-of-type {
+    color: rgb(207, 207, 207);
+    margin: 0 3.4vw;
+    font-size: 1.2vw;
+}
+
+#Stats{
+    width: 63%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10vw;
+}
+#Stats img{
+    width: 45%;
+    height: 16vw;
+}
+#Stats>div{
+    width: 49%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 1.8vw;
+}
+#Stats div div{
+    width: 15vw;
+    height: 7vw;
+}
+#Stats div div p{
+    margin: 0;
+    color: white;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+#Stats div div p:first-of-type{
+    font-size: 1.7vw;
+    font-weight: bolder;
+    margin-top: 1.5vw;
+}
+#Stats div div p:last-of-type{
+    font-size: 1.3vw;
+}
+#Stats div div:first-of-type{
+    background-color: rgba(55,36,160,255);
+}
+#Stats div div:nth-of-type(2){
+    background-color: rgba(24,161,95,255);
+}
+#Stats div div:nth-of-type(3){
+    background-color: rgba(185,28,168,255);
+    margin-top: 0.5vw;
+}
+#Stats div div:nth-of-type(4){
+    margin-top: 0.5vw;
+    background-color: rgba(236,145,35,255);
+}
+#Team h2{
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 3vw;
+    margin: 10vw 0 0;
+}
+#Team>p {
+    color: rgb(207, 207, 207);
+    text-align: center;
+    margin: 1vw 0 0;
+    font-size: 0.7vw;
+}
+#Team>img{
+    display: block;
+    margin: 1.5vw auto;
+    width: 15vw;
+}   
+#Team>div{
+    width: 63vw;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+#Team>div>div{
+    background-color: rgba(14,11,38,255);
+    padding: 3vw 5vw;
+}
+#Team div div .pp{
+    overflow: hidden;
+    width: 10vw;
+    height: 10vw;
+    border-radius: 100px;
+}
+#Team div div .pp img{
+    position: relative;
+    width: 180%;
+    left: -3.5vw;
+}
+#Team div div p{
+    text-align: center;
+    margin: 0 ;
+    font-family: 'Roboto', sans-serif;
+}
+#Team div div .reseau{
+    margin: 1.5vw auto ;
+    color: white;
+    width: 7vw;
+    font-size: 1.5vw;
+    display: flex;
+    justify-content: space-between;
+}
+#Team div div p:first-of-type{
+    color: white;
+    text-align: center;
+    margin: 0 ;
+    font-weight: bolder;
+    font-size: 1.5vw;
+    margin: 2vw 0 0;
+}
+#Team div div p:last-of-type{
+    color: rgb(207, 207, 207);
+    text-align: center;
+    margin: 0 ;
+    font-size: 1vw;
+    margin: 1.5vw 0 0;
 }
