@@ -337,8 +337,8 @@ body {
     border: none;
     /* Retirer les bordures */
     color: white;
-
-
+    outline: none;
+    padding-left: 15px;
 }
 
 .login_form input::placeholder {
