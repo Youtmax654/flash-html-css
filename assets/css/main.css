@@ -19,7 +19,7 @@ body {
     /* Mélanger le fond et la couleur */
     background-attachment: fixed;
     /* Fixer l'image background */
-    margin-top: 103px;
+    margin-top: 6%;
     /* Placer la div sous le header */
     background-position-y: -1200px;
     /* Positionner l'image dans la div */
@@ -32,49 +32,55 @@ body {
     /* Aligner le texte */
     justify-content: center;
     /* Centrer le texte */
-    padding: 106px;
+    padding: 6%;
     /* Centrer verticalement le texte */
 }
 
-.login_form form {
+.login_form form, .register_form form {
     display: flex;
     /* Aligner le texte */
     flex-direction: column;
     /* Mettre en colonne le formulaire */
     width: 36%;
     /* Longueur du formulaire */
-    margin: 5em auto 0;
+    margin: 5vw auto 0;
     /* Centrer le formulaire */
+    font-size: 0.9vw;
 }
 
-.login_form input:not(input:last-of-type) {
+.login_form input:not(input:last-of-type), .register_form input:not(input:last-of-type)  {
     width: 35vw;
     /* Longueur des inputs sauf le submit */
-    height: 45px;
+    height: 2.5vw;
     /* Largeur des inputs sauf le submit */
-    margin-bottom: 20px;
+    margin-bottom: 3.5%;
     /* Espacement entre les inputs */
-    border-radius: 5px;
+    border-radius: 0.3vw;
     /* Arrondir les bords des inputs */
     background-color: rgb(39, 38, 69);
     /* Couleur de fonds des inputs */
     border: none;
     /* Retirer les bordures */
+    color: white;
+    outline: none;
+    padding-left: 2%;
+    
 }
 
-.login_form input::placeholder {
+.login_form input::placeholder, .register_form input::placeholder {
     position: absolute;
     /* Positionner par rapport à l'input */
-    left: 15px;
+    left: 2%;
     /* Positionner depuis la gauche */
     top: 25%;
     /* Positionner depuis le haut */
+    
 }
 
-.login_form input:last-of-type {
+.login_form input:last-of-type, .register_form input:last-of-type {
     width: 8vw;
     /* Longueur du submit */
-    height: 45px;
+    height: 2.5vw;
     /* Largeur du submit */
     color: white;
     /* Couleur du texte du submit */
@@ -82,9 +88,10 @@ body {
     /* Couleur du fond du submit */
     border: none;
     /* Retirer les bordures */
-    border-radius: 5px;
+    border-radius: 0.2vw;
     /* Arrondir les bords du submit */
 }
 
 /* contact.html */
 
+/* register.html */
