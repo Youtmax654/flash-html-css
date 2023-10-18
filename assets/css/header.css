@@ -7,17 +7,16 @@
     align-items: center; /* Centrer les éléments verticalement */
     font-family: 'AR One Sans', sans-serif; /* Donner la police d'écriture */
     font-weight: 600; /* Donner de l'épaisseur au texte */
-    font-size: 15px; /* Donner une taille au texte */
+    font-size: 0.8vw; /* Donner une taille au texte */
     color: white; /* Donner de la couleur au texte */
     position: fixed; /* Fixer le header pendant le scroll */
     top: 0; /* Mettre le header tout en haut de la page */
     z-index: 1; /* Mettre le header en avant dans la page */
     width: 100%; /* Définir la longueur du header */
     padding: 20px; /* Définir la taille du header */
+    background-color: rgb(15, 14, 46); /* Donner une couleur au header */
 }
-.header h3 {
-    font-size: 20px; /* Définir la taille du texte */
-}
+
 .header-right {
     display: flex; /* Aligne les éléments */
     align-items: center; /* Centrer les éléments verticalement */
