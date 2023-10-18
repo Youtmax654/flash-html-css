@@ -455,7 +455,7 @@ body {
 }
 
 .contact_form form textarea {
-    width: 30vw;
+    width: 29.5vw;
     /* Longueur des inputs sauf le submit */
     margin-bottom: 3.5%;
     /* Espacement entre les inputs */
