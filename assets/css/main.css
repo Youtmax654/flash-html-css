@@ -467,16 +467,7 @@ body {
     /* Retirer les bordures */
     color: white;
     outline: none;
-    padding-left: 2%;
-}
-/*
-.contact_form form .contact_row1 input::placeholder {
-    position: absolute;
-    /* Positionner par rapport à l'input */
-    left: 1vw;
-    /* Positionner depuis la gauche */
-    top: 25%;
-    /* Positionner depuis le haut */
+    padding: 2%;
 }
 
 .contact_form form input::placeholder {
@@ -488,6 +479,7 @@ body {
 
 .contact_form form textarea::placeholder {
     position: absolute;
+    left: 1vw;
     top: 1vw;
 }
 
