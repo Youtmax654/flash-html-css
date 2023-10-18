@@ -372,23 +372,50 @@ body {
 .contact_infos {
     display: flex;
     justify-content: center;
-
+    margin-top: 8vw;
+    margin-bottom: 2vw;
 }
 
 .contact_infos .info_block {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 20%;
-    height: 10vw;
+    height: 12vw;
     background-color: rgba(14,11,38,255);
     margin: 0.8vw;
+}
+
+.contact_infos .info_block i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(236,146,36,255);
+    width: 4vw;
+    height: 4vw;
+    color: white;
+    border-radius: 50%;
+}
+
+.contact_infos .info_block .mobile_phone {
+    font-size: 1.2vw;
+}
+
+.contact_infos .info_block .envelope {
+    font-size: 1.8vw;
+}
+
+.contact_infos .info_block .location_pin {
+    font-size: 1.5vw;
 }
 
 .contact_infos .info_block p {
     color: rgba(180,187,217,255);
     font-size: 1vw;
 }
+
+
 
 /* memory.html */
 .tableGame{
