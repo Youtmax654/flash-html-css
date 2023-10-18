@@ -415,7 +415,96 @@ body {
     font-size: 1vw;
 }
 
+.contact_form form {
+    display: flex;
+    /* Aligner le texte */
+    flex-direction: column;
+    /* Mettre en colonne le formulaire */
+    width: 36%;
+    /* Longueur du formulaire */
+    margin:0 20.5em 6em;
+    /* Centrer le formulaire */
+    font-size: 0.9vw;
+}
 
+.contact_form form .contact_row1 {
+    display: flex;
+    width: 32.5vw;
+}
+
+.contact_form form .contact_row1 input {
+    margin-right: 1.5vw;
+}
+
+.contact_form form input {
+    width: 30vw;
+    /* Longueur des inputs sauf le submit */
+    height: 2.5vw;
+    /* Largeur des inputs sauf le submit */
+    margin-bottom: 3.5%;
+    /* Espacement entre les inputs */
+    border-radius: 0.3vw;
+    /* Arrondir les bords des inputs */
+    background-color: rgb(39, 38, 69);
+    /* Couleur de fonds des inputs */
+    border: none;
+    /* Retirer les bordures */
+    color: white;
+    outline: none;
+    padding-left: 2%;
+}
+
+.contact_form form textarea {
+    width: 30vw;
+    /* Longueur des inputs sauf le submit */
+    margin-bottom: 3.5%;
+    /* Espacement entre les inputs */
+    border-radius: 0.3vw;
+    /* Arrondir les bords des inputs */
+    background-color: rgb(39, 38, 69);
+    /* Couleur de fonds des inputs */
+    border: none;
+    /* Retirer les bordures */
+    color: white;
+    outline: none;
+    padding-left: 2%;
+}
+/*
+.contact_form form .contact_row1 input::placeholder {
+    position: absolute;
+    /* Positionner par rapport à l'input */
+    left: 1vw;
+    /* Positionner depuis la gauche */
+    top: 25%;
+    /* Positionner depuis le haut */
+}
+
+.contact_form form input::placeholder {
+    position: absolute;
+    /* Positionner par rapport à l'input */
+    left: 1vw;
+    /* Positionner depuis la gauche */
+}
+
+.contact_form form textarea::placeholder {
+    position: absolute;
+    top: 1vw;
+}
+
+.contact_form form .contact_submit input {
+    width: 6vw;
+    /* Longueur du submit */
+    height: 3vw;
+    /* Largeur du submit */
+    color: white;
+    /* Couleur du texte du submit */
+    background-color: rgb(236, 146, 36);
+    /* Couleur du fond du submit */
+    border: none;
+    /* Retirer les bordures */
+    border-radius: 0.2vw;
+    /* Arrondir les bords du submit */
+}
 
 /* memory.html */
 .tableGame{
