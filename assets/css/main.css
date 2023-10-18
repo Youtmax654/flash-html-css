@@ -6,12 +6,12 @@ body {
 }
 
 /* login.html */
-.login_register_banner {
+.pages_banner {
     max-width: 100%;
     /* Prendre la longueur maximale de la fenêtre */
     height: 250px;
     /* Largeur de 250px */
-    background-image: url("../images/login_register_image.jpg");
+    background-image: url("../images/pages_banner.jpg");
     /* Mettre l'image en fond */
     background-color: rgba(0, 0, 0, 0.5);
     /* Mettre la couleur en fond */
@@ -25,7 +25,7 @@ body {
     /* Positionner l'image dans la div */
 }
 
-.login_register_banner h1 {
+.pages_banner h1 {
     color: rgb(255, 255, 255);
     /* Donner la couleur blanche au texte */
     display: flex;
@@ -37,32 +37,54 @@ body {
 }
 
 .login_form form {
-    display: flex; /* Aligner le texte */
-    flex-direction: column; /* Mettre en colonne le formulaire */
-    width: 36%; /* Longueur du formulaire */
-    margin: 5em auto 0; /* Centrer le formulaire */
+    display: flex;
+    /* Aligner le texte */
+    flex-direction: column;
+    /* Mettre en colonne le formulaire */
+    width: 36%;
+    /* Longueur du formulaire */
+    margin: 5em auto 0;
+    /* Centrer le formulaire */
 }
 
 .login_form input:not(input:last-of-type) {
-    width: 35vw; /* Longueur des inputs sauf le submit */
-    height: 45px; /* Largeur des inputs sauf le submit */
-    margin-bottom: 20px; /* Espacement entre les inputs */
-    border-radius: 5px; /* Arrondir les bords des inputs */
-    background-color: rgb(39, 38, 69); /* Couleur de fonds des inputs */
-    border: none; /* Retirer les bordures */
+    width: 35vw;
+    /* Longueur des inputs sauf le submit */
+    height: 45px;
+    /* Largeur des inputs sauf le submit */
+    margin-bottom: 20px;
+    /* Espacement entre les inputs */
+    border-radius: 5px;
+    /* Arrondir les bords des inputs */
+    background-color: rgb(39, 38, 69);
+    /* Couleur de fonds des inputs */
+    border: none;
+    /* Retirer les bordures */
 }
 
 .login_form input::placeholder {
-    position: absolute; /* Positionner par rapport à l'input */
-    left: 15px; /* Positionner depuis la gauche */
-    top: 25%; /* Positionner depuis le haut */
+    position: absolute;
+    /* Positionner par rapport à l'input */
+    left: 15px;
+    /* Positionner depuis la gauche */
+    top: 25%;
+    /* Positionner depuis le haut */
 }
 
 .login_form input:last-of-type {
-    width: 8vw; /* Longueur du submit */
-    height: 45px; /* Largeur du submit */
-    color: white; /* Couleur du texte du submit */
-    background-color: rgb(236, 146, 36); /* Couleur du fond du submit */
-    border: none; /* Retirer les bordures */
-    border-radius: 5px; /* Arrondir les bords du submit */
+    width: 8vw;
+    /* Longueur du submit */
+    height: 45px;
+    /* Largeur du submit */
+    color: white;
+    /* Couleur du texte du submit */
+    background-color: rgb(236, 146, 36);
+    /* Couleur du fond du submit */
+    border: none;
+    /* Retirer les bordures */
+    border-radius: 5px;
+    /* Arrondir les bords du submit */
 }
+
+/* contact.html */
+
