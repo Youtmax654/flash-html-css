@@ -37,7 +37,7 @@ footer {
 
 /* Personnalisation de Tel, Email, Location en orange */
 .Tel strong, .Email strong, .Location strong {  
-    color: rgba(236,146,36,255);;
+    color: rgba(236,146,36,255);
 }
 
 /* Classe Liste */
