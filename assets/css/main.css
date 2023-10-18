@@ -17,8 +17,6 @@ body {
     /* Mettre la couleur en fond */
     background-blend-mode: darken;
     /* Mélanger le fond et la couleur */
-    background-attachment: fixed;
-    /* Fixer l'image background */
     margin-top: 103px;
     /* Placer la div sous le header */
     background-position-y: -1200px;
@@ -43,7 +41,7 @@ body {
     /* Mettre en colonne le formulaire */
     width: 36%;
     /* Longueur du formulaire */
-    margin: 5em auto 0;
+    margin: 6em auto 6em ;
     /* Centrer le formulaire */
 }
 
@@ -60,6 +58,9 @@ body {
     /* Couleur de fonds des inputs */
     border: none;
     /* Retirer les bordures */
+    color: white;
+    
+    
 }
 
 .login_form input::placeholder {
