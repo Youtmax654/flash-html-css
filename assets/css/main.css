@@ -264,6 +264,7 @@ body {
 #Team>div>div {
     background-color: rgba(14, 11, 38, 255);
     padding: 3vw 5vw;
+    width: 10vw;
 }
 
 #Team div div .pp {
@@ -271,6 +272,7 @@ body {
     width: 10vw;
     height: 10vw;
     border-radius: 100px;
+    margin: 0 auto;
 }
 
 #Team div div .pp img {
@@ -297,7 +299,6 @@ body {
 #Team div div p:first-of-type {
     color: white;
     text-align: center;
-    margin: 0;
     font-weight: bolder;
     font-size: 1.5vw;
     margin: 2vw 0 0;
@@ -306,7 +307,6 @@ body {
 #Team div div p:last-of-type {
     color: rgb(207, 207, 207);
     text-align: center;
-    margin: 0;
     font-size: 1vw;
     margin: 1.5vw 0 0;
 }
@@ -408,4 +408,88 @@ table#big img{
 }
 .hidden{
     display: none;
+}
+
+@media screen and (max-width: 412px) {
+    #IlluImg > div:last-of-type {
+        flex-direction: column;
+    }
+    #IlluImg div:last-of-type div {
+        width: 100%;
+        margin-top: 5px;
+    }
+    #IlluImg div:last-of-type div p:first-of-type {
+        font-size: 2.5vw;
+    }
+    #IlluImg div:last-of-type div p:nth-of-type(2) {
+        margin: 0px 1vw;
+        font-size: 2.3vw;
+    }
+    #IlluImg div:last-of-type div p:last-of-type {
+        font-size: 2vw;
+    }
+    #Stats {
+        flex-direction: column;
+    }
+    #Stats img {
+        width: 80%;
+        height: auto;
+        margin: 0 auto;
+    }
+    #Stats > div {
+        width: 78%;
+        margin: 3vw auto;
+    }
+    #Stats div div {
+        width: 23vw;
+        height: 15vw;
+    }
+    #Stats div div:nth-of-type(3) {
+        margin-top: 3vw;
+    }
+    #Stats div div:nth-of-type(4) {
+        margin-top: 3vw;
+    }
+    #Stats div div p:first-of-type {
+        font-size: 5vw;
+        margin-top: 3vw;
+      }
+    #Stats div div p:last-of-type {
+        font-size: 2.6vw;
+    }
+    #Team h2 {
+        font-size: 6vw;
+    }
+    #Team > p {
+        font-size: 1.7vw;
+    }
+    #Team > img {
+        width: 35vw;
+    }
+    #Team > div {
+        flex-direction: column;
+    }
+    #Team > div > div {
+        margin: 2vw auto;
+        width: 20vw;
+    }
+    #Team div div .pp {
+        width: 15vw;
+        height: 15vw;
+    }
+    #Team div div .pp img {
+        position: relative;
+        width: 180%;
+        left: -5.5vw;
+    }
+    #Team div div p:first-of-type {
+        font-size: 2.5vw;
+    }
+    #Team div div p:last-of-type {
+        font-size: 2vw;
+    }
+    #Team div div .reseau {
+        width: 12vw;
+        font-size: 3.5vw;
+    }
 }
