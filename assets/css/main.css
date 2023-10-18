@@ -411,6 +411,17 @@ table#big img{
 }
 
 @media screen and (max-width: 412px) {
+    #welcome h1 {
+        width: 75vw;
+        font-size: 6vw;
+        margin: 14vw auto 0;
+    }
+    #welcome p {
+        font-size: 2.3vw;
+    }
+    #welcome #button {
+        font-size: 3.4vw;
+      }
     #IlluImg > div:last-of-type {
         flex-direction: column;
     }
