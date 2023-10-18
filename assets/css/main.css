@@ -503,4 +503,12 @@ table#big img{
         width: 12vw;
         font-size: 3.5vw;
     }
+    .tableGame tr td img {
+        width: 14vw;
+        height: 14vw;
+    }
+    table#big img {
+        width: 10vw;
+        height: 10vw;
+    }
 }
