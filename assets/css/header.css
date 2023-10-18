@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=AR+One+Sans:wght@400;700&display=swap');
+/* Import de la police d'écriture */
+
+.header {
+    display: flex; /* Aligne les éléments */
+    justify-content: space-around; /* Mettre un espace autour de chaque élément */
+    align-items: center; /* Centrer les éléments verticalement */
+    font-family: 'AR One Sans', sans-serif; /* Donner la police d'écriture */
+    font-weight: 600; /* Donner de l'épaisseur au texte */
+    font-size: 15px; /* Donner une taille au texte */
+    color: white; /* Donner de la couleur au texte */
+    position: fixed; /* Fixer le header pendant le scroll */
+    top: 0; /* Mettre le header tout en haut de la page */
+    z-index: 1; /* Mettre le header en avant dans la page */
+    width: 100%; /* Définir la longueur du header */
+    padding: 20px; /* Définir la taille du header */
+}
+.header h3 {
+    font-size: 20px; /* Définir la taille du texte */
+}
+.header-right {
+    display: flex; /* Aligne les éléments */
+    align-items: center; /* Centrer les éléments verticalement */
+    height: 63px; /* Donner la même largeur que le header*/
+}
+.header-right ul {
+    list-style: none; /* Retirer les points de la liste */
+    display: flex; /* Aligne les éléments */
+    justify-content: space-around; /* Mettre un espace autour de chaque élément */
+}
+.header-right li a {
+    color: white; /* Donner la couleur blanche au texte */
+    text-decoration: none; /* Retirer le soulignage du lien hypertext */
+    padding-top: 38px; /* Donner à la case la même taille que le header */
+    padding-bottom: 38px; /* Donner à la case la même taille que le header */
+    margin-right: 20px; /* Mettre un espace entre chaque redirection */
+    border-top: 2px solid rgba(15,14,46,255); /* Mettre une barre invisible pour créer un effet avec le hover */
+    transition: 0.2s; /* Créer une transition pour le hover */
+}
+.header-right li a:hover {
+    color: orange; /* Couleur du texte quand la souris est dessus */
+    border-top: 2px solid orange; /* Barre horizontale orange quand la souris passe dessus */
+    transition: 0.5s; /* Transition d'apparition de l'effet hover ci dessus */
+}
