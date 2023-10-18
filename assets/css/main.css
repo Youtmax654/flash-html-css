@@ -5,13 +5,14 @@ body {
     /* Couleur de fond de la page */
     font-family: 'AR One Sans', sans-serif;
     /* Donner la police d'écriture */
+    overflow-x: hidden;
+    /* Donner la longueur souhaité */
 }
 
-/* login.html */
 .pages_banner {
     max-width: 100%;
     /* Prendre la longueur maximale de la fenêtre */
-    height: 250px;
+    height: 18vw;
     /* Largeur de 250px */
     background-image: url("../images/pages_banner.jpg");
     /* Mettre l'image en fond */
@@ -19,10 +20,9 @@ body {
     /* Mettre la couleur en fond */
     background-blend-mode: darken;
     /* Mélanger le fond et la couleur */
-    margin-top: 103px;
-    /* Placer la div sous le header */
     background-position-y: -1200px;
     /* Positionner l'image dans la div */
+    font-size: 0.9vw;
 }
 
 .pages_banner h1 {
@@ -32,68 +32,13 @@ body {
     /* Aligner le texte */
     justify-content: center;
     /* Centrer le texte */
-    padding: 106px;
+    align-content: center;
+    padding-top: 8vw;
     /* Centrer verticalement le texte */
-}
-
-.login_form form {
-    display: flex;
-    /* Aligner le texte */
-    flex-direction: column;
-    /* Mettre en colonne le formulaire */
-    width: 36%;
-    /* Longueur du formulaire */
-    margin: 6em auto 6em ;
-    /* Centrer le formulaire */
-}
-
-.login_form input:not(input:last-of-type) {
-    width: 35vw;
-    /* Longueur des inputs sauf le submit */
-    height: 45px;
-    /* Largeur des inputs sauf le submit */
-    margin-bottom: 20px;
-    /* Espacement entre les inputs */
-    border-radius: 5px;
-    /* Arrondir les bords des inputs */
-    background-color: rgb(39, 38, 69);
-    /* Couleur de fonds des inputs */
-    border: none;
-    /* Retirer les bordures */
-    color: white;
-    
     
 }
 
-.login_form input::placeholder {
-    position: absolute;
-    /* Positionner par rapport à l'input */
-    left: 15px;
-    /* Positionner depuis la gauche */
-    top: 25%;
-    /* Positionner depuis le haut */
-}
-
-.login_form input:last-of-type {
-    width: 8vw;
-    /* Longueur du submit */
-    height: 45px;
-    /* Largeur du submit */
-    color: white;
-    /* Couleur du texte du submit */
-    background-color: rgb(236, 146, 36);
-    /* Couleur du fond du submit */
-    border: none;
-    /* Retirer les bordures */
-    border-radius: 5px;
-    /* Arrondir les bords du submit */
-}
-
-/* contact.html */
-
-
-
-
+/* index.html */
 #welcome {
     display: inline-block;
     background-image: url("../images/fond.jpg");
@@ -140,7 +85,7 @@ body {
     display: block;
     padding: 1vw 3vw;
     text-decoration: none;
-    width: fit-content;   
+    width: fit-content;
 }
 
 #IlluImg {
@@ -186,91 +131,108 @@ body {
     left: -6vw;
     top: -4vw;
 }
-#IlluImg>div:last-of-type{
+
+#IlluImg>div:last-of-type {
     width: 63%;
     margin: 2vw auto;
     display: flex;
     justify-content: space-between;
 }
-#IlluImg div:last-of-type div{
+
+#IlluImg div:last-of-type div {
     display: flex;
     flex-wrap: wrap;
     width: 33%;
 }
+
 #IlluImg div:last-of-type div p {
     font-family: 'Roboto', sans-serif;
     margin: 0;
 }
 
 #IlluImg div:last-of-type div p:first-of-type {
-    color: rgba(55,36,160,255);
+    color: rgba(55, 36, 160, 255);
     font-size: 2vw;
 }
+
 #IlluImg div:last-of-type div p:nth-of-type(2) {
     color: white;
     margin: 5px 1vw;
     font-size: 1.3vw;
 }
+
 #IlluImg div:last-of-type div p:last-of-type {
     color: rgb(207, 207, 207);
     margin: 0 3.4vw;
     font-size: 1.2vw;
 }
 
-#Stats{
+#Stats {
     width: 63%;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     margin-top: 10vw;
 }
-#Stats img{
+
+#Stats img {
     width: 45%;
     height: 16vw;
 }
-#Stats>div{
+
+#Stats>div {
     width: 49%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 0 1.8vw;
 }
-#Stats div div{
+
+#Stats div div {
     width: 15vw;
     height: 7vw;
 }
-#Stats div div p{
+
+#Stats div div p {
     margin: 0;
     color: white;
     text-align: center;
     font-family: 'Roboto', sans-serif;
 }
-#Stats div div p:first-of-type{
+
+#Stats div div p:first-of-type {
     font-size: 1.7vw;
     font-weight: bolder;
     margin-top: 1.5vw;
 }
-#Stats div div p:last-of-type{
+
+#Stats div div p:last-of-type {
     font-size: 1.3vw;
 }
-#Stats div div:first-of-type{
-    background-color: rgba(55,36,160,255);
+
+#Stats div div:first-of-type {
+    background-color: rgba(55, 36, 160, 255);
 }
-#Stats div div:nth-of-type(2){
-    background-color: rgba(24,161,95,255);
+
+#Stats div div:nth-of-type(2) {
+    background-color: rgba(24, 161, 95, 255);
 }
-#Stats div div:nth-of-type(3){
-    background-color: rgba(185,28,168,255);
+
+#Stats div div:nth-of-type(3) {
+    background-color: rgba(185, 28, 168, 255);
     margin-top: 0.5vw;
 }
-#Stats div div:nth-of-type(4){
+
+#Stats div div:nth-of-type(4) {
     margin-top: 0.5vw;
-    background-color: rgba(236,145,35,255);
+    background-color: rgba(236, 145, 35, 255);
 }
-#Team{
+
+#Team {
     margin: 0 0 5vw;
 }
-#Team h2{
+
+#Team h2 {
     font-family: 'Roboto', sans-serif;
     color: white;
     text-align: center;
@@ -278,63 +240,149 @@ body {
     font-size: 3vw;
     margin: 10vw 0 0;
 }
+
 #Team>p {
     color: rgb(207, 207, 207);
     text-align: center;
     margin: 1vw 0 0;
     font-size: 0.7vw;
 }
-#Team>img{
+
+#Team>img {
     display: block;
     margin: 1.5vw auto;
     width: 15vw;
-}   
-#Team>div{
+}
+
+#Team>div {
     width: 63vw;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
 }
-#Team>div>div{
-    background-color: rgba(14,11,38,255);
+
+#Team>div>div {
+    background-color: rgba(14, 11, 38, 255);
     padding: 3vw 5vw;
 }
-#Team div div .pp{
+
+#Team div div .pp {
     overflow: hidden;
     width: 10vw;
     height: 10vw;
     border-radius: 100px;
 }
-#Team div div .pp img{
+
+#Team div div .pp img {
     position: relative;
     width: 180%;
     left: -3.5vw;
 }
-#Team div div p{
+
+#Team div div p {
     text-align: center;
-    margin: 0 ;
+    margin: 0;
     font-family: 'Roboto', sans-serif;
 }
-#Team div div .reseau{
-    margin: 1.5vw auto ;
+
+#Team div div .reseau {
+    margin: 1.5vw auto;
     color: white;
     width: 7vw;
     font-size: 1.5vw;
     display: flex;
     justify-content: space-between;
 }
-#Team div div p:first-of-type{
+
+#Team div div p:first-of-type {
     color: white;
     text-align: center;
-    margin: 0 ;
+    margin: 0;
     font-weight: bolder;
     font-size: 1.5vw;
     margin: 2vw 0 0;
 }
-#Team div div p:last-of-type{
+
+#Team div div p:last-of-type {
     color: rgb(207, 207, 207);
     text-align: center;
-    margin: 0 ;
+    margin: 0;
     font-size: 1vw;
     margin: 1.5vw 0 0;
+}
+
+/* login.html */
+.login_form form {
+    display: flex;
+    /* Aligner le texte */
+    flex-direction: column;
+    /* Mettre en colonne le formulaire */
+    width: 36%;
+    /* Longueur du formulaire */
+    margin: 6em auto 6em;
+    /* Centrer le formulaire */
+}
+
+.login_form input:not(input:last-of-type) {
+    width: 35vw;
+    /* Longueur des inputs sauf le submit */
+    height: 45px;
+    /* Largeur des inputs sauf le submit */
+    margin-bottom: 20px;
+    /* Espacement entre les inputs */
+    border-radius: 5px;
+    /* Arrondir les bords des inputs */
+    background-color: rgb(39, 38, 69);
+    /* Couleur de fonds des inputs */
+    border: none;
+    /* Retirer les bordures */
+    color: white;
+
+
+}
+
+.login_form input::placeholder {
+    position: absolute;
+    /* Positionner par rapport à l'input */
+    left: 15px;
+    /* Positionner depuis la gauche */
+    top: 25%;
+    /* Positionner depuis le haut */
+}
+
+.login_form input:last-of-type {
+    width: 8vw;
+    /* Longueur du submit */
+    height: 45px;
+    /* Largeur du submit */
+    color: white;
+    /* Couleur du texte du submit */
+    background-color: rgb(236, 146, 36);
+    /* Couleur du fond du submit */
+    border: none;
+    /* Retirer les bordures */
+    border-radius: 5px;
+    /* Arrondir les bords du submit */
+}
+
+/* contact.html */
+.contact_infos {
+    display: flex;
+    justify-content: center;
+
+}
+
+.contact_infos .info_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 10vw;
+    background-color: rgba(14,11,38,255);
+    margin: 0.8vw;
+}
+
+.contact_infos .info_block p {
+    color: rgba(180,187,217,255);
+    font-size: 1vw;
 }

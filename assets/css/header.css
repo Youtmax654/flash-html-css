@@ -13,8 +13,22 @@
     top: 0; /* Mettre le header tout en haut de la page */
     z-index: 1; /* Mettre le header en avant dans la page */
     width: 100%; /* Définir la longueur du header */
-    padding: 20px; /* Définir la taille du header */
+    height: 5.365vw;
     background-color: rgb(15, 14, 46); /* Donner une couleur au header */
+}
+.header_index { /* header uniquement pour la page d'accueil */
+    display: flex; /* Aligne les éléments */
+    justify-content: space-around; /* Mettre un espace autour de chaque élément */
+    align-items: center; /* Centrer les éléments verticalement */
+    font-family: 'AR One Sans', sans-serif; /* Donner la police d'écriture */
+    font-weight: 600; /* Donner de l'épaisseur au texte */
+    font-size: 0.8vw; /* Donner une taille au texte */
+    color: white; /* Donner de la couleur au texte */
+    position: absolute; /* Fixer le header a la page uniquement pour l'accueil */
+    top: 0; /* Mettre le header tout en haut de la page */
+    z-index: 1; /* Mettre le header en avant dans la page */
+    width: 100%; /* Définir la longueur du header */
+    padding: 20px; /* Définir la taille du header */
 }
 
 .header-right {
