@@ -312,7 +312,7 @@ body {
 }
 
 /* login.html */
-.login_form form {
+.login_form form, .register_form form {
     display: flex;
     /* Aligner le texte */
     flex-direction: column;
@@ -321,16 +321,17 @@ body {
     /* Longueur du formulaire */
     margin: 6em auto 6em;
     /* Centrer le formulaire */
+    font-size: 0.9vw;
 }
 
-.login_form input:not(input:last-of-type) {
+.login_form input:not(input:last-of-type), .register_form input:not(input:last-of-type)  {
     width: 35vw;
     /* Longueur des inputs sauf le submit */
-    height: 45px;
+    height: 2.5vw;
     /* Largeur des inputs sauf le submit */
-    margin-bottom: 20px;
+    margin-bottom: 3.5%;
     /* Espacement entre les inputs */
-    border-radius: 5px;
+    border-radius: 0.3vw;
     /* Arrondir les bords des inputs */
     background-color: rgb(39, 38, 69);
     /* Couleur de fonds des inputs */
@@ -338,22 +339,24 @@ body {
     /* Retirer les bordures */
     color: white;
     outline: none;
-    padding-left: 15px;
+    padding-left: 2%;
+    
 }
 
-.login_form input::placeholder {
+.login_form input::placeholder, .register_form input::placeholder {
     position: absolute;
     /* Positionner par rapport à l'input */
-    left: 15px;
+    left: 2%;
     /* Positionner depuis la gauche */
     top: 25%;
     /* Positionner depuis le haut */
+    
 }
 
-.login_form input:last-of-type {
+.login_form input:last-of-type, .register_form input:last-of-type {
     width: 8vw;
     /* Longueur du submit */
-    height: 45px;
+    height: 2.5vw;
     /* Largeur du submit */
     color: white;
     /* Couleur du texte du submit */
@@ -361,7 +364,7 @@ body {
     /* Couleur du fond du submit */
     border: none;
     /* Retirer les bordures */
-    border-radius: 5px;
+    border-radius: 0.2vw;
     /* Arrondir les bords du submit */
 }
 
