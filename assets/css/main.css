@@ -125,7 +125,7 @@ body {
     font-size: 1.3vw;
 }
 
-#welcome button {
+#welcome #button {
     font-family: 'Roboto', sans-serif;
     position: relative;
     background-color: orange;
@@ -133,17 +133,13 @@ body {
     display: block;
     margin: 0 auto;
     padding: 0;
-
-}
-
-#welcome button a {
-    font-family: 'Roboto', sans-serif;
     color: white;
     text-transform: uppercase;
     font-size: 1.4vw;
     display: block;
     padding: 1vw 3vw;
     text-decoration: none;
+    width: fit-content;   
 }
 
 #IlluImg {
