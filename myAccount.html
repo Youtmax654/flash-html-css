@@ -20,7 +20,7 @@
                 <ul>
                     <li><a href="index.html">ACCUEIL</a></li>
                     <li><a href="memory.html">JEU</a></li>
-                    <li><a href="scores.html">SCORES</a></li>
+                    <li><a href="#">SCORES</a></li>
                     <li><a href="contact.html">NOUS CONTACTER</a></li>
                     <li><a href="login.html">CONNEXION</a></li>
                     <li><a href="register.html">INSCRIPTION</a></li>
@@ -31,22 +31,34 @@
     </header>
     <main>
         <div class="pages_banner"> <!-- Div pour la bannière des pages -->
-            <h1>CONNEXION</h1>
+            <h1>MA PAGE</h1>
         </div>
         <div class="login_form"> <!-- Div pour le formulaire de connexion-->
             <form action="#">
-                <label for="email"></label>
-                <input type="email" name="email" placeholder="Email">
+                <label for="OldEmail"></label>
+                <input type="email" name="OldEmail" placeholder="Ancien Email : jacke@gmail.com" readonly>
+                <label for="NewEmail"></label>
+                <input type="email" name="NewEmail" placeholder="Nouveau Email">
                 <label for="password"></label>
                 <input type="password" name="password" placeholder="Mot de passe">
-                <input type="submit" value="Connexion">
+                <input type="submit" value="Valider">
             </form>
-            
+        </div>
+        <div class="login_form"> <!-- Div pour le formulaire de connexion-->
+            <form action="#">
+                <label for="OldPassword"></label>
+                <input type="email" name="OldPassword" placeholder="Ancien Mot de passe">
+                <label for="NewPassword"></label>
+                <input type="email" name="NewPassword" placeholder="Nouveau Mots de passe">
+                <label for="ConfirmPassword"></label>
+                <input type="password" name="ConfirmPassword" placeholder="Confirmer le Mot de passe">
+                <input type="submit" value="Valider">
+            </form>
         </div>
     </main>
     <footer>
         <!-- Divisons du footer en deux parites pour pouvoir mettre en colonne le footer avec la ligne du copyright-->
-        <section class="footer-body"> <!--section pour la parite principale du footer-->
+        <div class="footer-body"> <!--section pour la parite principale du footer-->
             <!-- Séparation du footer-body en deux parties -->
             <div class="Informations"> <!-- Création de la partie informations -->
                 <div class="Titre">
@@ -85,14 +97,11 @@
                     <li>Nous contacter</li>
                 </ul>
             </div>
-            </div>
-        </section>
-        <section class="footer-bottom"> <!-- section pour insérer la ligne de copyright -->
+        </div>
+        <div class="footer-bottom"> <!-- section pour insérer la ligne de copyright -->
             <span> Copyright © 2023 Tous droits reservés </span>
-        </section>
+        </div>
     </footer>
-    <script src="https://kit.fontawesome.com/1f0991f3fc.js" crossorigin="anonymous"></script>
-    <!-- librairie fontAwesome -->
 </body>
 
 </html>

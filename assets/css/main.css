@@ -264,6 +264,7 @@ body {
 #Team>div>div {
     background-color: rgba(14, 11, 38, 255);
     padding: 3vw 5vw;
+    width: 10vw;
 }
 
 #Team div div .pp {
@@ -271,6 +272,7 @@ body {
     width: 10vw;
     height: 10vw;
     border-radius: 100px;
+    margin: 0 auto;
 }
 
 #Team div div .pp img {
@@ -297,7 +299,6 @@ body {
 #Team div div p:first-of-type {
     color: white;
     text-align: center;
-    margin: 0;
     font-weight: bolder;
     font-size: 1.5vw;
     margin: 2vw 0 0;
@@ -306,12 +307,11 @@ body {
 #Team div div p:last-of-type {
     color: rgb(207, 207, 207);
     text-align: center;
-    margin: 0;
     font-size: 1vw;
     margin: 1.5vw 0 0;
 }
 
-/* login.html */
+/* login.html, register.html, myAccount.html */
 .login_form form, .register_form form {
     display: flex;
     /* Aligner le texte */
@@ -323,6 +323,7 @@ body {
     /* Centrer le formulaire */
     font-size: 0.9vw;
 }
+
 
 .login_form input:not(input:last-of-type), .register_form input:not(input:last-of-type)  {
     width: 35vw;
@@ -551,4 +552,159 @@ table#big img{
 
 .scores_table table tbody td {
     text-align: center;
+}
+
+/* scores.html */
+.scores_table {
+    margin: 5vw;
+    margin-left: 24vw;
+    font-size: 0.9vw;
+    background-color: rgba(14, 11, 38, 255);
+    width: 50vw;
+}
+
+.scores_table table {
+    border-collapse: collapse;
+    color: rgba(180,187,217,255);
+    border: 2px solid rgba(14, 11, 38, 255);
+    border-radius: 50px;
+}
+
+.scores_table table thead {
+    font-size: 1.2vw;
+    font-weight: 1000;
+    color: rgba(236,146,36,255);
+}
+
+.scores_table table thead td {
+    text-align: center;
+}
+
+.scores_table table  tr td {
+    width: 10vw;
+    height: 4vw;
+    border: 1px solid white;
+}
+
+.scores_table table tbody td {
+    text-align: center;
+}
+
+/* Midea Quieries */
+@media screen and (max-width: 412px) {
+    #welcome h1 {
+        width: 75vw;
+        font-size: 6vw;
+        margin: 14vw auto 0;
+    }
+    #welcome p {
+        font-size: 2.3vw;
+    }
+    #welcome #button {
+        font-size: 3.4vw;
+      }
+    #IlluImg > div:last-of-type {
+        flex-direction: column;
+    }
+    #IlluImg div:last-of-type div {
+        width: 100%;
+        margin-top: 5px;
+    }
+    #IlluImg div:last-of-type div p:first-of-type {
+        font-size: 2.5vw;
+    }
+    #IlluImg div:last-of-type div p:nth-of-type(2) {
+        margin: 0px 1vw;
+        font-size: 2.3vw;
+    }
+    #IlluImg div:last-of-type div p:last-of-type {
+        font-size: 2vw;
+    }
+    #Stats {
+        flex-direction: column;
+    }
+    #Stats img {
+        width: 80%;
+        height: auto;
+        margin: 0 auto;
+    }
+    #Stats > div {
+        width: 78%;
+        margin: 3vw auto;
+    }
+    #Stats div div {
+        width: 23vw;
+        height: 15vw;
+    }
+    #Stats div div:nth-of-type(3) {
+        margin-top: 3vw;
+    }
+    #Stats div div:nth-of-type(4) {
+        margin-top: 3vw;
+    }
+    #Stats div div p:first-of-type {
+        font-size: 5vw;
+        margin-top: 3vw;
+      }
+    #Stats div div p:last-of-type {
+        font-size: 2.6vw;
+    }
+    #Team h2 {
+        font-size: 6vw;
+    }
+    #Team > p {
+        font-size: 1.7vw;
+    }
+    #Team > img {
+        width: 35vw;
+    }
+    #Team > div {
+        flex-direction: column;
+    }
+    #Team > div > div {
+        margin: 2vw auto;
+        width: 20vw;
+    }
+    #Team div div .pp {
+        width: 15vw;
+        height: 15vw;
+    }
+    #Team div div .pp img {
+        position: relative;
+        width: 180%;
+        left: -5.5vw;
+    }
+    #Team div div p:first-of-type {
+        font-size: 2.5vw;
+    }
+    #Team div div p:last-of-type {
+        font-size: 2vw;
+    }
+    #Team div div .reseau {
+        width: 12vw;
+        font-size: 3.5vw;
+    }
+    .tableGame tr td img {
+        width: 14vw;
+        height: 14vw;
+    }
+    table#big img {
+        width: 10vw;
+        height: 10vw;
+    }
+    .login_form form, .register_form form {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        margin: 6em auto 6em;
+        font-size: 3vw;
+    }
+    .login_form input:not(input:last-of-type), .register_form input:not(input:last-of-type) {
+        width: 100%;
+        height: 8.5vw;
+    }
+    .login_form input:last-of-type, .register_form input:last-of-type {
+        width: 20vw;
+        height: 9vw;
+    }
 }

@@ -44,8 +44,8 @@
 .header-right li a {
     color: white; /* Donner la couleur blanche au texte */
     text-decoration: none; /* Retirer le soulignage du lien hypertext */
-    padding-top: 38px; /* Donner à la case la même taille que le header */
-    padding-bottom: 38px; /* Donner à la case la même taille que le header */
+    padding-top: 2vw; /* Donner à la case la même taille que le header */
+    padding-bottom: 2vw; /* Donner à la case la même taille que le header */
     margin-right: 20px; /* Mettre un espace entre chaque redirection */
     border-top: 2px solid rgba(15,14,46,0); /* Mettre une barre invisible pour créer un effet avec le hover */
     transition: 0.2s; /* Créer une transition pour le hover */
