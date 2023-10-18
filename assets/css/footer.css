@@ -37,7 +37,7 @@ footer {
 
 /* Personnalisation de Tel, Email, Location en orange */
 .Tel strong, .Email strong, .Location strong {  
-    color: orange;
+    color: rgba(236,146,36,255);;
 }
 
 /* Classe Liste */
@@ -52,7 +52,7 @@ footer {
 .Liste li::before {
     content: "\2022";
     /* Le contenu est un caractère spécial représenté par "\2022", qui est le code Unicode du caractère "•" */
-    color: orange;
+    color: rgba(236,146,36,255);;
     font-weight: bold;
     /* met en gars les point qui permettent de lister */
     display: inline-block;
@@ -81,7 +81,7 @@ footer {
 
 /* Classe pour personnaliser les logos */
 .Images i {
-    background-color: orange;
+    background-color: rgba(236,146,36,255);;
     padding: 0.5vw;
     /* définit la taille des fonds de nos logos*/
 }
