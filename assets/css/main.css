@@ -311,7 +311,7 @@ body {
     margin: 1.5vw 0 0;
 }
 
-/* login.html */
+/* login.html, register.html, myAccount.html */
 .login_form form, .register_form form {
     display: flex;
     /* Aligner le texte */
@@ -323,6 +323,7 @@ body {
     /* Centrer le formulaire */
     font-size: 0.9vw;
 }
+
 
 .login_form input:not(input:last-of-type), .register_form input:not(input:last-of-type)  {
     width: 35vw;
