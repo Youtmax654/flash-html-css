@@ -430,14 +430,15 @@ table#big img{
         margin-top: 5px;
     }
     #IlluImg div:last-of-type div p:first-of-type {
-        font-size: 2.5vw;
+        font-size: 3.5vw;
     }
     #IlluImg div:last-of-type div p:nth-of-type(2) {
         margin: 0px 1vw;
-        font-size: 2.3vw;
+        font-size: 3.3vw;
     }
     #IlluImg div:last-of-type div p:last-of-type {
-        font-size: 2vw;
+        font-size: 3vw;
+        margin: 0 0 0 5vw;
     }
     #Stats {
         flex-direction: column;
@@ -472,7 +473,9 @@ table#big img{
         font-size: 6vw;
     }
     #Team > p {
-        font-size: 1.7vw;
+        font-size: 2.7vw;
+        width: 75%;
+        margin: 0 auto;
     }
     #Team > img {
         width: 35vw;
