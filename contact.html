@@ -13,20 +13,19 @@
 </head>
 
 <body>
-    <header>
-        <div class="header"> <!-- Div pour le header -->
-            <p>The Power Of Memory</p>
-            <nav class="header-right"> <!-- Navbar -->
-                <ul>
-                    <li><a href="index.html">ACCUEIL</a></li>
-                    <li><a href="#">JEU</a></li>
-                    <li><a href="#">SCORES</a></li>
-                    <li><a href="contact.html">NOUS CONTACTER</a></li>
-                    <li><a href="login.html">CONNEXION</a></li>
-                    <li><a href="register.html">INSCRIPTION</a></li>
-                </ul>
-            </nav>
-        </div>
+    <header class="header">
+        <h3>The Power Of Memory</h3>
+        <nav class="header-right"> <!-- Navbar -->
+            <ul>
+                <li><a href="index.html">ACCUEIL</a></li>
+                <li><a href="memory.html">JEU</a></li>
+                <li><a href="scores.html">SCORES</a></li>
+                <li><a href="contact.html">NOUS CONTACTER</a></li>
+                <li><a href="login.html">CONNEXION</a></li>
+                <li><a href="register.html">INSCRIPTION</a></li>
+                <li><a href="myAccount.html">MON COMPTE</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
         <div class="pages_banner"> <!-- Div pour la bannière des pages -->
@@ -34,14 +33,36 @@
         </div>
         <div class="contact_infos">
             <div class="info_block">
+                <i class="fa-solid fa-mobile-screen mobile_phone"></i>
                 <p>06 74 56 14 16</p>
             </div>
             <div class="info_block">
+                <i class="fa-regular fa-envelope envelope"></i>
                 <p>Oui@ceciestunmail.com</p>
             </div>
             <div class="info_block">
+                <i class="fa-solid fa-location-dot location_pin"></i>
                 <p>Paris</p>
             </div>
+        </div>
+        <div class="contact_form">
+            <form action="#">
+                <div class="contact_row1">
+                    <label for="name"></label>
+                    <input type="text" placeholder="Nom">
+                    <label for="email"></label>
+                    <input type="email" placeholder="Email">
+                </div>
+                <label for="subject"></label>
+                <input type="text" placeholder="Sujet">
+                <label for="message"></label>
+                <div class="contact_">
+                    <textarea placeholder="Message" cols="30" rows="10"></textarea>
+                </div>
+                <div class="contact_submit">
+                    <input type="submit" placeholder="Envoyer">
+                </div>
+            </form>
         </div>
     </main>
     <footer>

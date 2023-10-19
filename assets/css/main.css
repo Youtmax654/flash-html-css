@@ -264,6 +264,7 @@ body {
 #Team>div>div {
     background-color: rgba(14, 11, 38, 255);
     padding: 3vw 5vw;
+    width: 10vw;
 }
 
 #Team div div .pp {
@@ -271,6 +272,7 @@ body {
     width: 10vw;
     height: 10vw;
     border-radius: 100px;
+    margin: 0 auto;
 }
 
 #Team div div .pp img {
@@ -297,7 +299,6 @@ body {
 #Team div div p:first-of-type {
     color: white;
     text-align: center;
-    margin: 0;
     font-weight: bolder;
     font-size: 1.5vw;
     margin: 2vw 0 0;
@@ -306,14 +307,12 @@ body {
 #Team div div p:last-of-type {
     color: rgb(207, 207, 207);
     text-align: center;
-    margin: 0;
     font-size: 1vw;
     margin: 1.5vw 0 0;
 }
 
-/* login.html */
-.login_form form,
-.register_form form {
+/* login.html, register.html, myAccount.html */
+.login_form form, .register_form form {
     display: flex;
     /* Aligner le texte */
     flex-direction: column;
@@ -325,8 +324,8 @@ body {
     font-size: 0.9vw;
 }
 
-.login_form input:not(input:last-of-type),
-.register_form input:not(input:last-of-type) {
+
+.login_form input:not(input:last-of-type), .register_form input:not(input:last-of-type)  {
     width: 35vw;
     /* Longueur des inputs sauf le submit */
     height: 2.5vw;
@@ -376,22 +375,130 @@ body {
 .contact_infos {
     display: flex;
     justify-content: center;
-
+    margin-top: 8vw;
+    margin-bottom: 2vw;
 }
 
 .contact_infos .info_block {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 20%;
-    height: 10vw;
-    background-color: rgba(14, 11, 38, 255);
+    height: 12vw;
+    background-color: rgba(14,11,38,255);
     margin: 0.8vw;
+}
+
+.contact_infos .info_block i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(236,146,36,255);
+    width: 4vw;
+    height: 4vw;
+    color: white;
+    border-radius: 50%;
+}
+
+.contact_infos .info_block .mobile_phone {
+    font-size: 1.2vw;
+}
+
+.contact_infos .info_block .envelope {
+    font-size: 1.8vw;
+}
+
+.contact_infos .info_block .location_pin {
+    font-size: 1.5vw;
 }
 
 .contact_infos .info_block p {
     color: rgba(180, 187, 217, 255);
     font-size: 1vw;
+}
+
+.contact_form form {
+    display: flex;
+    /* Aligner le texte */
+    flex-direction: column;
+    /* Mettre en colonne le formulaire */
+    width: 36%;
+    /* Longueur du formulaire */
+    margin:0 20.5em 6em;
+    /* Centrer le formulaire */
+    font-size: 0.9vw;
+}
+
+.contact_form form .contact_row1 {
+    display: flex;
+    width: 32.5vw;
+}
+
+.contact_form form .contact_row1 input {
+    margin-right: 1.5vw;
+}
+
+.contact_form form input {
+    width: 30vw;
+    /* Longueur des inputs sauf le submit */
+    height: 2.5vw;
+    /* Largeur des inputs sauf le submit */
+    margin-bottom: 3.5%;
+    /* Espacement entre les inputs */
+    border-radius: 0.3vw;
+    /* Arrondir les bords des inputs */
+    background-color: rgb(39, 38, 69);
+    /* Couleur de fonds des inputs */
+    border: none;
+    /* Retirer les bordures */
+    color: white;
+    outline: none;
+    padding-left: 2%;
+}
+
+.contact_form form textarea {
+    width: 29.5vw;
+    /* Longueur des inputs sauf le submit */
+    margin-bottom: 3.5%;
+    /* Espacement entre les inputs */
+    border-radius: 0.3vw;
+    /* Arrondir les bords des inputs */
+    background-color: rgb(39, 38, 69);
+    /* Couleur de fonds des inputs */
+    border: none;
+    /* Retirer les bordures */
+    color: white;
+    outline: none;
+    padding: 2%;
+}
+
+.contact_form form input::placeholder {
+    position: absolute;
+    /* Positionner par rapport à l'input */
+    left: 1vw;
+    /* Positionner depuis la gauche */
+}
+
+.contact_form form textarea::placeholder {
+    position: absolute;
+    left: 1vw;
+    top: 1vw;
+}
+
+.contact_form form .contact_submit input {
+    width: 6vw;
+    /* Longueur du submit */
+    height: 3vw;
+    /* Largeur du submit */
+    color: white;
+    /* Couleur du texte du submit */
+    background-color: rgb(236, 146, 36);
+    /* Couleur du fond du submit */
+    border: none;
+    /* Retirer les bordures */
+    border-radius: 0.2vw;
+    /* Arrondir les bords du submit */
 }
 
 /* memory.html */
@@ -414,202 +521,4 @@ table#big img {
 
 .hidden {
     display: none;
-}
-
-/* tchat.html */
-
-.tchat {
-    background-color: darkseagreen;
-    align-items: center;
-    margin: 35%;
-    background-color: rgba(65, 114, 255, 255);
-    width: 25vw;
-    border-radius: 2%;
-    height: 34vw;
-    
-}
-
-.tchat_head {
-    display: flex;
-    align-items: center;
-    width: 25vw;
-    height: 4vw;
-    margin-left: 1.5%;
-
-}
-
-.tchat .image_robot {
-    width: 3vw;
-    height: 3vw;
-    border-radius: 50%;
-    background-image: url("../images/chat_robot2.png");
-    margin: 1% 1.5%;
-    background-size: 100%;
-}
-
-.tchat .tchat_head p {
-    color: white;
-    margin: 0%;
-    margin-left: 2%;
-}
-
-
-.tchat_body {
-    background-color: white;
-    height: 30vw;
-    width: 25vw;
-    border-bottom-left-radius: 2%;
-    border-bottom-right-radius: 2%;
-    position: absolute;
-    padding-top: 1vw;
-    display: inline-table;
-}
-
-.msg-tchat {
-
-    display: flex;
-    flex-direction: column;
-}
-
-.msg-left-msg {
-    display: flex;
-    margin: øvw 0.8vw;
-    color: rgba(173, 173, 173, 255);
-    font-size: 0.6vw;
-    margin-bottom: 0vw;
-}
-
-.msger-tchat .msg-left-msg .msg-img {
-    background-image: url("../images/chat_robot2.png");
-    width: 2vw;
-    height: 2vw;
-    border-radius: 50%;
-    background-size: 100%;
-    padding: 0.8vw;
-    margin-top: 1.4vw;
-    background-repeat: no-repeat;
-
-
-}
-
-.msg-bubble {
-    border-radius: 2%;
-    padding-left: 0.4vw;
-    margin-left: 2%;
-
-}
-
-.msg-left-msg .msg-text {
-    background-color: rgba(244, 248, 251, 255);
-    margin-right: 1.5vw;
-    padding: 0.6vw;
-    border-radius: 10px;
-    font-size: 0.9vw;
-    color: black;
-    
-}
-
-
-
-
-.msg-info-name,.msg-info-time {
-    margin: 0.4vw 0vw;
-
-}
-
-.msg-left-msg .msg-info {
-    display: flex;
-    flex-direction: column;
-    margin-right: 1vw;
-
-}
-
-.msg-info-name {
-    font-size: 0.8vw;
-}
-
-.msg-right-msg {
-    display: flex;
-    color: rgba(173, 173, 173, 255);
-    font-size: 0.6vw;
-    flex-direction: row-reverse;
-    margin: 0vw 6.5vw;
-    margin-right: 0.3vw;
-  
-}
-
-
-.msg-right-msg .msg-text {
-    background-color: rgba(65, 114, 255, 255);
-    padding: 0.6vw;
-    border-radius: 10px;
-    font-size: 0.9vw;
-    color: white;
-    width: fit-content;
-}
-
-.msg-right-msg .msg-info-name {
-    margin-right: 0.2vw;
-}
-
-.msg-right-msg .msg-info{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.msg-right-msg .msg-info-name {
-    margin-top: 0vw;
-}
-
-
-.tchat-body-bottom {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 2vw;
-}
-
-.msg-write-form {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: 8vw;
-    margin-left: 1vw;
-}
-
-.msg-write-form input:not(input:last-of-type) {
-    
-    border-radius: 0.3vw;
-    color: black;
-    padding-left: 2%;
-    line-height: normal;
-    padding-left: 2%;
-
-}
-
-.msg-write-form input::placeholder{
-    position: absolute;
-    left: 2%;
-    font-size: 100%;
-}
-
-.msg-write-form input:last-of-type{
-    width: 16vw;
-    height: 2.5vw;
-    padding-right: 0.3vw;
-    border: 1px solid #ccc;
-    padding-left: 2%;
-    border-radius: 6px;
-}
-
-.send input:last-of-type {
-    width: 6vw;
-    height: 2.5vw;
-    color: black;
-    border: none;
-    background-color: transparent;
-    margin-right: 0.5vw;
-    font-size: 1.1vw;
-    font-weight:600;
 }
