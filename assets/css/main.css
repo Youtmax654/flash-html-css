@@ -369,6 +369,25 @@ body {
 }
 
 /* contact.html */
+    /* chat button */
+    #chat_lab {
+        width: 3.5vw;
+        height: 3.5vw;
+        border-radius: 5px;
+        background: rgba(236, 146, 36, 0.35);
+        display: block;
+        position: fixed;
+        bottom: 2vw;
+        right: 2vw;
+    }
+
+    #chat_ch {
+        display: none;
+        position: fixed;
+        bottom: 2vw;
+        right: 2vw;
+    }
+
 .contact_infos {
     display: flex;
     justify-content: center;
