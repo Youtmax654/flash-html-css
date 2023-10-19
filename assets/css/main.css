@@ -1051,6 +1051,7 @@ table#big img {
     .contact_form form .contact_submit input {
         width: fit-content;
         height: fit-content;
+        padding: 2vw;
     }
 
     /* Scores.html */

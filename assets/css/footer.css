@@ -112,8 +112,7 @@ footer {
         flex-direction: column;
         align-items: center;
         font-size: 3vw ;
-        
-
+        margin-top: 10vw;
     }
 
     .Images i {
@@ -129,5 +128,10 @@ footer {
         margin-bottom: 2vw;
         padding: 2vw 0;
         font-size: 2vw;
+    }
+
+    .Liste a {
+        color : rgba(180,187,217,255);
+        text-decoration: none;
     }
 }
