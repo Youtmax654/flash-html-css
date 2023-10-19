@@ -4,7 +4,7 @@
 .header {
     display: flex;
     /* Aligne les éléments */
-    justify-content: space-around;
+    justify-content: space-evenly;
     /* Mettre un espace autour de chaque élément */
     align-items: center;
     /* Centrer les éléments verticalement */
@@ -12,7 +12,7 @@
     /* Donner la police d'écriture */
     font-weight: 600;
     /* Donner de l'épaisseur au texte */
-    font-size: 0.8vw;
+    font-size: 0.9vw;
     /* Donner une taille au texte */
     color: white;
     /* Donner de la couleur au texte */
@@ -29,11 +29,19 @@
     /* Donner une couleur au header */
 }
 
+.header p {
+    font-size: 1.2vw;
+}
+
+.header_index p {
+    font-size: 1.2vw;
+}
+
 .header_index {
     /* header uniquement pour la page d'accueil */
     display: flex;
     /* Aligne les éléments */
-    justify-content: space-around;
+    justify-content: space-evenly;
     /* Mettre un espace autour de chaque élément */
     align-items: center;
     /* Centrer les éléments verticalement */
@@ -41,7 +49,7 @@
     /* Donner la police d'écriture */
     font-weight: 600;
     /* Donner de l'épaisseur au texte */
-    font-size: 0.8vw;
+    font-size: 0.9vw;
     /* Donner une taille au texte */
     color: white;
     /* Donner de la couleur au texte */
