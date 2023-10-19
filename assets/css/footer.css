@@ -96,3 +96,8 @@ footer {
     padding-right: 32%;
     padding-left: 0%;
 }
+
+
+@media screen and (max-width: 468px) {
+    
+}
