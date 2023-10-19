@@ -109,7 +109,7 @@
 }
 
 /* Media Quieries */
-@media screen and (max-width: 412px) {
+@media screen and (max-width: 468px) {
     .header_index, .header {
         height: 11vw;
     }

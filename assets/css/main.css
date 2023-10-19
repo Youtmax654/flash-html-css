@@ -35,7 +35,6 @@ body {
     align-content: center;
     padding-top: 10vw;
     /* Centrer verticalement le texte */
-    
 }
 
 /* index.html */
@@ -556,6 +555,34 @@ table#big img{
 
 /* Media Quieries */
 @media screen and (max-width: 468px) {
+    .pages_banner {
+        max-width: 100%;
+        /* Prendre la longueur maximale de la fenêtre */
+        height: 30vw;
+        margin-top: 12vw;
+        background-image: url("../images/pages_banner.jpg");
+        /* Mettre l'image en fond */
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Mettre la couleur en fond */
+        background-blend-mode: darken;
+        /* Mélanger le fond et la couleur */
+        background-position-y: -1200px;
+        /* Positionner l'image dans la div */
+        font-size: 4vw;
+    }
+    
+    .pages_banner h1 {
+        color: rgb(255, 255, 255);
+        /* Donner la couleur blanche au texte */
+        display: flex;
+        /* Aligner le texte */
+        justify-content: center;
+        /* Centrer le texte */
+        align-content: center;
+        padding-top: 10vw;
+        /* Centrer verticalement le texte */
+    }
+
     /* index.html */
     #welcome h1 {
         width: 75vw;
