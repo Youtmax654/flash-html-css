@@ -96,3 +96,38 @@ footer {
     padding-right: 32%;
     padding-left: 0%;
 }
+
+@media screen and (max-width: 468px){
+    .Informations, .PowerOfMemory{
+        padding: 0%;
+        text-align: center;
+        margin-top: 4vw;
+    }
+
+    .footer-body .Titre {
+        font-size: 4vw;
+    }
+
+    .footer-body{
+        flex-direction: column;
+        align-items: center;
+        font-size: 3vw ;
+        
+
+    }
+
+    .Images i {
+        padding: 1.5vw;
+        text-align: center;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+    .footer-bottom{
+        padding: 0;
+        margin-bottom: 2vw;
+        padding: 2vw 0;
+        font-size: 2vw;
+    }
+}
