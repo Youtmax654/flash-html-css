@@ -1178,6 +1178,12 @@ table#big img {
     }
 
     /* Contact.html */
+    .chat {
+        display: none;
+    }
+    #chat_lab {
+        display: none;
+    }
     .contact_infos {
         flex-direction: column;
         align-items: center;
