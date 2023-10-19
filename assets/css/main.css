@@ -408,6 +408,7 @@ body {
     bottom: 1.5vw;
     transform: translate(0, 1000px);
     transition: all 0.5s ease;
+    z-index: 1;
 }
 
 /* tchat */
