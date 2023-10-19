@@ -97,6 +97,11 @@ footer {
     padding-left: 0%;
 }
 
+.Liste a {
+    color : rgba(180,187,217,255);
+    text-decoration: none;
+}
+
 @media screen and (max-width: 468px){
     .Informations, .PowerOfMemory{
         padding: 0%;
