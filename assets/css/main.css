@@ -772,4 +772,19 @@ table#big img{
         width: fit-content;
         height: fit-content;
     }
+    /* Scores.html */
+    .scores_table {
+        margin: 5vw auto;
+        width: 90vw;
+        font-size: 3vw;
+    }
+    .scores_table table thead {
+        font-size: 3.2vw;
+        font-weight: 1000;
+        color: rgba(236,146,36,255);
+    }
+    .scores_table table tr td {
+        width: 17vw;
+        height: 8vw;
+    }
 }
