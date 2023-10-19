@@ -44,7 +44,7 @@ body {
     background-image: url("../images/fond.jpg");
     background-attachment: fixed;
     background-size: 100%;
-    width: 98.9vw;
+    width: 100%;
     height: 50vw;
     background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: darken;
@@ -678,5 +678,77 @@ table#big img{
     .login_form input:last-of-type, .register_form input:last-of-type {
         width: 20vw;
         height: 9vw;
+    }
+    
+    /* Contact.html */
+    .contact_infos {
+        flex-direction: column;
+        align-items: center;
+    }
+    .contact_infos .info_block {
+        width: 40%;
+        height: 22vw;
+    }
+    .contact_infos .info_block i {
+        width: 10vw;
+        height: 10vw;
+    }
+    .contact_infos .info_block p {
+        font-size: 2.5vw;
+    }
+    .contact_infos .info_block .mobile_phone {
+        font-size: 5.2vw;
+    }
+    .contact_infos .info_block .envelope {
+        font-size: 5.8vw;
+    }
+    .contact_infos .info_block .location_pin {
+        font-size: 5.5vw;
+    }
+    .contact_form form .contact_row1 {
+        flex-direction: column;
+        width: 100%;
+    }
+    .contact_form form {
+        font-size: 3vw;
+        margin: 0 auto;
+        width: fit-content;
+    }
+    .contact_form form div{
+        width: 100%;
+    }
+    .contact_form form input {
+        width: 40vw;
+        height: 5.5vw;
+        margin-bottom: 3.5%;
+        border-radius: 0.3vw;
+        background-color: rgb(39, 38, 69);
+        border: none;
+        color: white;
+        outline: none;
+        padding-left: 2%;
+    }
+    .contact_form form textarea {
+        width: 40vw;
+        height: 15vw;
+    }
+    .contact_form form .contact_submit input {
+        width: fit-content;
+        height: fit-content;
+    }
+    /* Scores.html */
+    .scores_table {
+        margin: 5vw auto;
+        width: 90vw;
+        font-size: 3vw;
+    }
+    .scores_table table thead {
+        font-size: 3.2vw;
+        font-weight: 1000;
+        color: rgba(236,146,36,255);
+    }
+    .scores_table table tr td {
+        width: 17vw;
+        height: 8vw;
     }
 }
