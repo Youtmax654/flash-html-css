@@ -7,7 +7,7 @@ body {
     /* Donner la police d'écriture */
     overflow-x: hidden;
     /* Donner la longueur souhaité */
-    
+    transition: 1s;
 }
 
 .pages_banner {
@@ -371,8 +371,15 @@ body {
     /* Retirer les bordures */
     border-radius: 0.2vw;
     /* Arrondir les bords du submit */
+    cursor: pointer;
+    transition: 0.5s;
 }
+.login_form input:last-of-type:hover,
+.register_form input:last-of-type:hover {
+    color: rgb(236, 146, 36);
+    background-color: white;
 
+}
 /* contact.html */
 .contact_infos {
     display: flex;
@@ -501,20 +508,26 @@ body {
     /* Retirer les bordures */
     border-radius: 0.2vw;
     /* Arrondir les bords du submit */
+    cursor: pointer;
+    transition: 0.5s;
 }
-
+.contact_form form .contact_submit input:hover {
+    color: rgb(236, 146, 36);
+    background-color: white;
+}
 /* memory.html */
 /* chat button */
 #chat_lab{
-    width: 3.5vw;
-    height: 3.5vw;
+    padding: 1vw;
+    color: white;
     border-radius: 5px;
     background: rgba(236, 146, 36, 0.35);
+    /*
     background-image: url("../images/white-arrow.png");
     background-size: 50%;
     background-repeat: no-repeat;
     background-position: center center;
-    background-blend-mode: darken;
+    background-blend-mode: darken;*/
     display: block;
     position: fixed;
     bottom: 2vw;
@@ -789,12 +802,19 @@ table#big img {
 .scores_table table tbody td {
     text-align: center;
 }
-#returnHome{
+.returnHome{
     position: fixed;
     bottom: 2vw;
     right: 2vw;
-    padding: 1vw;
-    background-color: rgba(236, 146, 36, 0.35);
+    width: 3.5vw;
+    height: 3.5vw;
+    border-radius: 5px;
+    background: rgba(236, 146, 36, 0.35);
+    background-image: url("../images/white-arrow.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-blend-mode: darken;
     border-radius: 5px;
     color: white;
 }
