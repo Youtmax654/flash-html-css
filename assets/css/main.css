@@ -795,7 +795,15 @@ table#big img {
 .scores_table table tbody td {
     text-align: center;
 }
-
+#returnHome{
+    position: fixed;
+    bottom: 2vw;
+    right: 2vw;
+    padding: 1vw;
+    background-color: rgba(236, 146, 36, 0.35);
+    border-radius: 5px;
+    color: white;
+}
 /* Media Quieries */
 @media screen and (max-width: 468px) {
     .pages_banner {
