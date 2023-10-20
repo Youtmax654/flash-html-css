@@ -35,10 +35,10 @@
         </div>
         <div class="login_form"> <!-- Div pour le formulaire de connexion-->
             <form action="#">
-                <label for="email"></label>
-                <input type="email" name="email" placeholder="Email">
-                <label for="password"></label>
-                <input type="password" name="password" placeholder="Mot de passe">
+                <label for="email_login"></label>
+                <input type="email" id="email_login" placeholder="Email">
+                <label for="password_login"></label>
+                <input type="password" id="password_login" placeholder="Mot de passe">
                 <input type="submit" value="Connexion">
             </form>
             
@@ -46,7 +46,7 @@
     </main>
     <footer>
         <!-- Divisons du footer en deux parites pour pouvoir mettre en colonne le footer avec la ligne du copyright-->
-        <section class="footer-body"> <!--section pour la parite principale du footer-->
+        <div class="footer-body"> <!--section pour la parite principale du footer-->
             <!-- Séparation du footer-body en deux parties -->
             <div class="Informations"> <!-- Création de la partie informations -->
                 <div class="Titre">
@@ -80,16 +80,15 @@
                     <p><Strong>Power Of Memory</Strong></p>
                 </div> <!-- classe pour isoler le titre pour le modifier seul -->
                 <ul class="Liste"> <!-- classe pour faire la liste des liens -->
-                    <li>Jouer !</li>
-                    <li>Les scores</li>
-                    <li>Nous contacter</li>
+                    <li><a href="memory.html">Jouer !</a></li>
+                    <li><a href="scores.html">Les scores</a></li>
+                    <li><a href="contact.html">Nous contacter</a></li>
                 </ul>
             </div>
-            </div>
-        </section>
-        <section class="footer-bottom"> <!-- section pour insérer la ligne de copyright -->
+        </div>
+        <div class="footer-bottom"> <!-- section pour insérer la ligne de copyright -->
             <span> Copyright © 2023 Tous droits reservés </span>
-        </section>
+        </div>
     </footer>
     <script src="https://kit.fontawesome.com/1f0991f3fc.js" crossorigin="anonymous"></script>
     <!-- librairie fontAwesome -->

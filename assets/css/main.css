@@ -311,7 +311,8 @@ body {
 }
 
 /* login.html, register.html, myAccount.html */
-.login_form form, .register_form form {
+.login_form form,
+.register_form form {
     display: flex;
     /* Aligner le texte */
     flex-direction: column;
@@ -324,7 +325,8 @@ body {
 }
 
 
-.login_form input:not(input:last-of-type), .register_form input:not(input:last-of-type)  {
+.login_form input:not(input:last-of-type),
+.register_form input:not(input:last-of-type) {
     width: 35vw;
     /* Longueur des inputs sauf le submit */
     height: 2.5vw;
@@ -385,7 +387,7 @@ body {
     align-items: center;
     width: 20%;
     height: 12vw;
-    background-color: rgba(14,11,38,255);
+    background-color: rgba(14, 11, 38, 255);
     margin: 0.8vw;
 }
 
@@ -393,7 +395,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(236,146,36,255);
+    background-color: rgba(236, 146, 36, 255);
     width: 4vw;
     height: 4vw;
     color: white;
@@ -424,7 +426,7 @@ body {
     /* Mettre en colonne le formulaire */
     width: 36%;
     /* Longueur du formulaire */
-    margin:0 20.5em 6em;
+    margin: 0 20.5em 6em;
     /* Centrer le formulaire */
     font-size: 0.9vw;
 }
@@ -501,6 +503,242 @@ body {
 }
 
 /* memory.html */
+/* chat button */
+#chat_lab {
+    width: 3.5vw;
+    height: 3.5vw;
+    border-radius: 5px;
+    background: rgba(236, 146, 36, 0.35);
+    background-image: url("../images/white-arrow.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-blend-mode: darken;
+    display: block;
+    position: fixed;
+    bottom: 2vw;
+    right: 2vw;
+}
+
+#chat_ch {
+    display: none;
+    position: fixed;
+    bottom: 2vw;
+    right: 2vw;
+}
+
+#chat_ch:checked + .chat {
+    transform: translate(0, 0);
+    transition: all 0.5s ease;
+}
+
+.chat {
+    position: fixed;
+    right: 11vw;
+    bottom: 1.5vw;
+    transform: translate(0, 1000px);
+    
+    transition: all 0.5s ease;
+    z-index: 1;
+}
+
+/* tchat */
+.tchat {
+    background-color: darkseagreen;
+    align-items: center;
+    margin: 35%;
+    background-color: rgba(65, 114, 255, 255);
+    width: 25vw;
+    border-radius: 2%;
+    height: 34vw;
+
+}
+
+.tchat_head {
+    display: flex;
+    align-items: center;
+    width: 25vw;
+    height: 4vw;
+    margin-left: 1.5%;
+
+}
+
+.tchat .image_robot {
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    background-image: url("../images/chat_robot2.png");
+    margin: 1% 1.5%;
+    background-size: 100%;
+}
+
+.tchat .tchat_head p {
+    color: white;
+    margin: 0%;
+    margin-left: 2%;
+    font-size: 1.7vw;
+}
+
+
+.tchat_body {
+    background-color: white;
+    height: 30vw;
+    width: 25vw;
+    border-bottom-left-radius: 2%;
+    border-bottom-right-radius: 2%;
+    position: absolute;
+    padding-top: 1vw;
+    display: inline-table;
+}
+
+.msg-tchat {
+
+    display: flex;
+    flex-direction: column;
+}
+
+.msg-left-msg {
+    display: flex;
+    margin: 0vw 0.8vw;
+    color: rgba(173, 173, 173, 255);
+    font-size: 0.6vw;
+    margin-bottom: 0vw;
+}
+
+.msger-tchat .msg-left-msg .msg-img {
+    background-image: url("../images/chat_robot2.png");
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+    background-size: 100%;
+    padding: 0.8vw;
+    margin-top: 1.4vw;
+    background-repeat: no-repeat;
+
+
+}
+
+.msg-bubble {
+    border-radius: 2%;
+    padding-left: 0.4vw;
+    margin-left: 2%;
+
+}
+
+.msg-left-msg .msg-text {
+    background-color: rgba(244, 248, 251, 255);
+    margin-right: 1.5vw;
+    padding: 0.6vw;
+    border-radius: 10px;
+    font-size: 0.9vw;
+    color: black;
+
+}
+
+.msg-info-name,
+.msg-info-time {
+    margin: 0.4vw 0vw;
+
+}
+
+.msg-left-msg .msg-info {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1vw;
+
+}
+
+.msg-info-name {
+    font-size: 0.8vw;
+}
+
+.msg-right-msg {
+    display: flex;
+    color: rgba(173, 173, 173, 255);
+    font-size: 0.6vw;
+    flex-direction: row-reverse;
+    margin: 0vw 6.5vw;
+    margin-right: 0.3vw;
+
+}
+
+
+.msg-right-msg .msg-text {
+    background-color: rgba(65, 114, 255, 255);
+    padding: 0.6vw;
+    border-radius: 10px;
+    font-size: 0.9vw;
+    color: white;
+    width: fit-content;
+}
+
+.msg-right-msg .msg-info-name {
+    margin-right: 0.2vw;
+}
+
+.msg-right-msg .msg-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.msg-right-msg .msg-info-name {
+    margin-top: 0vw;
+}
+
+
+.tchat-body-bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 2vw;
+}
+
+.msg-write-form {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 8vw;
+    margin-left: 1vw;
+}
+
+.msg-write-form input:not(input:last-of-type) {
+
+    border-radius: 0.3vw;
+    color: black;
+    padding-left: 2%;
+    line-height: normal;
+    padding-left: 2%;
+
+}
+
+.msg-write-form input::placeholder {
+    position: absolute;
+    left: 2%;
+    font-size: 100%;
+}
+
+.msg-write-form input:last-of-type {
+    width: 16vw;
+    height: 2.5vw;
+    padding-right: 0.3vw;
+    border: 1px solid #ccc;
+    padding-left: 2%;
+    border-radius: 6px;
+    font-size: 1.1vw;
+}
+
+.send input:last-of-type {
+    width: 6vw;
+    height: 2.5vw;
+    color: black;
+    border: none;
+    background-color: transparent;
+    margin-right: 0.5vw;
+    font-size: 1.1vw;
+    font-weight: 600;
+}
+
 .tableGame {
     margin: 50px auto;
     border-spacing: 1vw;
@@ -533,7 +771,7 @@ table#big img {
 
 .scores_table table {
     border-collapse: collapse;
-    color: rgba(180,187,217,255);
+    color: rgba(180, 187, 217, 255);
     border: 2px solid rgba(14, 11, 38, 255);
     border-radius: 50px;
 }
@@ -541,14 +779,14 @@ table#big img {
 .scores_table table thead {
     font-size: 1.2vw;
     font-weight: 1000;
-    color: rgba(236,146,36,255);
+    color: rgba(236, 146, 36, 255);
 }
 
 .scores_table table thead td {
     text-align: center;
 }
 
-.scores_table table  tr td {
+.scores_table table tr td {
     width: 10vw;
     height: 4vw;
     border: 1px solid white;
@@ -557,7 +795,15 @@ table#big img {
 .scores_table table tbody td {
     text-align: center;
 }
-
+#returnHome{
+    position: fixed;
+    bottom: 2vw;
+    right: 2vw;
+    padding: 1vw;
+    background-color: rgba(236, 146, 36, 0.35);
+    border-radius: 5px;
+    color: white;
+}
 /* Media Quieries */
 @media screen and (max-width: 468px) {
     .pages_banner {
@@ -575,7 +821,7 @@ table#big img {
         /* Positionner l'image dans la div */
         font-size: 4vw;
     }
-    
+
     .pages_banner h1 {
         color: rgb(255, 255, 255);
         /* Donner la couleur blanche au texte */
@@ -594,161 +840,208 @@ table#big img {
         font-size: 6vw;
         margin: 14vw auto 0;
     }
+
     #welcome p {
         font-size: 2.3vw;
     }
+
     #welcome #button {
         font-size: 3.4vw;
-      }
-    #IlluImg > div:last-of-type {
+    }
+
+    #IlluImg>div:last-of-type {
         flex-direction: column;
     }
+
     #IlluImg div:last-of-type div {
         width: 100%;
         margin-top: 5px;
     }
+
     #IlluImg div:last-of-type div p:first-of-type {
         font-size: 3.5vw;
     }
+
     #IlluImg div:last-of-type div p:nth-of-type(2) {
         margin: 0px 1vw;
         font-size: 3.3vw;
     }
+
     #IlluImg div:last-of-type div p:last-of-type {
         font-size: 3vw;
         margin: 0 0 0 5vw;
     }
+
     #Stats {
         flex-direction: column;
     }
+
     #Stats img {
         width: 80%;
         height: auto;
         margin: 0 auto;
     }
-    #Stats > div {
+
+    #Stats>div {
         width: 78%;
         margin: 3vw auto;
     }
+
     #Stats div div {
         width: 23vw;
         height: 15vw;
     }
+
     #Stats div div:nth-of-type(3) {
         margin-top: 3vw;
     }
+
     #Stats div div:nth-of-type(4) {
         margin-top: 3vw;
     }
+
     #Stats div div p:first-of-type {
         font-size: 5vw;
         margin-top: 3vw;
-      }
+    }
+
     #Stats div div p:last-of-type {
         font-size: 2.6vw;
     }
+
     #Team h2 {
         font-size: 6vw;
     }
-    #Team > p {
+
+    #Team>p {
         font-size: 2.7vw;
         width: 75%;
         margin: 0 auto;
     }
-    #Team > img {
+
+    #Team>img {
         width: 35vw;
     }
-    #Team > div {
+
+    #Team>div {
         flex-direction: column;
     }
-    #Team > div > div {
+
+    #Team>div>div {
         margin: 2vw auto;
         width: 20vw;
     }
+
     #Team div div .pp {
         width: 15vw;
         height: 15vw;
     }
+
     #Team div div .pp img {
         position: relative;
         width: 180%;
         left: -5.5vw;
     }
+
     #Team div div p:first-of-type {
         font-size: 2.5vw;
     }
+
     #Team div div p:last-of-type {
         font-size: 2vw;
     }
+
     #Team div div .reseau {
         width: 12vw;
         font-size: 3.5vw;
     }
 
     /* memory.html */
+    .chat {
+        display: none;
+    }
+    #chat_lab {
+        display: none;
+    }
     .tableGame tr td img {
         width: 14vw;
         height: 14vw;
     }
+
     table#big img {
         width: 10vw;
         height: 10vw;
     }
 
     /* login.html, register.html */
-    .login_form form, .register_form form {
+    .login_form form,
+    .register_form form {
         display: flex;
         flex-direction: column;
         width: 70%;
         margin: 6em auto 6em;
         font-size: 3vw;
     }
-    .login_form input:not(input:last-of-type), .register_form input:not(input:last-of-type) {
+
+    .login_form input:not(input:last-of-type),
+    .register_form input:not(input:last-of-type) {
         width: 100%;
         height: 8.5vw;
     }
-    .login_form input:last-of-type, .register_form input:last-of-type {
+
+    .login_form input:last-of-type,
+    .register_form input:last-of-type {
         width: 20vw;
         height: 9vw;
     }
-    
+
     /* Contact.html */
     .contact_infos {
         flex-direction: column;
         align-items: center;
     }
+
     .contact_infos .info_block {
         width: 40%;
         height: 22vw;
     }
+
     .contact_infos .info_block i {
         width: 10vw;
         height: 10vw;
     }
+
     .contact_infos .info_block p {
         font-size: 2.5vw;
     }
+
     .contact_infos .info_block .mobile_phone {
         font-size: 5.2vw;
     }
+
     .contact_infos .info_block .envelope {
         font-size: 5.8vw;
     }
+
     .contact_infos .info_block .location_pin {
         font-size: 5.5vw;
     }
+
     .contact_form form .contact_row1 {
         flex-direction: column;
         width: 100%;
     }
+
     .contact_form form {
         font-size: 3vw;
         margin: 0 auto;
         width: fit-content;
     }
-    .contact_form form div{
+
+    .contact_form form div {
         width: 100%;
     }
+
     .contact_form form input {
         width: 40vw;
         height: 5.5vw;
@@ -760,25 +1053,31 @@ table#big img {
         outline: none;
         padding-left: 2%;
     }
+
     .contact_form form textarea {
         width: 40vw;
         height: 15vw;
     }
+
     .contact_form form .contact_submit input {
         width: fit-content;
         height: fit-content;
+        padding: 2vw;
     }
+
     /* Scores.html */
     .scores_table {
         margin: 5vw auto;
         width: 90vw;
         font-size: 3vw;
     }
+
     .scores_table table thead {
         font-size: 3.2vw;
         font-weight: 1000;
-        color: rgba(236,146,36,255);
+        color: rgba(236, 146, 36, 255);
     }
+
     .scores_table table tr td {
         width: 17vw;
         height: 8vw;
