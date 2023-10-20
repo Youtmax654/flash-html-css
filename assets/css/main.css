@@ -542,36 +542,38 @@ body {
 }
 .chat {
     position: fixed;
-    right: 11vw;
-    bottom: 1.5vw;
+    right: 2vw;
+    bottom: 1vw;
     transform: translate(0, 1000px);
-    
     transition: all 0.5s ease;
     z-index: 1;
 }
 
 /* tchat */
 .tchat {
-    background-color: darkseagreen;
-    align-items: center;
-    margin: 35%;
-    background-color: rgba(65, 114, 255, 255);
-    width: 25vw;
+    background-color: white;
     border-radius: 2%;
-    height: 34vw;
-
+    height: 30vw;
+    width: 25vw;
+    border-bottom-left-radius: 2%;
+    border-bottom-right-radius: 2%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: inline-table;
+    margin-bottom: 7vw;
 }
 
 .tchat_head {
+    background-color: rgba(65, 114, 255, 255);
+    color:white;
     display: flex;
     align-items: center;
-    width: 25vw;
-    height: 4vw;
-    margin-left: 1.5%;
-
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
 
-.tchat .image_robot {
+.image_robot{
     width: 3vw;
     height: 3vw;
     border-radius: 50%;
@@ -581,26 +583,13 @@ body {
 }
 
 .tchat .tchat_head p {
-    color: white;
+    font-size: 1.7vw;
     margin: 0%;
     margin-left: 2%;
-    font-size: 1.7vw;
 }
 
-
-.tchat_body {
-    background-color: white;
-    height: 30vw;
-    width: 25vw;
-    border-bottom-left-radius: 2%;
-    border-bottom-right-radius: 2%;
-    position: absolute;
-    padding-top: 1vw;
-    display: inline-table;
-}
 
 .msg-tchat {
-
     display: flex;
     flex-direction: column;
 }
@@ -613,6 +602,9 @@ body {
     margin-bottom: 0vw;
 }
 
+.msger-tchat {
+    margin-top: 1vw;
+}
 .msger-tchat .msg-left-msg .msg-img {
     background-image: url("../images/chat_robot2.png");
     width: 2vw;
@@ -622,8 +614,6 @@ body {
     padding: 0.8vw;
     margin-top: 1.4vw;
     background-repeat: no-repeat;
-
-
 }
 
 .msg-bubble {
@@ -640,20 +630,16 @@ body {
     border-radius: 10px;
     font-size: 0.9vw;
     color: black;
-
 }
 
-.msg-info-name,
-.msg-info-time {
+.msg-info-name,.msg-info-time {
     margin: 0.4vw 0vw;
-
 }
 
 .msg-left-msg .msg-info {
     display: flex;
     flex-direction: column;
     margin-right: 1vw;
-
 }
 
 .msg-info-name {
@@ -667,7 +653,6 @@ body {
     flex-direction: row-reverse;
     margin: 0vw 6.5vw;
     margin-right: 0.3vw;
-
 }
 
 
@@ -711,7 +696,6 @@ body {
 }
 
 .msg-write-form input:not(input:last-of-type) {
-
     border-radius: 0.3vw;
     color: black;
     padding-left: 2%;
@@ -746,6 +730,7 @@ body {
     font-size: 1.1vw;
     font-weight: 600;
 }
+
 
 .tableGame {
     margin: 50px auto;
