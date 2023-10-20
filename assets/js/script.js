@@ -21,6 +21,7 @@ function isEqual(a, b)
 let rick = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
 let MotherLode = ["m","o","t","h","e","r","l","o","d","e"];
 let EndInternet = ["e","n","d","i","n","t","e","r","n","e","t"];
+let snap = ["t","h","a","n","o","s","s","n","a","p"];
 let cheatCode = [];
 let cheatCode11 = [];
 let rickrolled = false;
@@ -42,5 +43,8 @@ window.addEventListener("keydown", function(event){
     }
     if(isEqual(EndInternet, cheatCode11)){
         document.location.href="https://hmpg.net/";
+    }
+    if(isEqual(snap, cheatCode)){
+        this.document.querySelector("body").classList.add("snap");
     }
 });
