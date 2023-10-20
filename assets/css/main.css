@@ -819,6 +819,18 @@ table#big img {
     border-radius: 5px;
     color: white;
 }
+.snap *{
+    transition: 2s !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    color: transparent !important;
+}
+.snap img{
+    display: none !important;
+}
+.snap li::before{
+    content: "" !important;
+}
 /* Media Quieries */
 @media screen and (max-width: 468px) {
     .pages_banner {
