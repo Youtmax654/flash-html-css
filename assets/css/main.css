@@ -575,6 +575,7 @@ body {
     color: white;
     margin: 0%;
     margin-left: 2%;
+    font-size: 1.7vw;
 }
 
 
@@ -723,6 +724,7 @@ body {
     border: 1px solid #ccc;
     padding-left: 2%;
     border-radius: 6px;
+    font-size: 1.1vw;
 }
 
 .send input:last-of-type {
