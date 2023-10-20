@@ -7,6 +7,7 @@ body {
     /* Donner la police d'écriture */
     overflow-x: hidden;
     /* Donner la longueur souhaité */
+    
 }
 
 .pages_banner {
@@ -504,7 +505,7 @@ body {
 
 /* memory.html */
 /* chat button */
-#chat_lab {
+#chat_lab{
     width: 3.5vw;
     height: 3.5vw;
     border-radius: 5px;
@@ -519,19 +520,13 @@ body {
     bottom: 2vw;
     right: 2vw;
 }
-
-#chat_ch {
-    display: none;
-    position: fixed;
-    bottom: 2vw;
-    right: 2vw;
+.show{
+    rotate: 180deg;
 }
-
-#chat_ch:checked + .chat {
+.show + .chat {
     transform: translate(0, 0);
     transition: all 0.5s ease;
 }
-
 .chat {
     position: fixed;
     right: 11vw;
