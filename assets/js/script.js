@@ -18,6 +18,7 @@ function isEqual(a, b)
  
     return a === b;
 }
+let buttonShow = document.getElementById("chat_lab");
 let rick = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
 let MotherLode = ["m","o","t","h","e","r","l","o","d","e"];
 let EndInternet = ["e","n","d","i","n","t","e","r","n","e","t"];
@@ -47,4 +48,7 @@ window.addEventListener("keydown", function(event){
     if(isEqual(snap, cheatCode)){
         this.document.querySelector("body").classList.add("snap");
     }
+});
+buttonShow.addEventListener("click", function(){
+    buttonShow.classList.toggle("show");
 });
