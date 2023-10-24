@@ -1,9 +1,9 @@
-# Creation de la base de données
 # Story 1
+# Création de la base de données
 ```sql
 CREATE DATABASE PowerOfMemory; 
 ```
-# Selection de la base de données
+# Sélection de la base de données
 ```sql
 USE PowerOfMemory;
 ```
@@ -134,21 +134,20 @@ VALUES 	(1, 2, "Salut tout le monde, ça va ?", "2023-10-23 12:00"),
         (1,4,"Ouais, c'est un film que j'attends avec impatience.", "2023-10-23 12:17")
 ```
 # Story 3
-## Lors de l'inscription
+## Ajout d'un nouvel utilisateur dans la BDD
 ```sql
 CREATE UNIQUE INDEX index_email
 ON users (usersEmail);
 CREATE UNIQUE INDEX index_pseudo
 ON users (usersPseudo);
+
 INSERT INTO users (`usersEmail`,`usersPassword`,`usersPseudo`,`usersCreatedDate`)
 VALUES ("ceciestunnouveaucompte@gmail.com","1234","NewAccount","2023-10-23 21:00")
 ```
 
 # Story 4
-
-## Modifier les informations de la bdd
-
-### Le password
+## Modification des informations de l'utilisateur
+### Le mot de passe
 ```sql
 UPDATE users SET usersPassword = "4321" WHERE `usersId` = 4
 ```
@@ -157,19 +156,20 @@ UPDATE users SET usersPassword = "4321" WHERE `usersId` = 4
 ```sql
 UPDATE users SET usersEmail = "newemail@gmail.com" WHERE usersId = 5 AND usersPassword = "1234"
 ```
+
 # Story 5
-## Rechercher les informations dans la bdd
+## Recherche les informations de l'utilisateur dans la BDD
 ```sql
 SELECT * FROM users WHERE usersEmail = "newemail@gmail.com" AND usersPassword = "1234"
 ```
 # Story 6
-## Inserer un jeu dans la table game 
+## Insertion d'un nouveau jeu dans la BDD
 ```sql
 INSERT INTO game (`gameName`) 
 VALUES ("The Power Of Memory");
 ```
 # Story 7
-## Checher des informations à travers des foreign keys
+## Affichage des scores des utilisateurs
 ```sql
 SELECT gameName, usersPseudo, scoresDifficulty, scoresPoints
 FROM scores
@@ -180,7 +180,7 @@ ON scores.usersId = users.usersId
 ORDER BY gameName ASC, scoresDifficulty ASC, scoresPoints ASC
 ```
 # Story 8
-## Chercher les informations avec le foreign key avec des conditions
+## Affichage des scores des utilisateurs avec des filtres
 ```sql
 SELECT gameName, usersPseudo, scoresDifficulty, scoresPoints
 FROM scores
@@ -192,7 +192,7 @@ WHERE gameName = "Power Of Memory" AND usersPseudo = "Youtmax654" AND scoresDiff
 ORDER BY gameName ASC, scoresDifficulty ASC, scoresPoints ASC
 ```
 # Story 9
-## Empecher les doublons dans la base de donnée
+## Insertion du score de l'utilisateur qui a terminé sa partie
 ```sql
 UPDATE scores SET scoresPoints = 4521, scoresDate = DEFAULT
 WHERE usersId = 2 AND gameId = 1 AND scoresDifficulty = 1;
@@ -206,13 +206,13 @@ WHERE NOT EXISTS (SELECT 1
                   AND scoresDifficulty = 1)
 ```
 # Story 10
-## Inserer un message dans la bdd
+## Insertion d'un nouveau message dans la BDD
 ```sql
 INSERT INTO chat (`gameId`,`usersId`,`chatMessage`,`chatDate`)
 VALUES (1,2,"Hello Word!", "2023-10-22 20:03")
 ```
 # Story 11
-## Rechercher les messages des dernières 24h
+## Affichage des messages des dernières 24h
 ```sql
 SELECT chatMessage, usersPseudo, chatDate,
 	CASE 
@@ -225,7 +225,7 @@ ON chat.usersId = users.usersId
 WHERE chatDate >= NOW() - INTERVAL 1 DAY
 ```
 # Story 12
-## Faire une recherche à partir du nom d'utilisateur
+## Effectuer une recherche à partir d'un nom d'utilisateur
 ```sql
 UPDATE users
 SET usersPseudo = "Thibaud"
@@ -249,7 +249,7 @@ WHERE usersPseudo LIKE "%au%"
 
 # Story 13
 
-## Créer la table privateChat
+## Création de la table PrivateChat
 ```sql
 DROP TABLE IF EXISTS privateChat;
 CREATE TABLE privateChat (
@@ -265,7 +265,7 @@ CREATE TABLE privateChat (
 )
 ```
 # Story 14
-## Rajouter des messages privés dans la bdd
+## Ajout de données de test
 ```sql
 INSERT INTO privatechat (`firstUsersId`,`secondUsersId`,`privateChatMessage`,`isRead`,`privateChatSendDate`,`privateChatReadDate`)
 VALUES     (4,5,"Salut Aurélien, ça va ?",true,"2023-10-24 10:21:32","2023-10-24 10:21:54"),
@@ -290,26 +290,26 @@ VALUES     (4,5,"Salut Aurélien, ça va ?",true,"2023-10-24 10:21:32","2023-10-
         (3,4, "Super tu nous montrera ça, j'ai de mon coté ajouté quelques petites fonctions bonus",true,"2023-10-23 22:20:59" , "2023-10-23 23:08:12"),
         (4,3, "Ok on regarde tout ça demain",true,"2023-10-23 23:10:32" , "2023-10-23 23:54:41");
 ```
-## Comande pour créer, modifier, supprimer
-### Créer un message
+## Gérer la création, modification et suppression d'un message
+### Création d'un message
 ```sql
 INSERT INTO privateChat(`firstUsersId`,`secondUsersId`,`privateChatMessage`)
 VALUES (2,3,"salut")
 ```
-### Modifier un message
+### Modification d'un message
 ```sql
 UPDATE privateChat
 SET `privateChatMessage` = "salut encore"
 WHERE `privateChatId` = 1
 ```
-### Supprimer un message
+### Suppression d'un message
 ```sql
 DELETE FROM privateChat
 WHERE `privateChatId` = 1
 ```
 
 # Story 15
-## Prendre le dernier message
+## Affichage du dernier message envoyé ou reçu par l'utilisateur connecté
 ```sql
 SELECT `privateChatMessage`, U1.usersPseudo AS SendingPseudo, U2.usersPseudo AS ReceivingPseudo, `privateChatSendDate`,`privateChatReadDate`, `isRead`
 FROM privateChat
@@ -323,9 +323,9 @@ LIMIT 1
 ```
 
 # Story 16
-## Toute les information du message privé
+## Affichage de la discussion entre 2 utilisateurs
 ```sql
-SELECT privateChatMessage AS Message, U1.usersPseudo AS SendingPseudo, U2.usersPseudo AS ReceivedPseudo, `privateChatSendDate`,`privateChatReadDate`,`isRead`, (
+SELECT privateChatMessage AS Message, U1.usersPseudo AS SenderPseudo, U2.usersPseudo AS ReceiverPseudo, `privateChatSendDate`,`privateChatReadDate`,`isRead`, (
     SELECT COUNT(scoresId)
     FROM scores AS S
     WHERE s.usersId = U1.usersId
@@ -333,7 +333,7 @@ SELECT privateChatMessage AS Message, U1.usersPseudo AS SendingPseudo, U2.usersP
     SELECT COUNT(scoresId)
     FROM scores AS S
     WHERE s.usersId = U2.usersId
-) AS ReceivedPlayedGame,(
+) AS ReceiverPlayedGame,(
     SELECT G.gameName
     FROM scores AS S
     INNER JOIN game AS G
