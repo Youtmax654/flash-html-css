@@ -194,7 +194,7 @@ ORDER BY gameName ASC, scoresDifficulty ASC, scoresPoints ASC
 # Story 9
 ## Empecher les doublons dans la base de donnée
 ```sql
-UPDATE scores SET scoresPoints = 4521
+UPDATE scores SET scoresPoints = 4521, scoresDate = DEFAULT
 WHERE usersId = 2 AND gameId = 1 AND scoresDifficulty = 1;
 
 INSERT INTO scores (`usersId`,`gameId`,`scoresDifficulty`,`scoresPoints`)
