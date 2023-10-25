@@ -437,5 +437,28 @@ LIMIT 12
 # Story 18
 ## Affichage des stats d'un seul joueur en fonction d'une année
 ```sql
-
+SELECT "2023" AS Annee, @mois := @mois + 1 AS Mois, (
+    SELECT COUNT(scoresId)
+    FROM scores
+    WHERE MONTH(scoresDate) = @mois AND YEAR(scoresDate) = Annee
+    AND usersId = 1
+) AS "Total parties", (
+    SELECT G.gameName
+    FROM scores AS S
+    INNER JOIN game AS G
+    ON S.gameId = G.gameId
+    WHERE MONTH(scoresDate) = @mois AND YEAR(scoresDate) = Annee
+    AND usersId = 1
+    GROUP BY G.gameName
+    ORDER BY COUNT(S.scoresId) DESC
+    LIMIT 1
+) AS "Jeu le plus joué", (
+    SELECT ROUND(AVG(`scoresPoints`))
+    FROM scores
+    WHERE MONTH(scoresDate) = @mois AND YEAR(scoresDate) = Annee
+    AND usersId = 1
+) AS "Score moyen"
+FROM scores, (SELECT @mois := 0) AS m
+GROUP BY scoresId
+LIMIT 12
 ```
