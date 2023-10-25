@@ -405,7 +405,6 @@ SELECT "2023" AS Annee, @mois := @mois + 1 AS Mois, (
     WHERE MONTH(scoresDate) = @mois AND YEAR(scoresDate) = Annee AND u.usersPseudo != TOP_1
     ORDER BY scoresPoints ASC
     LIMIT 1
-    OFFSET 1
 ) AS TOP_2, (
     SELECT u.usersPseudo
     FROM scores AS S
@@ -414,7 +413,6 @@ SELECT "2023" AS Annee, @mois := @mois + 1 AS Mois, (
     WHERE MONTH(scoresDate) = @mois AND YEAR(scoresDate) = Annee AND u.usersPseudo != TOP_1 AND u.usersPseudo != TOP_2
     ORDER BY scoresPoints ASC
     LIMIT 1
-    OFFSET 2
 ) AS TOP_3,(
     SELECT COUNT(scoresId)
     FROM scores
