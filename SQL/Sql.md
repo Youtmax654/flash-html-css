@@ -314,15 +314,19 @@ WHERE `privateChatId` = 1
 # Story 15
 ## Affichage du dernier message envoyé ou reçu par l'utilisateur connecté
 ```sql
-SELECT `privateChatMessage`, U1.usersPseudo AS SendingPseudo, U2.usersPseudo AS ReceivingPseudo, `privateChatSendDate`,`privateChatReadDate`, `isRead`
+SELECT `privateChatMessage`, U1.usersPseudo AS SenderPseudo, U2.usersPseudo AS ReceiverPseudo, `privateChatSendDate`, `privateChatReadDate`, `isRead`
 FROM privateChat
-LEFT JOIN users AS U1
+LEFT JOIN users AS U1 
 ON privateChat.firstUsersId = U1.usersId
-LEFT JOIN users AS U2
+LEFT JOIN users AS U2 
 ON privateChat.secondUsersId = U2.usersId
-WHERE `firstUsersId` = 1 XOR `secondUsersId` = 1
-ORDER BY `privateChatSendDate` DESC
-LIMIT 1
+WHERE (`firstUsersId` = 3 XOR `secondUsersId` = 3)
+AND `privateChatSendDate` = (
+        SELECT MAX(`privateChatSendDate`)
+        FROM privateChat AS pc
+        WHERE CONCAT(LEAST(pc.firstUsersId, pc.secondUsersId), GREATEST(pc.firstUsersId, pc.secondUsersId)) =                 CONCAT(LEAST(privateChat.firstUsersId, privateChat.secondUsersId), GREATEST(privateChat.firstUsersId, privateChat.secondUsersId))
+)
+ORDER BY `privateChatSendDate` DESC;
 ```
 
 # Story 16
