@@ -1,13 +1,13 @@
 # Story 1
-# Création de la base de données
+## Création de la base de données
 ```sql
 CREATE DATABASE PowerOfMemory; 
 ```
-# Sélection de la base de données
+##0 Sélection de la base de données
 ```sql
 USE PowerOfMemory;
 ```
-## Création de la première table users
+## Création de la table users
 ```sql
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
@@ -55,7 +55,7 @@ CREATE TABLE chat (
 )
 ```
 # Story 2
-## Insertion des données dans la bdd
+## Insertion des données dans la BDD
 
 ### Users
 ```sql
@@ -134,13 +134,15 @@ VALUES 	(1, 2, "Salut tout le monde, ça va ?", "2023-10-23 12:00"),
         (1,4,"Ouais, c'est un film que j'attends avec impatience.", "2023-10-23 12:17")
 ```
 # Story 3
-## Ajout d'un nouvel utilisateur dans la BDD
-```sql
+## Rendre les emails et les pseudos uniques dans la BDD
+```sql 
 CREATE UNIQUE INDEX index_email
 ON users (usersEmail);
 CREATE UNIQUE INDEX index_pseudo
 ON users (usersPseudo);
-
+```
+## Ajout d'un nouvel utilisateur dans la BDD
+```sql
 INSERT INTO users (`usersEmail`,`usersPassword`,`usersPseudo`,`usersCreatedDate`)
 VALUES ("ceciestunnouveaucompte@gmail.com","1234","NewAccount","2023-10-23 21:00")
 ```
@@ -149,7 +151,7 @@ VALUES ("ceciestunnouveaucompte@gmail.com","1234","NewAccount","2023-10-23 21:00
 ## Modification des informations de l'utilisateur
 ### Le mot de passe
 ```sql
-UPDATE users SET usersPassword = "4321" WHERE `usersId` = 4
+UPDATE users SET usersPassword = "4321" WHERE `usersId` = 4;
 ```
 
 ### L'email
@@ -158,7 +160,7 @@ UPDATE users SET usersEmail = "newemail@gmail.com" WHERE usersId = 5 AND usersPa
 ```
 
 # Story 5
-## Recherche les informations de l'utilisateur dans la BDD
+## Recherche les informations de l'utilisateur à partir de son email et de son mot de passe
 ```sql
 SELECT * FROM users WHERE usersEmail = "newemail@gmail.com" AND usersPassword = "1234"
 ```
@@ -192,7 +194,7 @@ WHERE gameName = "Power Of Memory" AND usersPseudo = "Youtmax654" AND scoresDiff
 ORDER BY gameName ASC, scoresDifficulty ASC, scoresPoints ASC
 ```
 # Story 9
-## Insertion du score de l'utilisateur qui a terminé sa partie
+## Insertion ou modification du score de l'utilisateur qui a terminé sa partie
 ```sql
 UPDATE scores SET scoresPoints = 4521, scoresDate = DEFAULT
 WHERE usersId = 2 AND gameId = 1 AND scoresDifficulty = 1;
@@ -225,8 +227,8 @@ ON chat.usersId = users.usersId
 WHERE chatDate >= NOW() - INTERVAL 1 DAY
 ```
 # Story 12
-## Effectuer une recherche à partir d'un nom d'utilisateur
-```sql
+## Insertion de données pour l'exemple
+```sql 
 UPDATE users
 SET usersPseudo = "Thibaud"
 WHERE usersId = 1;
@@ -238,8 +240,9 @@ SET usersPseudo = "Maud"
 WHERE usersId = 6;
 INSERT INTO scores (`usersId`,`gameId`,`scoresDifficulty`,`scoresPoints`,`scoresDate`) 
 VALUES 	(6, 2, 1, 10065, "2021-11-22");
-
-
+```
+## Effectuer une recherche à partir d'un nom d'utilisateur
+```sql
 SELECT `scoresId`, scores.usersId, `gameId`, `scoresDifficulty`, `scoresPoints`, `scoresDate`
 FROM `scores`
 INNER JOIN users
