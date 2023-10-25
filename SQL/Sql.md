@@ -194,6 +194,24 @@ WHERE gameName = "Power Of Memory" AND usersPseudo = "Youtmax654" AND scoresDiff
 ORDER BY gameName ASC, scoresDifficulty ASC, scoresPoints ASC
 ```
 # Story 9
+## Vérification pour savoir si il existe des doublons dans la table scores
+```sql
+SELECT COUNT(*) AS nbr_doublon, usersId, gameId, scoresDifficulty
+FROM scores
+GROUP BY usersId, gameId, scoresDifficulty
+HAVING COUNT(*) > 1
+```
+## Suppression des doublons de la table scores
+```sql
+DELETE t1 
+FROM scores AS t1, scores AS t2
+WHERE t1.scoresId > t2.scoresId
+AND t1.usersId = t2.usersId
+AND t1.gameId = t2.gameId
+AND t1.scoresDifficulty = t2.scoresDifficulty
+```
+
+
 ## Insertion ou modification du score de l'utilisateur qui a terminé sa partie
 ```sql
 UPDATE scores SET scoresPoints = 4521, scoresDate = DEFAULT
