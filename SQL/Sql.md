@@ -3,7 +3,7 @@
 ```sql
 CREATE DATABASE PowerOfMemory; 
 ```
-##0 Sélection de la base de données
+## Sélection de la base de données
 ```sql
 USE PowerOfMemory;
 ```
@@ -203,12 +203,12 @@ HAVING COUNT(*) > 1
 ```
 ## Suppression des doublons de la table scores
 ```sql
-DELETE t1 
-FROM scores AS t1, scores AS t2
-WHERE t1.scoresId > t2.scoresId
-AND t1.usersId = t2.usersId
-AND t1.gameId = t2.gameId
-AND t1.scoresDifficulty = t2.scoresDifficulty
+DELETE s1 
+FROM scores AS s1, scores AS s2
+WHERE s1.scoresId > s2.scoresId
+AND s1.usersId = s2.usersId
+AND s1.gameId = s2.gameId
+AND s1.scoresDifficulty = s2.scoresDifficulty
 ```
 
 
@@ -289,11 +289,11 @@ CREATE TABLE privateChat (
 ## Ajout de données de test
 ```sql
 INSERT INTO privatechat (`firstUsersId`,`secondUsersId`,`privateChatMessage`,`isRead`,`privateChatSendDate`,`privateChatReadDate`)
-VALUES     (4,5,"Salut Aurélien, ça va ?",true,"2023-10-24 10:21:32","2023-10-24 10:21:54"),
+VALUES  (4,5,"Salut Aurélien, ça va ?",true,"2023-10-24 10:21:32","2023-10-24 10:21:54"),
         (5,4,"Salut Lomudru, ça va bien, merci. Et toi ?",true,"2023-10-24 10:22:12","2023-10-24 10:22:15"),
-        (4,5,"Moi aussi, ça va. Je suis en train de préparer un examen, et ça me stresse un peu.",true,"2023-10-24                         10:22:34","2023-10-24 10:22:59"),
+        (4,5,"Moi aussi, ça va. Je suis en train de préparer un examen, et ça me stresse un peu.",true,"2023-10-24 10:22:34","2023-10-24 10:22:59"),
         (5,4,"Ah, je comprends. Les examens, c'est toujours stressant.",true,"2023-10-24 10:23:08","2023-10-24 10:23:14"),
-        (4,5,"Oui, surtout celui-là. C'est un examen important pour mon orientation.",true,"2023-10-24 10:23:30","2023-10-24             10:23:35"),
+        (4,5,"Oui, surtout celui-là. C'est un examen important pour mon orientation.",true,"2023-10-24 10:23:30","2023-10-24 10:23:35"),
         (5,6,"Salut Maud, comment vas-tu ?",true,"2023-10-24 10:25:34","2023-10-24 10:25:57"),
         (6,5,"Salut Aurélien, ça va et toi ?",true,"2023-10-24 10:26:08","2023-10-24 10:26:35"),    
         (5,6,"Je vais bien merci.",true,"2023-10-24 10:26:41","2023-10-24 10:26:49"),
@@ -305,7 +305,6 @@ VALUES     (4,5,"Salut Aurélien, ça va ?",true,"2023-10-24 10:21:32","2023-10-
         (3,1,"Parfait alors moi je dois finir ma partie et je te redis ça demain",true,"2023-10-23 21:56:50" , "2023-10-23 21:56:52"),
         (1,3,"Vasy à demain",true,"2023-10-23 21:57:00" , "2023-10-23 21:59:00"),
         (3,1,"Ouais",true,"2023-10-23 21:59:17" , "2023-10-23 21:59:43"),
-
         (3,4, "Salut Thibaud tu en es où sur le projet ?",true,"2023-10-23 22:02:18" , "2023-10-23 22:10:39"),
         (4,3, "Hola, j'ai bientot fini il me reste deux-trois trucs à poffiner",true,"2023-10-23 22:11:04" , "2023-10-23 22:11:05"),
         (3,4, "Super tu nous montrera ça, j'ai de mon coté ajouté quelques petites fonctions bonus",true,"2023-10-23 22:20:59" , "2023-10-23 23:08:12"),
@@ -330,7 +329,7 @@ WHERE `privateChatId` = 1
 ```
 
 # Story 15
-## Affichage du dernier message envoyé ou reçu par l'utilisateur connecté
+## Affichage du dernier message envoyé ou reçu entre l'utilisateur connecté et les autres utilisateurs
 ```sql
 SELECT `privateChatMessage`, U1.usersPseudo AS SenderPseudo, U2.usersPseudo AS ReceiverPseudo, `privateChatSendDate`, `privateChatReadDate`, `isRead`
 FROM privateChat
@@ -350,7 +349,8 @@ ORDER BY `privateChatSendDate` DESC;
 # Story 16
 ## Affichage de la discussion entre 2 utilisateurs
 ```sql
-SELECT privateChatMessage AS Message, U1.usersPseudo AS SenderPseudo, U2.usersPseudo AS ReceiverPseudo, `privateChatSendDate`,`privateChatReadDate`,`isRead`, (
+SELECT privateChatMessage AS Message, U1.usersPseudo AS SenderPseudo, U2.usersPseudo AS ReceiverPseudo, 
+`privateChatSendDate`,`privateChatReadDate`,`isRead`, (
     SELECT COUNT(scoresId)
     FROM scores AS S
     WHERE s.usersId = U1.usersId
