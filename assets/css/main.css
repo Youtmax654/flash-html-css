@@ -753,7 +753,6 @@ table#big img {
 
 /* scores.html */
 .scores_table {
-    margin: 5vw;
     margin-left: 24vw;
     font-size: 0.9vw;
     background-color: rgba(14, 11, 38, 255);

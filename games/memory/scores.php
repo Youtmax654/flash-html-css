@@ -24,6 +24,27 @@ $scores = $pdoStatement->fetchAll(); ?>
         <div class="pages_banner"> <!-- Div pour la bannière des pages -->
             <h1>SCORES</h1>
         </div>
+        <?php 
+            if (isset($_GET['scoresSearch'])) {
+                $scoresSearch = $_GET['scoresSearch'];
+                $scoresSearchResult = $pdo->query('SELECT usersPseudo, gameName, `scoresDifficulty`, `scoresPoints`, users.usersId,
+                                                   DATE_FORMAT(scoresDate, "%d/%m/%Y à %Hh%i") AS DateScores
+                                                   FROM `scores`
+                                                   INNER JOIN game
+                                                   ON scores.gameId = game.gameId
+                                                   INNER JOIN users
+                                                   ON scores.usersId = users.usersId
+                                                   WHERE usersPseudo LIKE "%'.$scoresSearch.'%"
+                                                   ORDER BY gameName ASC, scoresDifficulty DESC, scoresPoints ASC
+                                                   LIMIT 10');
+                $scores = $scoresSearchResult->fetchAll();
+            }
+        ?>
+        <form method="get" style="display:flex; align-items:center; flex-direction:column">
+            <input type="search" name="scoresSearch" id="scoresSearch" placeholder="Recherche..."
+            style="width: 50vw; margin:2vw">
+            <input type="submit" value="Rechercher">
+        </form>
         <div class="scores_table">
             <table>
                 <thead>
