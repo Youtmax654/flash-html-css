@@ -1,6 +1,6 @@
 <?php
 function connectToDbAndGetPdo(){
-    $dbname = 'dbName';
+    $dbname = 'PowerOfMemory';
     $host = 'localhost';
 
     $dsn = "mysql:dbname=$dbname;host=$host;charset=utf8";
@@ -18,4 +18,4 @@ function connectToDbAndGetPdo(){
     } catch (PDOException $e) {
         echo 'La connexion à la base de données a échouée.';
     }
-}
+}   
