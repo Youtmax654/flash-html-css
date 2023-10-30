@@ -1,4 +1,15 @@
-<?php require '../../utils/common.php'; ?>
+<?php require '../../utils/common.php';
+require SITE_ROOT. 'utils/database.php';
+$pdo = connectToDbAndGetPdo();
+$pdoStatement = $pdo->prepare('SELECT gameName, usersPseudo, scoresDifficulty, scoresPoints 
+                               FROM scores
+                               INNER JOIN game
+                               ON scores.gameId = game.gameId
+                               INNER JOIN users
+                               ON scores.usersId = users.usersId
+                               ORDER BY gameName ASC, scoresDifficulty ASC, scoresPoints ASC');
+$pdoStatement->execute();
+$scores = $pdoStatement->fetchAll(); ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -57,5 +68,4 @@
     </main>
     <?php require SITE_ROOT. 'partials/footer.php';?>
 </body>
-
 </html>
