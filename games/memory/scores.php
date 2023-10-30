@@ -1,13 +1,15 @@
 <?php require '../../utils/common.php'; 
 require SITE_ROOT. 'utils/database.php';
 $pdo = connectToDbAndGetPdo();
-$pdoStatement = $pdo->prepare('SELECT gameName, usersPseudo, scoresDifficulty, scoresPoints 
+$pdoStatement = $pdo->prepare('SELECT gameName, usersPseudo, scoresDifficulty, scoresPoints, 
+                               DATE_FORMAT(scoresDate, "%d/%m/%Y à %Hh%i") AS DateScores
                                FROM scores
                                INNER JOIN game
                                ON scores.gameId = game.gameId
                                INNER JOIN users
                                ON scores.usersId = users.usersId
-                               ORDER BY gameName ASC, scoresDifficulty ASC, scoresPoints ASC');
+                               ORDER BY gameName ASC, scoresDifficulty DESC, scoresPoints ASC
+                               LIMIT 10');
 $pdoStatement->execute();
 $scores = $pdoStatement->fetchAll(); ?>
 
@@ -25,7 +27,7 @@ $scores = $pdoStatement->fetchAll(); ?>
             <table>
                 <thead>
                     <tr>
-                        <td>Nom</td>
+                        <td>Jeu</td>
                         <td>Pseudo</td>
                         <td>Difficulté</td>
                         <td>Score</td>
@@ -33,34 +35,15 @@ $scores = $pdoStatement->fetchAll(); ?>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach ($scores as $score): ?>
                     <tr>
-                        <td>Maxime</td>
-                        <td>Youtmax</td>
-                        <td>3</td>
-                        <td>0.01 sec</td>
-                        <td>18/10/2023 à 17h23</td>
+                        <td><?=$score->gameName?></td>
+                        <td><?=$score->usersPseudo?></td>
+                        <td><?=$score->scoresDifficulty?></td>
+                        <td><?=number_format($score->scoresPoints/1000,2) . " sec"?></td>
+                        <td><?=$score->DateScores?></td>
                     </tr>
-                    <tr>
-                        <td>Killian</td>
-                        <td>Lomudru</td>
-                        <td>3</td>
-                        <td>0.02 sec</td>
-                        <td>18/10/2023 à 19h39</td>
-                    </tr>
-                    <tr>
-                        <td>Charles</td>
-                        <td>Charles.zbr</td>
-                        <td>3</td>
-                        <td>0.03 sec</td>
-                        <td>17/10/2023 à 12h34</td>
-                    </tr>
-                    <tr>
-                        <td>Rick</td>
-                        <td>R.Astley</td>
-                        <td>3</td>
-                        <td>10 sec</td>
-                        <td>29/10/2009 à 09h00</td>
-                    </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
@@ -68,5 +51,4 @@ $scores = $pdoStatement->fetchAll(); ?>
     </main>
     <?php require SITE_ROOT. 'partials/footer.php';?>
 </body>
-
 </html>
