@@ -533,9 +533,7 @@ body {
     bottom: 2vw;
     right: 2vw;
 }
-.show{
-    rotate: 180deg;
-}
+
 .show + .chat {
     transform: translate(0, 0);
     transition: all 0.5s ease;
