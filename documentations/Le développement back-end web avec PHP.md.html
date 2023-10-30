@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<!-- saved from url=(0092)https://valink.fr/cours/php/cours/Le%20d%C3%A9veloppement%20back-end%20web%20avec%20PHP.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Le développement back-end web avec PHP.md</title>
+
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+    max-width: 1000px;
+    margin: auto;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="./Le développement back-end web avec PHP.md_files/mermaid.min.js.téléchargement"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="sommaire">Sommaire</h1>
+<ul>
+<li>Sommaire</li>
+<li>Introduction
+<ul>
+<li>Qu'est-ce que PHP ?</li>
+<li>Langage interprété vs. langage compilé</li>
+<li>La communication client/serveur</li>
+<li>L'environnement de développement</li>
+</ul>
+</li>
+<li>Les balises PHP</li>
+<li>Les commentaires</li>
+<li>Les variables, constantes
+<ul>
+<li>les variables superglobales</li>
+</ul>
+</li>
+<li>L'intégration avec le HTML</li>
+<li>Afficher</li>
+<li>Les types de données</li>
+<li>La concaténation</li>
+<li>Les opérateurs
+<ul>
+<li>Opérateurs arithmétiques</li>
+<li>Opérateurs d'affectation</li>
+<li>Opérateurs de comparaison</li>
+<li>Opérateurs d'incrémentation et de décrémentation</li>
+<li>Opérateurs logiques</li>
+</ul>
+</li>
+<li>Les conditions
+<ul>
+<li>if, elseif, else</li>
+<li>switch</li>
+<li>Ternaire</li>
+</ul>
+</li>
+<li>Les collections
+<ul>
+<li>Tableau simple</li>
+<li>Tableau associatif</li>
+<li>Tableau multidimensionnel</li>
+</ul>
+</li>
+<li>Les boucles
+<ul>
+<li>for</li>
+<li>foreach</li>
+<li>while et do while</li>
+<li>les classes et les objets</li>
+</ul>
+</li>
+<li>Les fonctions
+<ul>
+<li>Les fonctions pré-définies</li>
+<li>Les fonctions utilisateur</li>
+<li>La portée des variables</li>
+</ul>
+</li>
+<li>Les imports</li>
+<li>Les formulaires
+<ul>
+<li>Rappel sur les formulaires HTML</li>
+<li>Accéder aux données soumises</li>
+<li>Traitement des données soumises
+<ul>
+<li>Contrôle des données</li>
+<li>Introduction aux Régex</li>
+<li>Chiffrement</li>
+<li>La gestion des erreurs</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Persistance des données
+<ul>
+<li>Base de données MySQL
+<ul>
+<li>Se connecter avec PDO</li>
+<li>Exécuter des requêtes avec PDO</li>
+<li>Récupérer les résultats des requêtes avec PDO</li>
+</ul>
+</li>
+<li>Les sessions PHP</li>
+</ul>
+</li>
+<li>L'envoi de mail</li>
+<li>Requêter un service web / API</li>
+<li>Clean code et bonnes pratiques
+<ul>
+<li>Comment faire la différence entre un bon et un mauvais</li>
+<li>Comment s'améliorer</li>
+<li>Quelques bonnes pratiques</li>
+</ul>
+</li>
+<li>Références</li>
+<li>Pour aller plus loin</li>
+</ul>
+<h1 id="introduction">Introduction</h1>
+<h2 id="quest-ce-que-php">Qu'est-ce que PHP ?</h2>
+<ul>
+<li>langage de programmation libre</li>
+<li>permet de créer un site dynamique : personnalisé à chaque utilisateur</li>
+<li>80% des sites web sont développés en PHP</li>
+<li><a href="https://www.php.net/">documentation</a></li>
+</ul>
+<p>C'est un langage :</p>
+<ul>
+<li>web, exécuté côté serveur</li>
+<li>interprété</li>
+<li>typé dynamiquement</li>
+<li><em>orienté objet</em></li>
+<li><em>impératif</em></li>
+</ul>
+<h2 id="langage-interpr%C3%A9t%C3%A9-vs-langage-compil%C3%A9">Langage interprété vs. langage compilé</h2>
+<p><img src="./Le développement back-end web avec PHP.md_files/2023-08-13-21-18-20.png" alt=""></p>
+<h2 id="la-communication-clientserveur">La communication client/serveur</h2>
+<p><img src="./Le développement back-end web avec PHP.md_files/2023-08-15-17-49-33.png" alt=""></p>
+<p><strong>Où voir les requêtes ?</strong></p>
+<img src="./Le développement back-end web avec PHP.md_files/2023-10-04-18-24-21.png" style="border:solid 1px black">
+<p><strong>Requête envoyée pour obtenir la page de https://www.google.com/</strong></p>
+<img src="./Le développement back-end web avec PHP.md_files/2023-10-04-18-25-37.png" style="border:solid 1px black">
+<p><strong>Réponse reçue associée</strong></p>
+<img src="./Le développement back-end web avec PHP.md_files/2023-10-04-18-26-12.png" style="border:solid 1px black">
+<h2 id="lenvironnement-de-d%C3%A9veloppement">L'environnement de développement</h2>
+<p><strong>WAMP</strong></p>
+<img src="./Le développement back-end web avec PHP.md_files/wamp.png" style="width:128px;height:128px;object-fit:contain">
+<p>Pour <strong>Windows</strong> <strong>Apache</strong> <strong>MySQL</strong> <strong>PHP</strong></p>
+<img src="./Le développement back-end web avec PHP.md_files/windows.png" style="width:128px;height:128px;object-fit:contain">
+<img src="./Le développement back-end web avec PHP.md_files/apache.png" style="width:128px;height:128px;object-fit:contain">
+<img src="./Le développement back-end web avec PHP.md_files/mysql.png" style="width:128px;height:128px;object-fit:contain">
+<img src="./Le développement back-end web avec PHP.md_files/php.png" style="width:128px;height:128px;object-fit:contain">
+<p><strong>Visual Studio Code</strong> (aka VS Code)</p>
+<img src="./Le développement back-end web avec PHP.md_files/vscode.png" style="width:128px;height:128px;object-fit:contain">
+<p>Les extensions VS Code :</p>
+<ul>
+<li>PHP Intelephense</li>
+</ul>
+<p><img src="./Le développement back-end web avec PHP.md_files/2023-09-02-22-29-24.png" alt=""></p>
+<ul>
+<li>Prettier</li>
+</ul>
+<p><img src="./Le développement back-end web avec PHP.md_files/2023-09-06-18-28-00.png" alt=""></p>
+<ul>
+<li>Git Lens</li>
+</ul>
+<p><img src="./Le développement back-end web avec PHP.md_files/2023-09-06-18-26-03.png" alt=""></p>
+<ul>
+<li>Git History</li>
+</ul>
+<p><img src="./Le développement back-end web avec PHP.md_files/2023-09-06-18-24-52.png" alt=""></p>
+<h1 id="les-balises-php">Les balises PHP</h1>
+<p>Vous pouvez écrire du code PHP dans un fichier avec l'extension <code>.php</code>.<br>
+Tout code PHP doit être précédé de la balise ouvrante <code>&lt;?php</code> et suivi de la balise fermante <code>?&gt;</code>.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+    ...
+<span class="hljs-meta">?&gt;</span>
+</div></code></pre>
+<p><em>La fermeture de la balise PHP <code>?&gt;</code> n'est pas nécessaire en fin de fichier.</em></p>
+<h1 id="les-commentaires">Les commentaires</h1>
+<p><code>//</code> permet de faire un commentaire sur une ligne. Exemple :</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Ceci est un commentaire sur une ligne</span>
+</div></code></pre>
+<p><code>/* */</code> permet de faire un commentaire sur plusieurs lignes. Exemple :</p>
+<pre class="hljs"><code><div><span class="hljs-comment">/*
+Ceci est un commentaire
+sur plusieurs lignes
+*/</span>
+</div></code></pre>
+<h1 id="les-variables-constantes">Les variables, constantes</h1>
+<p>Déclaration d'une variable :</p>
+<pre class="hljs"><code><div>$myVariable = <span class="hljs-string">"Hello World"</span>;
+</div></code></pre>
+<p>Déclaration d'une constante :</p>
+<pre class="hljs"><code><div>define(<span class="hljs-string">"MY_CONSTANT"</span>, <span class="hljs-string">"Hello World"</span>);
+</div></code></pre>
+<h2 id="les-variables-superglobales">les variables superglobales</h2>
+<p><code>$_SERVER</code> contient des informations sur le serveur et sur l'exécution du script.
+<code>$_FILES</code> contient les fichiers envoyés dans le corps de la requête HTTP.
+<code>$_SESSION</code> contient les données de session.
+<code>$_COOKIE</code> contient les cookies.
+<code>$_GLOBALS</code> contient toutes les variables globales.</p>
+<h1 id="lint%C3%A9gration-avec-le-html">L'intégration avec le HTML</h1>
+<p>Vous pouvez intégrer du code PHP :</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span> <span class="hljs-comment">// 1. avant votre code HTML <span class="hljs-meta">?&gt;</span></span>
+&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;
+        <span class="hljs-meta">&lt;?php</span> <span class="hljs-comment">// 2. dans votre code HTML <span class="hljs-meta">?&gt;</span></span>
+
+        &lt;p <span class="hljs-meta">&lt;?php</span> <span class="hljs-comment">// 3. dans vos balises <span class="hljs-meta">?&gt;</span>&gt;</span>
+            Hello World
+        &lt;/p&gt;
+
+        &lt;p id=<span class="hljs-string">"&lt;?php // 4. dans les attributs de vos balises ?&gt;"</span>&gt;
+            Hello World
+        &lt;/p&gt;
+
+        &lt;p&gt;<span class="hljs-meta">&lt;?php</span> <span class="hljs-comment">// 5. entre vos balises <span class="hljs-meta">?&gt;</span>&lt;/p&gt;</span>
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+<span class="hljs-meta">&lt;?php</span> <span class="hljs-comment">// 6. après votre code HTML <span class="hljs-meta">?&gt;</span></span>
+</div></code></pre>
+<p><em>Bref, partout où vous en avez besoin.</em></p>
+<h1 id="afficher">Afficher</h1>
+<p>Vous pouvez utiliser PHP comme langage de template : pour afficher la valeur d'une variable PHP au sein de votre code HTML.</p>
+<p>Plusieurs possibilités :</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span> $a = <span class="hljs-string">"Hello World"</span>; <span class="hljs-meta">?&gt;</span>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=<span class="hljs-string">"fr"</span>&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        <span class="hljs-comment">// 1. utiliser `echo`</span>
+        <span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> $a; <span class="hljs-meta">?&gt;</span>
+
+        <span class="hljs-comment">// 2. utiliser le sucre syntaxique `<span class="hljs-meta">&lt;?</span>= <span class="hljs-meta">?&gt;</span>`</span>
+        <span class="hljs-meta">&lt;?</span>= $a; <span class="hljs-meta">?&gt;</span>
+
+        <span class="hljs-comment">// 3. utiliser var_dump (à des fins de débogage)</span>
+        <span class="hljs-meta">&lt;?php</span> var_dump($a); <span class="hljs-meta">?&gt;</span>
+    &lt;/body&gt;
+&lt;/html&gt;
+</div></code></pre>
+<h1 id="les-types-de-donn%C3%A9es">Les types de données</h1>
+<p>PHP est un langage typé dynamiquement, le type d'une variable est déterminé à l'exécution du script à partir de sa valeur.</p>
+<pre class="hljs"><code><div>$myString = <span class="hljs-string">'Hello World'</span>;  <span class="hljs-comment">// =&gt; string</span>
+$myInt = <span class="hljs-number">1</span>;                 <span class="hljs-comment">// =&gt; int</span>
+$myFloat = <span class="hljs-number">1.5</span>;             <span class="hljs-comment">// =&gt; float</span>
+$myBool = <span class="hljs-keyword">true</span>;             <span class="hljs-comment">// =&gt; bool</span>
+$myArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];       <span class="hljs-comment">// =&gt; array</span>
+</div></code></pre>
+<p><em>En PHP, les tableaux peuvent contenir des valeurs de différents types.</em></p>
+<h1 id="la-concat%C3%A9nation">La concaténation</h1>
+<p>Avec des simple quote, vous devez utiliser l'opérateur de concaténation <code>.</code></p>
+<pre class="hljs"><code><div>$name = <span class="hljs-string">'Groot'</span>;
+$sentence = <span class="hljs-string">'Je suis '</span> . $name; <span class="hljs-comment">// =&gt; Je suis Groot</span>
+</div></code></pre>
+<p>Avec double quote, vous pouvez utiliser la string interpolation : insérer vos variable directement entre quotes.</p>
+<pre class="hljs"><code><div>$entity = <span class="hljs-string">'gardiens de la galaxie'</span>;
+$entityNumber = <span class="hljs-number">5</span>;
+$sentence = <span class="hljs-string">"Il y a $entityNumber $entity"</span>; <span class="hljs-comment">// =&gt; Il y a 5 gardiens de la galaxie</span>
+</div></code></pre>
+<p><em>Vous pouvez échapper un caractère avec <code>\</code> de sorte à pouvoir utiliser <code>'</code> dans une string entre simple quote ou <code>"</code> dans une string entre double quote.</em></p>
+<pre class="hljs"><code><div>$sentence1 = <span class="hljs-string">'Je s\'appelle Groot'</span>;
+$sentence2 = <span class="hljs-string">"J'ai un bonzaï nommé \"Groot\""</span>;
+</div></code></pre>
+<h1 id="les-op%C3%A9rateurs">Les opérateurs</h1>
+<h2 id="op%C3%A9rateurs-arithm%C3%A9tiques">Opérateurs arithmétiques</h2>
+<pre class="hljs"><code><div>$a = <span class="hljs-number">1</span> + <span class="hljs-number">2</span>;     <span class="hljs-comment">// =&gt; 3</span>
+$a = <span class="hljs-number">1</span> - <span class="hljs-number">2</span>;     <span class="hljs-comment">// =&gt; -1</span>
+$a = <span class="hljs-number">2</span> * <span class="hljs-number">3</span>;     <span class="hljs-comment">// =&gt; 6</span>
+$a = <span class="hljs-number">1</span> / <span class="hljs-number">2</span>;     <span class="hljs-comment">// =&gt; 0.5</span>
+$a = <span class="hljs-number">5</span> % <span class="hljs-number">3</span>;     <span class="hljs-comment">// =&gt; 2</span>
+$a = <span class="hljs-number">3</span> ** <span class="hljs-number">2</span>;    <span class="hljs-comment">// =&gt; 9</span>
+</div></code></pre>
+<h2 id="op%C3%A9rateurs-daffectation">Opérateurs d'affectation</h2>
+<pre class="hljs"><code><div>$a = <span class="hljs-number">1</span>;     
+$a += <span class="hljs-number">2</span>;        <span class="hljs-comment">// =&gt; 3</span>
+$a -= <span class="hljs-number">2</span>;        <span class="hljs-comment">// =&gt; 1</span>
+$a *= <span class="hljs-number">2</span>;        <span class="hljs-comment">// =&gt; 2</span>
+$a /= <span class="hljs-number">2</span>;        <span class="hljs-comment">// =&gt; 1</span>
+$a %= <span class="hljs-number">2</span>;        <span class="hljs-comment">// =&gt; 1</span>
+$a **= <span class="hljs-number">2</span>;       <span class="hljs-comment">// =&gt; 1</span>
+
+$b = <span class="hljs-string">"Hello"</span>;
+$b .= <span class="hljs-string">" World"</span>; <span class="hljs-comment">// =&gt; Hello World</span>
+</div></code></pre>
+<h2 id="op%C3%A9rateurs-de-comparaison">Opérateurs de comparaison</h2>
+<pre class="hljs"><code><div><span class="hljs-number">1</span> == <span class="hljs-number">2</span>;   <span class="hljs-comment">// =&gt; false</span>
+<span class="hljs-number">1</span> != <span class="hljs-number">2</span>;   <span class="hljs-comment">// =&gt; true</span>
+<span class="hljs-number">1</span> &lt; <span class="hljs-number">2</span>;    <span class="hljs-comment">// =&gt; true</span>
+<span class="hljs-number">1</span> &gt; <span class="hljs-number">2</span>;    <span class="hljs-comment">// =&gt; false</span>
+<span class="hljs-number">1</span> &lt;= <span class="hljs-number">2</span>;   <span class="hljs-comment">// =&gt; true</span>
+<span class="hljs-number">1</span> &gt;= <span class="hljs-number">2</span>;   <span class="hljs-comment">// =&gt; false</span>
+</div></code></pre>
+<h2 id="op%C3%A9rateurs-dincr%C3%A9mentation-et-de-d%C3%A9cr%C3%A9mentation">Opérateurs d'incrémentation et de décrémentation</h2>
+<p>pré-incrémentation et pré-décrémentation</p>
+<pre class="hljs"><code><div>$a = <span class="hljs-number">1</span>;
+$b = ++$a;       <span class="hljs-comment">// $b = 2, $a = 2</span>
+</div></code></pre>
+<pre class="hljs"><code><div>$a = <span class="hljs-number">1</span>;
+$b = --$a;       <span class="hljs-comment">// $b = 0, $a = 0</span>
+</div></code></pre>
+<p>post-incrémentation et post-décrémentation</p>
+<pre class="hljs"><code><div>$a = <span class="hljs-number">1</span>;
+$b = $a++;       <span class="hljs-comment">// $b = 1, $a = 2</span>
+</div></code></pre>
+<pre class="hljs"><code><div>$a = <span class="hljs-number">1</span>;
+$b = $a--;       <span class="hljs-comment">// $b = 1, $a = 0</span>
+</div></code></pre>
+<h2 id="op%C3%A9rateurs-logiques">Opérateurs logiques</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">true</span> &amp;&amp; <span class="hljs-keyword">false</span>;  <span class="hljs-comment">// =&gt; false</span>
+<span class="hljs-keyword">true</span> || <span class="hljs-keyword">false</span>;  <span class="hljs-comment">// =&gt; true</span>
+!<span class="hljs-keyword">true</span>;          <span class="hljs-comment">// =&gt; false</span>
+</div></code></pre>
+<h1 id="les-conditions">Les conditions</h1>
+<h2 id="if-elseif-else">if, elseif, else</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">if</span> ($a == <span class="hljs-number">1</span>) {
+    <span class="hljs-comment">// code à exécuter si la condition $a == 1 est vraie</span>
+} <span class="hljs-keyword">elseif</span> ($a == <span class="hljs-number">2</span>) {
+    <span class="hljs-comment">// code à exécuter si la condition $a == 2 est vraie</span>
+} <span class="hljs-keyword">elseif</span> ($a == <span class="hljs-number">3</span>) {
+    <span class="hljs-comment">// code à exécuter si la condition $a == 3 est vraie</span>
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">// code à exécuter si $a n'est pas égal à 1, 2 ou 3</span>
+}
+</div></code></pre>
+<p>Variante de syntaxe plus adaptée à l'intégration avec le HTML</p>
+<pre class="hljs"><code><div>&lt;!DOCTYPE html&gt;
+&lt;html lang=<span class="hljs-string">"fr"</span>&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        <span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">if</span> ($a == <span class="hljs-number">1</span>): <span class="hljs-meta">?&gt;</span>
+            &lt;p&gt;<span class="hljs-number">1</span>&lt;/p&gt;
+        <span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">elseif</span> ($a == <span class="hljs-number">2</span>): <span class="hljs-meta">?&gt;</span>
+            &lt;p&gt;<span class="hljs-number">2</span>&lt;/p&gt;
+        <span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">else</span>: <span class="hljs-meta">?&gt;</span>
+            &lt;p&gt;autre&lt;/p&gt;
+        <span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">endif</span>; <span class="hljs-meta">?&gt;</span>
+    &lt;/body&gt;
+&lt;/html&gt;
+</div></code></pre>
+<h2 id="switch">switch</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">switch</span> ($a) {
+    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+        <span class="hljs-comment">// code à exécuter si $a vaut 1</span>
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+        <span class="hljs-comment">// code à exécuter si $a vaut 2</span>
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">default</span>:
+        <span class="hljs-comment">// code à exécuter si $a ne vaut ni 1 ni 2</span>
+        <span class="hljs-keyword">break</span>;
+}
+</div></code></pre>
+<h2 id="ternaire">Ternaire</h2>
+<p>Les ternaires sont un sucre syntaxique sous la forme :
+<code>condition ? valeur si vrai : valeur si faux</code></p>
+<pre class="hljs"><code><div>$aAsString = $a == <span class="hljs-number">1</span> ? <span class="hljs-string">'un'</span> : <span class="hljs-string">'autre'</span>;
+</div></code></pre>
+<p><em>Privilégier toujours la lisibilité du code à un code compact. Évitez par exemple les ternaires imbriqués.</em></p>
+<h1 id="les-collections">Les collections</h1>
+<h2 id="tableau-simple">Tableau simple</h2>
+<p>Initialisation d'un tableau :</p>
+<pre class="hljs"><code><div>$t1 = []; <span class="hljs-comment">// vide</span>
+
+<span class="hljs-comment">// avec des valeurs</span>
+$t2 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]; 
+$t3 = [<span class="hljs-string">"strawberry"</span>, <span class="hljs-string">"chocolate"</span>, <span class="hljs-string">"vanilla"</span>];
+</div></code></pre>
+<p><em>Exemple d'utilisation : lister les parfums de glace disponibles</em></p>
+<p><strong>Accéder à la valeur d'un élément à une position donnée <code>$t[$elementIndex];</code> :</strong></p>
+<pre class="hljs"><code><div>$t = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+$t[<span class="hljs-number">0</span>]; <span class="hljs-comment">// =&gt; 1</span>
+</div></code></pre>
+<p><em>L'index commence à 0 pour le premier élément</em></p>
+<p><strong>Ajouter un élément à la fin d'un tableau :</strong></p>
+<pre class="hljs"><code><div>$t = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+$t[] = <span class="hljs-number">4</span>; <span class="hljs-comment">// =&gt; [1, 2, 3, 4]</span>
+</div></code></pre>
+<p><strong>Supprimer le dernier élément d'un tableau :</strong></p>
+<pre class="hljs"><code><div>$t = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+array_pop($t); <span class="hljs-comment">// =&gt; [1, 2]</span>
+</div></code></pre>
+<p><strong>Ajouter/remplacer un élément d'un tableau à une position donnée :</strong></p>
+<pre class="hljs"><code><div>$t = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+t[<span class="hljs-number">0</span>] = <span class="hljs-number">3</span>; <span class="hljs-comment">// =&gt; [3, 2, 3]</span>
+</div></code></pre>
+<p><strong>Supprimer un élément d'un tableau à une position donnée :</strong></p>
+<pre class="hljs"><code><div>$t = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+array_splice($t, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>); <span class="hljs-comment">// =&gt; [1, 3]</span>
+</div></code></pre>
+<h2 id="tableau-associatif">Tableau associatif</h2>
+<pre class="hljs"><code><div>$t = [
+    <span class="hljs-string">'un'</span> =&gt; <span class="hljs-number">1</span>,
+    <span class="hljs-string">'deux'</span> =&gt; <span class="hljs-number">2</span>,
+    <span class="hljs-string">'trois'</span> =&gt; <span class="hljs-number">3</span>,
+];
+$t[<span class="hljs-string">'un'</span>]; <span class="hljs-comment">// =&gt; 1</span>
+</div></code></pre>
+<pre class="hljs"><code><div>$t = [
+    <span class="hljs-number">1</span> =&gt; <span class="hljs-string">'un'</span>,
+    <span class="hljs-number">2</span> =&gt; <span class="hljs-string">'deux'</span>,
+    <span class="hljs-number">3</span> =&gt; <span class="hljs-string">'trois'</span>,
+];
+$t[<span class="hljs-number">1</span>]; <span class="hljs-comment">// =&gt; 'un'</span>
+</div></code></pre>
+<em>
+Ceux-ci se rapproche d'une collection de type : 
+<ul>
+    <li><code>Map</code> en Java</li>
+    <li><code>Dictionary</code> en C#</li>
+</ul>
+</em>
+<h2 id="tableau-multidimensionnel">Tableau multidimensionnel</h2>
+<pre class="hljs"><code><div>$t = [
+    [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>],
+    [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>],
+    [<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>]
+];
+</div></code></pre>
+<p><em>Exemple d'utilisation : modéliser une grille</em></p>
+<h1 id="les-boucles">Les boucles</h1>
+<p>Voici plusieurs manière d'executer une section de code plusieurs fois.</p>
+<h2 id="for">for</h2>
+<p>Ici on utilise la variable <code>$i</code> comme compteur :</p>
+<ol>
+<li>On initialise <code>$i</code> à 0</li>
+<li>On incrémente <code>$i</code> à chaque itération</li>
+<li>On sort de la boucle lorsque <code>$i</code> vaut 10</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> ($i = <span class="hljs-number">0</span>; $i &lt; <span class="hljs-number">10</span>; $i++) {
+    <span class="hljs-comment">// code à exécuter</span>
+}
+</div></code></pre>
+<p><em>Exemple d'utilisation : afficher les nombres de 1 à 10</em></p>
+<h2 id="foreach">foreach</h2>
+<pre class="hljs"><code><div>$t = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">foreach</span> ($t <span class="hljs-keyword">as</span> $value) {
+    <span class="hljs-comment">// code à exécuter</span>
+}
+</div></code></pre>
+<pre class="hljs"><code><div>$t = [
+    <span class="hljs-string">'un'</span> =&gt; <span class="hljs-number">1</span>,
+    <span class="hljs-string">'deux'</span> =&gt; <span class="hljs-number">2</span>,
+    <span class="hljs-string">'trois'</span> =&gt; <span class="hljs-number">3</span>,
+];
+<span class="hljs-keyword">foreach</span> ($t <span class="hljs-keyword">as</span> $key =&gt; $value) {
+    <span class="hljs-comment">// code à exécuter</span>
+}
+</div></code></pre>
+<p>Variante de syntaxe plus adaptée à l'intégration avec le HTML</p>
+<pre class="hljs"><code><div>&lt;!DOCTYPE html&gt;
+&lt;html lang=<span class="hljs-string">"fr"</span>&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        <span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">foreach</span> ($t <span class="hljs-keyword">as</span> $value): <span class="hljs-meta">?&gt;</span>
+            &lt;p&gt;<span class="hljs-meta">&lt;?</span>= $value <span class="hljs-meta">?&gt;</span>&lt;/p&gt;
+        <span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">endforeach</span>; <span class="hljs-meta">?&gt;</span>
+    &lt;/body&gt;
+&lt;/html&gt;
+</div></code></pre>
+<p><em>Exemple d'utilisation : afficher les scores</em></p>
+<h2 id="while-et-do-while">while et do while</h2>
+<p>Ici on utilise la variable <code>$a</code> comme condition de sortie de la boucle.</p>
+<p><em>Attention à ne pas créer de boucle infinie. Il faut toujours que la condition de sortie soit atteignable.</em></p>
+<p><strong>while</strong></p>
+<pre class="hljs"><code><div>$a = <span class="hljs-keyword">true</span>;
+<span class="hljs-keyword">while</span> ($a) {
+    <span class="hljs-comment">// code à exécuter</span>
+
+    <span class="hljs-keyword">if</span> ($condition) {
+        $a = <span class="hljs-keyword">false</span>;
+    }
+}
+</div></code></pre>
+<p><strong>do while</strong></p>
+<pre class="hljs"><code><div>$a = <span class="hljs-keyword">true</span>;
+<span class="hljs-keyword">do</span> {
+    <span class="hljs-comment">// code à exécuter</span>
+
+    <span class="hljs-keyword">if</span> ($condition) {
+        $a = <span class="hljs-keyword">false</span>;
+    }
+} <span class="hljs-keyword">while</span> ($a);
+</div></code></pre>
+<h2 id="les-classes-et-les-objets">les classes et les objets</h2>
+<p>Les classes sont des modèles qui permettent d'instancier (de créer) des objets.
+Une classe est composée d’attributs (propriétés) et de méthodes (fonctions).</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{
+    <span class="hljs-keyword">public</span> $name;
+    <span class="hljs-keyword">public</span> $age;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">displayHello</span><span class="hljs-params">()</span>: <span class="hljs-title">void</span> </span>{
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"Hello, my name is $this-&gt;name"</span>;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">displayAge</span><span class="hljs-params">()</span>: <span class="hljs-title">void</span> </span>{
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"I'm $this-&gt;age years old"</span>;
+    }
+}
+</div></code></pre>
+<p>Les objets sont des instances de classes.
+Un objet contient une valeur (ou non) pour chaque attribut défini par sa classe.
+On peut instancier un objet avec la syntaxe <code>$object = new ClassName()</code>.
+On peut accéder aux valeurs des attributs de l'objet avec la syntaxe <code>$object-&gt;attributeName</code>.
+On peut appeler les méthodes de l'objet avec la syntaxe <code>$object-&gt;methodName()</code>.</p>
+<pre class="hljs"><code><div>$person = <span class="hljs-keyword">new</span> Person();
+$person-&gt;name = <span class="hljs-string">'Groot'</span>;
+$person-&gt;age = <span class="hljs-number">1200</span>;
+$person-&gt;displayHello(); <span class="hljs-comment">// =&gt; Hello, my name is Groot</span>
+$person-&gt;displayAge(); <span class="hljs-comment">// =&gt; I'm 1200 years old</span>
+</div></code></pre>
+<p>Vous rencontrerez des objets de plusieurs classes au cours du projet, par exemple :</p>
+<ul>
+<li><code>PDO</code> pour se connecter à une base de données</li>
+<li><code>PDOStatement</code> pour exécuter des requêtes SQL et en récupérer les résultats</li>
+<li><code>stdClass</code>, une classe générique vide avec des propriétés dynamiques. Elle est notamment retournée par notamment par <code>$pdoStatement-&gt;fetch()</code> et <code>json_decode()</code></li>
+<li><code>Exception</code> pour capturer des erreurs</li>
+</ul>
+<h1 id="les-fonctions">Les fonctions</h1>
+<h2 id="les-fonctions-pr%C3%A9-d%C3%A9finies">Les fonctions pré-définies</h2>
+<p>PHP propose un grand nombre de fonctions pré-définies. En voici quelques unes qui vous seront utiles pour le projet :</p>
+<ul>
+<li><a href="https://www.php.net/manual/fr/function.array-merge.php">array_merge</a></li>
+<li><a href="https://www.php.net/manual/fr/function.date.php">date</a></li>
+<li><a href="https://www.php.net/manual/fr/function.define.php">define</a></li>
+<li><a href="https://www.php.net/manual/fr/function.file-get-contents.php">file_get_contents</a></li>
+<li><a href="https://www.php.net/manual/fr/function.header.php">header</a></li>
+<li><a href="https://www.php.net/manual/fr/function.in_array.php">in_array</a></li>
+<li><a href="https://www.php.net/manual/fr/function.json-decode.php">json_decode</a></li>
+<li><a href="https://www.php.net/manual/fr/function.json-encode.php">json_encode</a></li>
+<li><a href="https://www.php.net/manual/fr/function.ob-start.php">ob_start</a></li>
+<li><a href="https://www.php.net/manual/fr/function.ob-get-clean.php">ob_get_clean</a></li>
+<li><a href="https://www.php.net/manual/fr/function.var-dump.php">var_dump</a></li>
+</ul>
+<p><strong>Appeler une fonction :</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// sans paramètre</span>
+date(); <span class="hljs-comment">// =&gt; 2021-09-02T22:29:24+00:00</span>
+
+<span class="hljs-comment">// avec paramètre</span>
+$t = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+count($t); <span class="hljs-comment">// =&gt; 3</span>
+</div></code></pre>
+<h2 id="les-fonctions-utilisateur">Les fonctions utilisateur</h2>
+<p>Déclarer une fonction :</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// sans paramètre, sans retour</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">displayHelloWorld</span><span class="hljs-params">()</span>: <span class="hljs-title">void</span> </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Hello World'</span>;
+}
+
+<span class="hljs-comment">// avec paramètre, sans retour</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">displayHello</span><span class="hljs-params">(string $userName)</span>: <span class="hljs-title">void</span> </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Hello $userName"</span>;
+}
+
+<span class="hljs-comment">// avec paramètre et valeur par défaut, sans retour</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">display</span><span class="hljs-params">(string $userName = <span class="hljs-string">''</span>)</span>: <span class="hljs-title">void</span> </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Hello $userName"</span>;
+}
+
+<span class="hljs-comment">// avec paramètre, avec retour</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span><span class="hljs-params">(int $number1, int $number2)</span>: <span class="hljs-title">int</span></span>{
+    <span class="hljs-keyword">return</span> $number1 + $number2;
+}
+</div></code></pre>
+<h2 id="la-port%C3%A9e-des-variables">La portée des variables</h2>
+<p>Les variables sont local au contexte dans lequel elles sont déclarées. Elle ne sont pas accessible en dehors de ce contexte.</p>
+<pre class="hljs"><code><div>$a = <span class="hljs-string">'foo'</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">displayHelloWorld</span><span class="hljs-params">()</span>: <span class="hljs-title">void</span> </span>{
+    $b = <span class="hljs-string">'bar'</span>;
+    <span class="hljs-keyword">echo</span> $b; <span class="hljs-comment">// =&gt; bar</span>
+
+    <span class="hljs-keyword">echo</span> $a; <span class="hljs-comment">// =&gt; undefined variable</span>
+}
+
+displayHelloWorld();
+
+<span class="hljs-keyword">echo</span> $b; <span class="hljs-comment">// =&gt; undefined variable</span>
+</div></code></pre>
+<h1 id="les-imports">Les imports</h1>
+<p>Il est possible d'importer du code PHP présent dans un autre fichier PHP. Ceci permet de mutualiser ce code et de ne pas avoir à le réécrire plusieurs fois. On améliore ainsi la maintenabilité du projet.</p>
+<p>Voici une organisation de fichiers d'un projet PHP d'exemple :</p>
+<pre class="hljs"><code><div>├── games                
+│   └── memory           
+│       ├── index.php    
+├── partials             
+│   ├── footer.php       
+│   ├── head.php         
+│   └── header.php       
+├── utils                
+│   ├── common.php       
+│   ├── database.php     
+├── index.php            
+</div></code></pre>
+<p>Plusieurs méthodes d'import existes, voici les plus courantes :</p>
+<p><em>Exemple : import du menu principal dans le fichier ./index.php</em></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">require</span> <span class="hljs-string">'partials/header.php'</span>;
+</div></code></pre>
+<p>Si on souhaite éviter d'importer un fichier plusieurs fois, on peut utiliser <code>require_once</code> par sécurité.
+Ceci permet d'éviter des erreurs lié à la redéfinition de fonctions par exemple.</p>
+<p><em>Exemple : import du fichier contenant les fonctions liées à la connexion à la base de données dans le fichier ./index.php</em></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">require_once</span> <span class="hljs-string">'utils/database.php'</span>; 
+<span class="hljs-comment">// ...</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'utils/database.php'</span>; <span class="hljs-comment">// n'importe pas le fichier database.php déjà importé</span>
+</div></code></pre>
+<p>On évite d'utiliser les chemins relatifs pour importer les fichiers. Car si la page qui importe est déplacé dans un autre dossier, les chemins ne seront plus valides.</p>
+<p><em>Exemple : plusieurs imports dans le fichier ./games/memory/index.php</em></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">require_once</span> <span class="hljs-string">'../../utils/database.php'</span>; 
+<span class="hljs-comment">// ...</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'../../partials/header.php'</span>; 
+<span class="hljs-comment">// ...</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'../../partials/footer.php'</span>; 
+</div></code></pre>
+<p>Si on déplace le fichier <code>./games/memory/index.php</code> ici : <code>./games/memory/subFolder/index.php</code>, les imports ne fonctionnent plus. Il faut alors les modifier à la main :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">require_once</span> <span class="hljs-string">'../../../utils/database.php'</span>; 
+<span class="hljs-comment">// ...</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'../../../partials/header.php'</span>; 
+<span class="hljs-comment">// ...</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'../../../partials/footer.php'</span>;
+</div></code></pre>
+<p>Pour éviter ce problème, on peut définir une constante <code>SITE_ROOT</code> qui contient le chemin vers la racine du projet.</p>
+<p>Fichier <code>./utils/common.php</code> :</p>
+<pre class="hljs"><code><div>define(<span class="hljs-string">'SITE_ROOT'</span>, $_SERVER[<span class="hljs-string">'DOCUMENT_ROOT'</span>] . <span class="hljs-string">'/myProject/'</span>); 
+</div></code></pre>
+<p><code>$_SERVER['DOCUMENT_ROOT']</code> contient le chemin absolu vers le dossier racine du serveur web.<br>
+<code>myProject</code> est le nom du dossier contenant le projet situé à la racine du serveur web (en local avec WAMP il s'agit de www).</p>
+<p>Ainsi, on peut importer les fichiers de cette manière :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">require_once</span> <span class="hljs-string">'../common.php'</span>; 
+<span class="hljs-comment">// ...</span>
+<span class="hljs-keyword">require_once</span> SITE_ROOT.<span class="hljs-string">'utils/database.php'</span>; 
+<span class="hljs-comment">// ...</span>
+<span class="hljs-keyword">require_once</span> SITE_ROOT.<span class="hljs-string">'partials/header.php'</span>; 
+<span class="hljs-comment">// ...</span>
+<span class="hljs-keyword">require_once</span> SITE_ROOT.<span class="hljs-string">'partials/footer.php'</span>;
+</div></code></pre>
+<p>Il faudra juste penser à modifier l'import de <code>common.php</code> si on déplace le fichier qui l'importe.</p>
+<h1 id="les-formulaires">Les formulaires</h1>
+<h2 id="rappel-sur-les-formulaires-html">Rappel sur les formulaires HTML</h2>
+<pre class="hljs"><code><div>&lt;form method=<span class="hljs-string">"post"</span>&gt;
+    &lt;div&gt;
+        &lt;label&gt;Votre nom&lt;/label&gt;
+        &lt;input name=<span class="hljs-string">"name"</span> /&gt;
+    &lt;/div&gt;    
+    &lt;button&gt;Envoyer&lt;/button&gt;
+&lt;/form&gt;
+</div></code></pre>
+<p><code>action</code> : URL vers laquelle les données du formulaire sont envoyées, si action est vide, les données sont envoyées vers la page actuelle. <code>action</code> peut-être :</p>
+<ul>
+<li>une URL absolue : <code>http://localhost/folder/index.php</code></li>
+<li>une URL relative : <code>folder/memory</code>, <code>/folder/index.php</code></li>
+</ul>
+<p><code>method</code> : la méthode HTTP à utiliser pour envoyer les données du formulaire. Cette méthode définie la manière dont les données sont envoyées au serveur :</p>
+<ul>
+<li><code>get</code> : les données transitent via l'URL. Ex: <code>http://localhost/index.php?name=Groot&amp;age=1200</code></li>
+</ul>
+<p><img src="./Le développement back-end web avec PHP.md_files/2023-09-05-16-57-38.png" alt=""></p>
+<ul>
+<li><code>post</code> : les données transitent via le corps de la requête HTTP.</li>
+</ul>
+<p><img src="./Le développement back-end web avec PHP.md_files/2023-09-05-16-57-50.png" alt=""></p>
+<p>Utiliser la méthode <code>post</code> permet de ne pas afficher les données envoyées dans l'URL de la requête. En ce sens, elle est à privilégier pour les données sensibles (ex : mot de passe). Cependant, elle n'est pas suffisante pour proposer un contexte sécurisé aux utilisateurs. Il faut par exemple utiliser le protocole HTTPS (certificat SSL) pour chiffrer les données envoyées en <code>post</code> et éviter les attaques de type man-in-the-middle.</p>
+<p><em>Les données envoyées en <code>post</code> sont accessibles et lisibles via la console</em></p>
+<p><img src="./Le développement back-end web avec PHP.md_files/2023-09-05-17-20-00.png" alt=""></p>
+<h2 id="acc%C3%A9der-aux-donn%C3%A9es-soumises">Accéder aux données soumises</h2>
+<p>Les variables superglobales sont des variables accessibles à tout moment dans votre code php.</p>
+<p><code>$_GET</code> contient les données passées en paramètre dans l'URL de la page.</p>
+<p><em>Exemple dans le cas d'un formulaire HTML avec la méthode <code>get</code> :</em></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">'name'</span>])) {
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">'Bienvenu'</span>.$_GET[<span class="hljs-string">'name'</span>];
+    }
+<span class="hljs-meta">?&gt;</span>
+&lt;form method=<span class="hljs-string">"post"</span>&gt;
+    &lt;div&gt;
+        &lt;label&gt;Votre nom&lt;/label&gt;
+        &lt;input name=<span class="hljs-string">"name"</span> /&gt;
+    &lt;/div&gt;    
+    &lt;button&gt;Envoyer&lt;/button&gt;
+&lt;/form&gt;
+</div></code></pre>
+<p><code>$_POST</code> contient les données envoyées en paramètre dans le corps de la requête HTTP.</p>
+<p><em>Exemple dans le cas d'un formulaire HTML avec la méthode <code>post</code> :</em></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($_POST[<span class="hljs-string">'name'</span>])) {
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">'Bienvenu'</span>.$_POST[<span class="hljs-string">'name'</span>];
+    }
+<span class="hljs-meta">?&gt;</span>
+&lt;form method=<span class="hljs-string">"get"</span>&gt;
+    &lt;div&gt;
+        &lt;label&gt;Votre nom&lt;/label&gt;
+        &lt;input name=<span class="hljs-string">"name"</span> /&gt;
+    &lt;/div&gt;    
+    &lt;button&gt;Envoyer&lt;/button&gt;
+&lt;/form&gt;
+</div></code></pre>
+<h2 id="traitement-des-donn%C3%A9es-soumises">Traitement des données soumises</h2>
+<h3 id="contr%C3%B4le-des-donn%C3%A9es">Contrôle des données</h3>
+<ul>
+<li><a href="https://www.php.net/manual/fr/function.empty.php">empty</a></li>
+<li><a href="https://www.php.net/manual/fr/function.filter-var.php">filter_var</a></li>
+<li><a href="https://www.php.net/manual/fr/function.isset.php">isset</a></li>
+<li><a href="https://www.php.net/manual/fr/function.preg-match.php">preg_match</a></li>
+<li><a href="https://www.php.net/manual/fr/function.strlen.php">strlen</a></li>
+</ul>
+<h3 id="introduction-aux-r%C3%A9gex">Introduction aux Régex</h3>
+<p>Les expressions régulières (regex) permettent de décrire des motifs de chaînes de caractères. Elles sont très puissantes et présentent dans quasiment tous les langages.</p>
+<p>L'image qui va vous faire détester les régex :</p>
+<p><img src="./Le développement back-end web avec PHP.md_files/2023-09-06-11-59-42.png" alt=""></p>
+<p>Le site qui va vous réconcilier avec les régex : <a href="https://regex101.com/">Regex 101</a></p>
+<p>Elles peuvent être utilisées pour :</p>
+<ul>
+<li>Valider qu'une string respecte un format donné.</li>
+</ul>
+<p><em>Exemple avec le contrôle d'un mot de passe</em></p>
+<pre class="hljs"><code><div>$passwordPattern = <span class="hljs-string">'/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&amp;*]).{8,}$/'</span>; 
+<span class="hljs-comment">/*
+Le mot de passe doit contenir :
+- au moins 8 caractères,
+- une minuscule,
+- une majuscule,
+- un chiffre
+- un caractère spécial
+*/</span>
+
+$goodFormatedPassword = <span class="hljs-string">'Mot-de-passe-pas-assez-sécurisé'</span>;
+preg_match($pattern, $password); <span class="hljs-comment">// =&gt; 0</span>
+
+$badFormatedPassword = <span class="hljs-string">'M0t-de-p@sse-sécurisé'</span>;
+preg_match($pattern, $password); <span class="hljs-comment">// =&gt; 1</span>
+</div></code></pre>
+<p>https://regex101.com/r/Rx6vDy/1</p>
+<p><img src="./Le développement back-end web avec PHP.md_files/image.png" alt=""></p>
+<ul>
+<li>Extraire des données d'une string.</li>
+</ul>
+<p><em>Exemple avec l'extraction des chiffres d'une string</em></p>
+<pre class="hljs"><code><div>$numberPattern = <span class="hljs-string">'/\d+/'</span>; <span class="hljs-comment">// =&gt; 1 ou plusieurs chiffres</span>
+$string = <span class="hljs-string">'Il y a 5 gardiens de la galaxie'</span>;
+$a = preg_match($numberPattern, $string, $matches);
+
+$matches <span class="hljs-comment">// =&gt; [5]</span>
+</div></code></pre>
+<p>https://regex101.com/r/xHzdN8/1</p>
+<p><img src="./Le développement back-end web avec PHP.md_files/2023-09-06-11-48-47.png" alt=""></p>
+<ul>
+<li>Remplacer des données dans une string.</li>
+</ul>
+<p><em>Exemple avec le remplacement des chiffres d'une string</em></p>
+<pre class="hljs"><code><div>$numberPattern = <span class="hljs-string">'/\d+/'</span>; <span class="hljs-comment">// =&gt; 1 ou plusieurs chiffres</span>
+$string = <span class="hljs-string">'Il y a 5 gardiens de la galaxie'</span>;
+$newString = preg_replace($numberPattern, <span class="hljs-string">'cinq'</span>, $string);
+
+$newString <span class="hljs-comment">// =&gt; Il y a cinq gardiens de la galaxie</span>
+</div></code></pre>
+<ul>
+<li>Découper une string en plusieurs morceaux.</li>
+</ul>
+<pre class="hljs"><code><div>$splitPattern = <span class="hljs-string">'/\d+/'</span>; <span class="hljs-comment">// =&gt; 1 ou plusieurs chiffres</span>
+$string = <span class="hljs-string">'Il y a 5 gardiens de la galaxie'</span>;
+$words = preg_split($splitPattern, $string);
+
+$words <span class="hljs-comment">// =&gt; ['Il y a ', ' gardiens de la galaxie']</span>
+</div></code></pre>
+<h3 id="chiffrement">Chiffrement</h3>
+<ul>
+<li><a href="https://www.php.net/manual/fr/function.hash.php">hash</a> : permet de chiffrer une string avec un algorithme de hachage ; par exemple pour chiffrer un mot de passe avant de l'enregistrer en base de données.</li>
+</ul>
+<h3 id="la-gestion-des-erreurs">La gestion des erreurs</h3>
+<p>Les erreurs peuvent être déclenchées par des fonctions natives de PHP ou par vos propres fonction. Contrairement à ce que l'on pourrait penser, les erreurs sont très utiles, elles permettent de remonter des comportements inattendus de votre code. Vous pouvez alors les capturer (ou les intercepter) et de les gérer de manière appropriée.</p>
+<p>1er exemple, on déclenche nous même une erreur si le mail reçu n'a pas un format valide :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">if</span> (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">Exception</span>(<span class="hljs-string">"Le format de l'email n'est pas valide"</span>);
+}
+</div></code></pre>
+<p>2ème exemple, la fonction mail de PHP ne déclenche pas d'erreur si l'envoi du mail échoue mais retourne false. On peut alors déclencher nous même une erreur :</p>
+<pre class="hljs"><code><div>$hasEmailBeenSent = mail(
+    ADMIN_MAIL,
+    $subject,
+    $message,
+    <span class="hljs-string">"From: $identity &lt;$email&gt;"</span>
+);
+
+<span class="hljs-keyword">if</span> (!$hasEmailBeenSent) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">Exception</span>(<span class="hljs-string">"Une erreur est survenue lors de l'envoi du mail"</span>);
+}
+</div></code></pre>
+<p>3ème exemple, Lorsque la connexion à la base de données échoue, PHP peut afficher des informations sensibles sur la page telles que l'adresse de la base de données, le nom d'utilisateur, et même le mot de passe pour les anciennes versions de PHP !</p>
+<p><img src="./Le développement back-end web avec PHP.md_files/2023-10-05-15-23-33.png" alt=""></p>
+<p>On peut alors capturer l'erreur précédente à l'aide de <code>try</code> et de <code>catch</code> et la remplacer par une erreur moins indiscrete :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">try</span> {
+    $pdo = <span class="hljs-keyword">new</span> PDO($dsn, $user, $password, $driver_options);
+    <span class="hljs-keyword">return</span> $pdo;
+} <span class="hljs-keyword">catch</span> (PDOException $e) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">Exception</span>(<span class="hljs-string">'La connexion à la base de données a échouée.'</span>);
+}
+</div></code></pre>
+<p>Dans certains cas l'erreur initiale nous intéresse, on peut alors récupérer son message de la manière suivante : <code>$e-&gt;getMessage()</code></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">try</span> {
+    <span class="hljs-comment">// ...</span>
+} <span class="hljs-keyword">catch</span> (PDOException $e) {
+    writeErrorMessageInMyLogFile($e-&gt;getMessage());
+    <span class="hljs-comment">// ...</span>
+}
+</div></code></pre>
+<h1 id="persistance-des-donn%C3%A9es">Persistance des données</h1>
+<p>Quelques technologies de stockage de données :</p>
+<p><img src="./Le développement back-end web avec PHP.md_files/2023-10-05-14-42-22.png" alt=""></p>
+<p>Comparatif :</p>
+<table>
+<thead>
+<tr>
+<th>Technologie</th>
+<th>Cookie</th>
+<th>LocalStorage</th>
+<th>SessionStorage</th>
+<th>DataBase (MySQL)</th>
+<th>Système de fichier</th>
+<th>Session PHP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Taille limite</td>
+<td>4kb par cookie (20 maximum)</td>
+<td>5mb min. (selon navigateur)</td>
+<td>5 mb</td>
+<td>Probablement plus que vous n'en aurez jamais besoin</td>
+<td>Probablement plus que vous n'en aurez jamais besoin</td>
+<td>128 MB</td>
+</tr>
+<tr>
+<td>Emplacement</td>
+<td>Navigateur et serveur</td>
+<td>Navigateur uniquement</td>
+<td>Navigateur uniquement</td>
+<td>Serveur uniquement</td>
+<td>Serveur uniquement</td>
+<td>Serveur uniquement</td>
+</tr>
+<tr>
+<td>Accessible depuis</td>
+<td>Toutes les fenêtres d'un navigateur</td>
+<td>Toutes les fenêtres d'un navigateur</td>
+<td>L'onglet du navigateur</td>
+<td>Le serveur</td>
+<td>Le serveur</td>
+<td>Le serveur</td>
+</tr>
+<tr>
+<td>Expiration</td>
+<td>Défini manuellement</td>
+<td>Jamais</td>
+<td>À la fermeture de l'onglet</td>
+<td>Jamais</td>
+<td>Jamais</td>
+<td></td>
+</tr>
+<tr>
+<td>Transmis avec les requêtes</td>
+<td>Oui</td>
+<td>Non</td>
+<td>Non</td>
+<td>Non</td>
+<td>Non</td>
+<td></td>
+</tr>
+<tr>
+<td>Type de données</td>
+<td>Paires clé-valeur string</td>
+<td>Paires clé-valeur string</td>
+<td>Paires clé-valeur string</td>
+<td>Tables avec colonnes typées</td>
+<td>String dans des fichiers</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="base-de-donn%C3%A9es-mysql">Base de données MySQL</h2>
+<h3 id="se-connecter-avec-pdo">Se connecter avec PDO</h3>
+<pre class="hljs"><code><div>$dbname = <span class="hljs-string">'dbName'</span>;
+$host = <span class="hljs-string">'localhost'</span>;
+
+$dsn = <span class="hljs-string">"mysql:dbname=$dbname;host=$host;charset=utf8"</span>;
+$user = <span class="hljs-string">'root'</span>;
+$pass = <span class="hljs-string">''</span>;
+
+$driver_options = [
+    PDO::ATTR_ERRMODE =&gt; PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE =&gt; PDO::FETCH_OBJ
+];
+
+<span class="hljs-keyword">try</span> {
+    $pdo = <span class="hljs-keyword">new</span> PDO($dsn, $user, $pass, $driver_options);
+    <span class="hljs-keyword">return</span> $pdo;
+} <span class="hljs-keyword">catch</span> (PDOException $e) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'La connexion à la base de données a échouée.'</span>;
+}
+</div></code></pre>
+<p>L'option <code>PDO::ATTR_ERRMODE =&gt; PDO::ERRMODE_EXCEPTION</code> permet de lever une exception en cas d'erreur.</p>
+<p>L'option <code>PDO::ATTR_DEFAULT_FETCH_MODE =&gt; PDO::FETCH_OBJ</code> permet de récupérer les résultats des requêtes SQL sous forme d'objets de type <code>stdClass</code> plutôt que sous forme de tableau associatif. On écrire <code>$result-&gt;name</code> plutôt que <code>$result['name']</code>.</p>
+<h3 id="ex%C3%A9cuter-des-requ%C3%AAtes-avec-pdo">Exécuter des requêtes avec PDO</h3>
+<pre class="hljs"><code><div>$pdo = connectToDbAndGetPdo();
+$pdoStatement = $pdo-&gt;prepare(<span class="hljs-string">'INSERT INTO user (email, password, nickName) VALUES (:email, :password, :nickName)'</span>);
+$userHasBeenInserted =  $pdoStatement-&gt;execute([
+    <span class="hljs-string">':email'</span> =&gt; $email,
+    <span class="hljs-string">':password'</span> =&gt; hashPassword($password),
+    <span class="hljs-string">':nickName'</span> =&gt; $nickName,
+]);
+</div></code></pre>
+<h3 id="r%C3%A9cup%C3%A9rer-les-r%C3%A9sultats-des-requ%C3%AAtes-avec-pdo">Récupérer les résultats des requêtes avec PDO</h3>
+<p>Récupérer le premier résultat</p>
+<pre class="hljs"><code><div>$pdo = connectToDbAndGetPdo();
+$pdoStatement = $pdo-&gt;prepare(<span class="hljs-string">'SELECT * FROM user WHERE id = :id'</span>);
+$pdoStatement-&gt;execute([
+    <span class="hljs-string">':id'</span> =&gt; $_SESSION[<span class="hljs-string">'user_id'</span>],
+]);
+$user = $pdoStatement-&gt;fetch();
+
+<span class="hljs-keyword">echo</span> $user-&gt;nickName; <span class="hljs-comment">// =&gt; 'Groot'</span>
+<span class="hljs-keyword">echo</span> $user-&gt;email; <span class="hljs-comment">// =&gt; 'groot@example.com'</span>
+</div></code></pre>
+<p>Récupérer tous les résultats</p>
+<pre class="hljs"><code><div>$pdo = connectToDbAndGetPdo();
+$pdoStatement = $pdo-&gt;prepare(<span class="hljs-string">'SELECT s.*, g.name as game, u.nickName FROM score s INNER JOIN game g ON s.gameId = g.id INNER JOIN user u ON s.userId = u.id ORDER BY s.score ASC'</span>);
+$pdoStatement-&gt;execute();
+$scores = $pdoStatement-&gt;fetchAll();
+
+<span class="hljs-keyword">foreach</span> ($scores <span class="hljs-keyword">as</span> $score) {
+    <span class="hljs-keyword">echo</span> $score-&gt;nickName; <span class="hljs-comment">// =&gt; 'Groot'</span>
+    <span class="hljs-keyword">echo</span> $score-&gt;game; <span class="hljs-comment">// =&gt; 'Memory'</span>
+    <span class="hljs-keyword">echo</span> $score-&gt;score; <span class="hljs-comment">// =&gt; 100</span>
+}
+</div></code></pre>
+<h2 id="les-sessions-php">Les sessions PHP</h2>
+<p>Les sessions PHP permettent de stocker des données côté serveur et de les associer à un utilisateur. Elles sont accessibles depuis toutes les pages du site. Un identifiant unique est stocké dans un cookie sur le navigateur de l'utilisateur. Ce cookie est envoyé dans requête HTTP. Le serveur peut ainsi retrouver les données de session associé à l'utilisateur.</p>
+<p><img src="./Le développement back-end web avec PHP.md_files/2023-10-05-17-47-18.png" alt=""></p>
+<p>(1)</p>
+<p><img src="./Le développement back-end web avec PHP.md_files/2023-10-05-17-47-46.png" alt=""></p>
+<p>(2)</p>
+<p><img src="./Le développement back-end web avec PHP.md_files/2023-10-05-17-47-52.png" alt=""></p>
+<p>(3)</p>
+<p><img src="./Le développement back-end web avec PHP.md_files/2023-10-05-17-48-58.png" alt=""></p>
+<p>(4)</p>
+<p><img src="./Le développement back-end web avec PHP.md_files/2023-10-05-17-49-22.png" alt=""></p>
+<p>Initialiser une session</p>
+<pre class="hljs"><code><div>session_start();
+</div></code></pre>
+<p>Stocker une donnée</p>
+<pre class="hljs"><code><div>$_SESSION[<span class="hljs-string">'userId'</span>] = <span class="hljs-number">1</span>;
+</div></code></pre>
+<p>Récupérer une donnée</p>
+<pre class="hljs"><code><div>$userId = $_SESSION[<span class="hljs-string">'userId'</span>];
+</div></code></pre>
+<p>Supprimer une donnée</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">unset</span>($_SESSION[<span class="hljs-string">'userId'</span>]);
+</div></code></pre>
+<p>Supprimer toutes les données de la session</p>
+<pre class="hljs"><code><div>session_destroy();
+</div></code></pre>
+<h1 id="lenvoi-de-mail">L'envoi de mail</h1>
+<p>Suivre le tutoriel associé "Envoyer un mail depuis un serveur local WAMP via Gmail.pdf"</p>
+<h1 id="requ%C3%AAter-un-service-web--api">Requêter un service web / API</h1>
+<pre class="hljs"><code><div>$catUrl = <span class="hljs-string">'https://api.thecatapi.com/v1/images/search?mime_types=gif'</span>;
+
+$content = file_get_contents($catUrl); <span class="hljs-comment">// '[{"id":"ar7","url":"https://cdn2.thecatapi.com/images/ar7.gif","width":400,"height":260}]'</span>
+
+$cats = json_decode($content); <span class="hljs-comment">// stdClass[]</span>
+</div></code></pre>
+<pre class="hljs"><code><div>[
+    {
+        <span class="hljs-attr">"id"</span>: <span class="hljs-string">"ar7"</span>,
+        <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://cdn2.thecatapi.com/images/ar7.gif"</span>,
+        <span class="hljs-attr">"width"</span>: <span class="hljs-number">400</span>,
+        <span class="hljs-attr">"height"</span>: <span class="hljs-number">260</span>
+    }
+]
+</div></code></pre>
+<h1 id="clean-code-et-bonnes-pratiques">Clean code et bonnes pratiques</h1>
+<h2 id="comment-faire-la-diff%C3%A9rence-entre-un-bon-et-un-mauvais-code">Comment faire la différence entre un bon et un mauvais code ?</h2>
+<img src="./Le développement back-end web avec PHP.md_files/2023-09-06-18-40-27.png" style="height:512px;">
+<h2 id="comment-sam%C3%A9liorer">Comment s'améliorer</h2>
+<img src="./Le développement back-end web avec PHP.md_files/2023-09-06-18-41-15.png" style="height:256px;">
+<img src="./Le développement back-end web avec PHP.md_files/2023-09-06-18-39-48.png" style="height:256px;">
+<h2 id="quelques-bonnes-pratiques">Quelques bonnes pratiques</h2>
+<ul>
+<li>
+<p>Nommer ses variables pour exprimer leur contenu
+singulier, pluriel, camelCase
+boolean : répond à une question</p>
+</li>
+<li>
+<p>Nommer ses fonctions pour exprimer leur action</p>
+</li>
+<li>
+<p>TestDrivenDevelopment</p>
+</li>
+<li>
+<p>Formater son code automatiquement avec VS Code et Prettier</p>
+</li>
+</ul>
+<h1 id="r%C3%A9f%C3%A9rences">Références</h1>
+<ul>
+<li>Robert C. Martin, Clean Code : A Handbook of Agile Software Craftsmanship, Upper Saddle River, NJ, Prentice Hall, 2009, 431 p. (ISBN 978-0-13-235088-4)</li>
+<li>Documentation en ligne de PHP : php.net</li>
+<li>https://regex101.com/</li>
+<li>https://code.tutsplus.com/8-regular-expressions-you-should-know--net-6149t</li>
+</ul>
+<h1 id="pour-aller-plus-loin">Pour aller plus loin</h1>
+<ul>
+<li>https://refactoring.guru/design-patterns</li>
+<li>https://www.youtube.com/watch?v=7EmboKQH8lM&amp;list=PLmmYSbUCWJ4x1GO839azG_BBw8rkh-zOj</li>
+</ul>
+
+
+
+</body></html>
