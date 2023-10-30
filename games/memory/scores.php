@@ -1,7 +1,8 @@
-<?php require '../../utils/common.php'; 
-require SITE_ROOT. 'utils/database.php';
+<?php require '../../utils/common.php';
+require SITE_ROOT . 'utils/database.php';
+$connectedUsersId = 2;
 $pdo = connectToDbAndGetPdo();
-$pdoStatement = $pdo->prepare('SELECT gameName, usersPseudo, scoresDifficulty, scoresPoints, 
+$pdoStatement = $pdo->prepare('SELECT gameName, usersPseudo, scoresDifficulty, scoresPoints, users.usersId,
                                DATE_FORMAT(scoresDate, "%d/%m/%Y à %Hh%i") AS DateScores
                                FROM scores
                                INNER JOIN game
@@ -15,9 +16,9 @@ $scores = $pdoStatement->fetchAll(); ?>
 
 <!DOCTYPE html>
 <html lang="fr">
-<?php require SITE_ROOT. 'partials/head.php'; ?>
+<?php require SITE_ROOT . 'partials/head.php'; ?>
 <body>
-    <?php require SITE_ROOT. 'partials/header.php'; ?>
+    <?php require SITE_ROOT . 'partials/header.php'; ?>
     <main>
         <div id="homeScores"></div>
         <div class="pages_banner"> <!-- Div pour la bannière des pages -->
@@ -35,20 +36,31 @@ $scores = $pdoStatement->fetchAll(); ?>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($scores as $score): ?>
-                    <tr>
-                        <td><?=$score->gameName?></td>
-                        <td><?=$score->usersPseudo?></td>
-                        <td><?=$score->scoresDifficulty?></td>
-                        <td><?=number_format($score->scoresPoints/1000,2) . " sec"?></td>
-                        <td><?=$score->DateScores?></td>
-                    </tr>
-                    <?php endforeach; ?>
+                    <?php foreach ($scores as $score) :
+                        if ($connectedUsersId == $score->usersId) : ?>
+                            <tr style="background-color: rgba(22, 17, 60, 255);
+                                       color: white;">
+                                <td><?= $score->gameName ?></td>
+                                <td><?= $score->usersPseudo ?></td>
+                                <td><?= $score->scoresDifficulty ?></td>
+                                <td><?= number_format($score->scoresPoints / 1000, 2) . " sec" ?></td>
+                                <td><?= $score->DateScores ?></td>
+                            </tr>
+                        <?php else : ?>
+                            <tr>
+                                <td><?= $score->gameName ?></td>
+                                <td><?= $score->usersPseudo ?></td>
+                                <td><?= $score->scoresDifficulty ?></td>
+                                <td><?= number_format($score->scoresPoints / 1000, 2) . " sec" ?></td>
+                                <td><?= $score->DateScores ?></td>
+                            </tr>
+                        <?php endif ?>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>
         <a href="#homeScores" class="returnHome"></a>
     </main>
-    <?php require SITE_ROOT. 'partials/footer.php';?>
+    <?php require SITE_ROOT . 'partials/footer.php'; ?>
 </body>
 </html>
