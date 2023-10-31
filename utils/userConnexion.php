@@ -9,13 +9,17 @@ function ConnexionUser($postEmail, $postPassword){
             ":email" => $postEmail,
         ]);
         $user = $pdoStatement->fetch();
-        if(password_verify($postPassword,$user->usersPassword)){
-            session_start();
-            $_SESSION["userId"] = $user->userId;
-            return "Vous êtes connecté(e).";
+        if(!$user == false){
+            if(password_verify($postPassword, $user->usersPassword)){
+                $_SESSION["userId"] = $user->userId;
+                return "Vous etes connecter.";
+            }else{
+                return "Il y as une erreur avec votre email ou votre mot de passe";
+            }
         }else{
             return "Il y a une erreur avec votre email ou votre mot de passe";
         }
+        
     }else{
         return "Le format de l'email est incorrect";
     }
