@@ -11,18 +11,30 @@ if (!empty($_POST['register'])) {
     $password_register = $_POST['mdp'];
     $check_register = $_POST['mdp_check'];
 
-    if($password_register = $check_register) {
+    if ($password_register = $check_register) {
 
         // if (preg_match($passwordPattern, $password_register)) {
 
-            $pdoStatement = $pdo->prepare("INSERT INTO users (usersEmail,usersPassword,usersPseudo) 
-                                           VALUES (:usersEmail, :usersPassword,:usersPseudo)");
-            $usersHasBeenInserted = $pdoStatement->execute([
-                ':usersEmail' => $email,
-                ':usersPassword' => password_hash($password_register, PASSWORD_DEFAULT),
-                ':usersPseudo' => $pseudo,
-            ]);
-        // }
+        $pdoStatement = $pdo->prepare("INSERT INTO users (usersEmail,usersPassword,usersPseudo) 
+                                       VALUES (:usersEmail, :usersPassword,:usersPseudo)");
+        $usersHasBeenInserted = $pdoStatement->execute([
+            ':usersEmail' => $email,
+            ':usersPassword' => password_hash($password_register, PASSWORD_DEFAULT),
+            ':usersPseudo' => $pseudo
+        ]);
+        $pdoStatement = $pdo->prepare("SELECT usersId FROM users 
+                                       WHERE usersEmail = :usersEmail");
+        $getUsersId = $pdoStatement->execute([
+            ':usersEmail' => $email
+        ]);
+        $user = $pdoStatement->fetch();
+        if ($user !== false) {
+            $usersId = $user->usersId;
+            mkdir('userFiles/'.$usersId, 0777, false);
+        }
+        else {
+            throw new Exception("Erreur");
+        }
     }
 }
 ?>
