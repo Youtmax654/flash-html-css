@@ -522,12 +522,6 @@ body {
     color: white;
     border-radius: 5px;
     background: rgba(236, 146, 36, 0.35);
-    /*
-    background-image: url("../images/white-arrow.png");
-    background-size: 50%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-blend-mode: darken;*/
     display: block;
     position: fixed;
     bottom: 2vw;
