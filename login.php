@@ -11,17 +11,14 @@ if(isset($_POST['email_login'])){
         $user = $pdoStatement->fetch();
         if(password_verify($_POST['password_login'],$user->usersPassword)){
             $_SESSION["userId"] = $user->userId;
-            $MessageConnexion = "Vous etes connecter.";
+            $MessageConnexion = "Vous êtes connecté(e).";
         }else{
-            $MessageConnexion = "Il y as une erreur avec votre email ou votre mot de passe";
+            $MessageConnexion = "Il y a une erreur avec votre email ou votre mot de passe";
         }
     }else{
         $MessageConnexion = "Le format de l'email est incorrect";
     }
-    
-
 }
-
 ?>
 
 <!DOCTYPE html>
