@@ -1,25 +1,8 @@
 <?php 
 require 'utils/common.php';
-require SITE_ROOT . 'utils/database.php';
+require SITE_ROOT . 'utils/userConnexion.php';
 if(isset($_POST['email_login'])){
-    if(filter_var($_POST['email_login'], FILTER_VALIDATE_EMAIL)){
-        $pdo = connectToDbAndGetPdo();
-        $pdoStatement = $pdo->prepare('SELECT * FROM users WHERE `usersEmail` = :email');
-        $pdoStatement->execute([
-            ":email" => $_POST['email_login'],
-        ]);
-        $user = $pdoStatement->fetch();
-        if(password_verify($_POST['password_login'],$user->usersPassword)){
-            $_SESSION["userId"] = $user->userId;
-            $MessageConnexion = "Vous etes connecter.";
-        }else{
-            $MessageConnexion = "Il y as une erreur avec votre email ou votre mot de passe";
-        }
-    }else{
-        $MessageConnexion = "Le format de l'email est incorrect";
-    }
-    
-
+    $MessageConnexion = ConnexionUser($_POST['email_login'], $_POST['password_login']);
 }
 
 ?>
