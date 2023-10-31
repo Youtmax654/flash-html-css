@@ -111,11 +111,13 @@
     transition: 0.5s;
     /* Transition d'apparition de l'effet hover ci dessus */
 }
-
+.header-right li a.current{
+    color: orange;
+    border-top: 2px solid orange;
+}
 #ch {
     display: none;
 }
-
 /* Media Quieries */
 @media screen and (max-width: 468px) {
     .header_index, .header {
