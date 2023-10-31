@@ -15,8 +15,7 @@ function ConnexionUser($postEmail, $postPassword){
                 $_SESSION["userId"] = $user->usersId;
                 $_SESSION["userName"] = $user->usersPseudo;
                 header("Location: index.php");
-                // return "Vous êtes connecté(e).";
-
+                $pdo->query('UPDATE users SET usersLastConnexion = DEFAULT WHERE usersId = '.$_SESSION["userId"].'');
             }else{
                 return "Il y a une erreur avec votre email ou votre mot de passe";
             }
