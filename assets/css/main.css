@@ -746,7 +746,15 @@ table#big img {
 }
 
 /* scores.html */
+form.scoresSearchBar {
+    display:flex; 
+    align-items:center; 
+    flex-direction:column
+}
+
 .scores_table {
+    margin-top: 2vw;
+    margin-bottom: 5vw;
     margin-left: 24vw;
     font-size: 0.9vw;
     background-color: rgba(14, 11, 38, 255);
