@@ -1,4 +1,33 @@
-<?php require 'utils/common.php'; ?>
+<?php 
+require 'utils/common.php'; 
+require SITE_ROOT . 'utils/database.php';
+$pdo = connectToDbAndGetPdo();
+// Get number of played games
+$pdoStatement = $pdo->prepare('SELECT COUNT(*) as nbr FROM `scores`');
+$pdoStatement->execute();
+$PlayedGame = $pdoStatement->fetch();
+// Get number of user connected
+$pdoStatement = $pdo->prepare('SELECT COUNT(*) as nbr FROM users WHERE `usersLastConnexion` >= NOW() - INTERVAL 30 MINUTE');
+$pdoStatement->execute();
+$UserConnected = $pdoStatement->fetch();
+// Get the best score
+$pdoStatement = $pdo->prepare('SELECT MIN(`scoresPoints`) as result FROM `scores`');
+$pdoStatement->execute();
+$Score = $pdoStatement->fetch();
+if($Score->result >= 60000){
+    $BestScore = intval($Score->result / 60000) . " min and " . intval(($Score->result % 60000) / 1000) . " s and " . intval(($Score->result % 60000) % 1000) . " ms";
+}
+elseif($Score->result >= 1000){
+    $BestScore = intval($Score->result / 1000) . " s and " . intval($Score->result % 1000) . " ms";
+}
+else{
+    $BestScore = $Score->result . " ms";
+}
+// Get the number of account
+$pdoStatement = $pdo->prepare('SELECT COUNT(*) AS nbr FROM `users`');
+$pdoStatement->execute();
+$NbrUser = $pdoStatement->fetch();
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -46,19 +75,19 @@
             <img src="<?=PROJECT_FOLDER?>assets/images/img-ia.jpg" alt="img genereted by a ia">
             <div>
                 <div>
-                    <p>310</p>
+                    <p><?= $PlayedGame->nbr; ?></p>
                     <p>Partie Jouées</p>
                 </div>
                 <div>
-                    <p>1020</p>
+                    <p><?= $UserConnected->nbr; ?></p>
                     <p>Joueur Connectés</p>
                 </div>
                 <div>
-                    <p>10 sec</p>
+                    <p><?= $BestScore ?></p>
                     <p>Temps Record</p>
                 </div>
                 <div>
-                    <p>21 300</p>
+                    <p><?= $NbrUser->nbr ?></p>
                     <p>Joueurs Inscrits</p>
                 </div>
             </div>
