@@ -312,6 +312,30 @@ body {
 }
 
 /* login.html, register.html, myAccount.html */
+.myAccount {
+    display: flex;
+    justify-content: center;
+}
+
+.myAccount .myAccount_profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 6vw;
+}
+
+.myAccount .myAccount_profile .profilePicture {
+    width: 8vw;
+    height: 8vw;
+    border-radius: 50%;
+    background-image: url("../images/newUsers_pp.jpg");
+    background-size: 100%;
+}
+
+.myAccount .myAccount_profile p {
+    color: white;
+}
+
 .login_form form,
 .register_form form {
     display: flex;
@@ -332,7 +356,7 @@ body {
     /* Longueur des inputs sauf le submit */
     height: 2.5vw;
     /* Largeur des inputs sauf le submit */
-    margin-bottom: 3.5%;
+    margin-bottom: 1.5vw;
     /* Espacement entre les inputs */
     border-radius: 0.3vw;
     /* Arrondir les bords des inputs */
@@ -342,7 +366,7 @@ body {
     /* Retirer les bordures */
     color: white;
     outline: none;
-    padding-left: 2%;
+    padding-left: 0.6vw;
 
 }
 
