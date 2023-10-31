@@ -11,10 +11,11 @@ function ConnexionUser($postEmail, $postPassword){
         $user = $pdoStatement->fetch();
         if(!$user == false){
             if(password_verify($postPassword, $user->usersPassword)){
-                $_SESSION["userId"] = $user->userId;
-                return "Vous etes connecter.";
+                session_start();
+                $_SESSION["userId"] = $user->usersId;
+                return "Vous êtes connecté(e).";
             }else{
-                return "Il y as une erreur avec votre email ou votre mot de passe";
+                return "Il y a une erreur avec votre email ou votre mot de passe";
             }
         }else{
             return "Il y a une erreur avec votre email ou votre mot de passe";
@@ -25,4 +26,4 @@ function ConnexionUser($postEmail, $postPassword){
     }
 }
 
-    
+
