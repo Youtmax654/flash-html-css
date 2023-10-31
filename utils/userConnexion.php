@@ -13,7 +13,10 @@ function ConnexionUser($postEmail, $postPassword){
             if(password_verify($postPassword, $user->usersPassword)){
                 session_start();
                 $_SESSION["userId"] = $user->usersId;
-                return "Vous êtes connecté(e).";
+                $_SESSION["userName"] = $user->usersPseudo;
+                header("Location: index.php");
+                // return "Vous êtes connecté(e).";
+
             }else{
                 return "Il y a une erreur avec votre email ou votre mot de passe";
             }

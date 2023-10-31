@@ -4,9 +4,8 @@ require SITE_ROOT . 'utils/database.php';
 
 if(isset($_POST["newEmail"])){
     if(filter_var($_POST["newEmail"], FILTER_VALIDATE_EMAIL)){
-
+    }
 }
-
 ?>
 
 <!DOCTYPE html>

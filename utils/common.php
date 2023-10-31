@@ -5,3 +5,5 @@ error_reporting(E_ALL);
 
 define('PROJECT_FOLDER', '/flash_memory/'); 
 define('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'] . PROJECT_FOLDER); 
+
+session_start();
