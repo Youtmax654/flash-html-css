@@ -9,7 +9,7 @@ function ConnexionUser($postEmail, $postPassword){
             ":email" => $postEmail,
         ]);
         $user = $pdoStatement->fetch();
-        if(!$user == false){
+        if($user !== false){
             if(password_verify($postPassword, $user->usersPassword)){
                 session_start();
                 $_SESSION["userId"] = $user->usersId;
@@ -27,5 +27,3 @@ function ConnexionUser($postEmail, $postPassword){
         return "Le format de l'email est incorrect";
     }
 }
-
-
