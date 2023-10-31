@@ -2,8 +2,8 @@
 require SITE_ROOT . 'utils/database.php';
 $pdo = connectToDbAndGetPdo();
 
-$passwordPattern = "'/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/'";
-$pseudoPattern = "'/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{4,}$/'";
+// $passwordPattern = "'/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/'";
+// $pseudoPattern = "'/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{4,}$/'";
 
 if (!empty($_POST['register'])) {
     $email = $_POST['email'];
@@ -11,28 +11,21 @@ if (!empty($_POST['register'])) {
     $password_register = $_POST['mdp'];
     $check_register = $_POST['mdp_check'];
 
-
     if($password_register = $check_register) {
 
-
-        if (preg_match($passwordPattern, $password_register)) {
+        // if (preg_match($passwordPattern, $password_register)) {
 
             $pdoStatement = $pdo->prepare("INSERT INTO users (usersEmail,usersPassword,usersPseudo) 
-                                        VALUES (:usersEmail, :usersPassword,:usersPseudo)");
+                                           VALUES (:usersEmail, :usersPassword,:usersPseudo)");
             $usersHasBeenInserted = $pdoStatement->execute([
                 ':usersEmail' => $email,
                 ':usersPassword' => password_hash($password_register, PASSWORD_DEFAULT),
                 ':usersPseudo' => $pseudo,
             ]);
-        }
-    }else{
-        echo "Veulliez entrer le même mot de passe !";
+        // }
     }
-
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="fr">
