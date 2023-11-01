@@ -1,39 +1,55 @@
-<?php require 'utils/common.php';
+<?php
+require 'utils/common.php';
 require SITE_ROOT . 'utils/database.php';
 $pdo = connectToDbAndGetPdo();
 
-// $passwordPattern = "'/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/'";
-// $pseudoPattern = "'/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{4,}$/'";
+$passwordPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/';
 
-if (!empty($_POST['register'])) {
+if (!empty($_POST['register'])) { 
     $email = $_POST['email'];
     $pseudo = $_POST['pseudo'];
     $password_register = $_POST['mdp'];
     $check_register = $_POST['mdp_check'];
 
-    if ($password_register = $check_register) {
+    if (!preg_match($passwordPattern, $password_register)) { //regarde si le format du mot de passe convient
+        throw new Exception("Le mot de passe ne convient pas");
+    } else {
 
-        // if (preg_match($passwordPattern, $password_register)) {
+        $password_register = trim($password_register); //supprime les espaces blancs inutiles pour éviter un faussage du mot de passe
+        $check_register = trim($check_register); //idem
 
-        $pdoStatement = $pdo->prepare("INSERT INTO users (usersEmail,usersPassword,usersPseudo) 
-                                       VALUES (:usersEmail, :usersPassword,:usersPseudo)");
-        $usersHasBeenInserted = $pdoStatement->execute([
-            ':usersEmail' => $email,
-            ':usersPassword' => password_hash($password_register, PASSWORD_DEFAULT),
-            ':usersPseudo' => $pseudo
-        ]);
-        $pdoStatement = $pdo->prepare("SELECT usersId FROM users 
+        if ($password_register !== $check_register) { //compare le mdp et le mdp de confirmation et renvoie une erreur si il est différent 
+            throw new Exception("Veuillez entrer le même mot de passe !");
+        } else {
+
+            try { //insertion des  valeurs dans la base de donnée quand les conditions du dessus sont respectées
+                $pdoStatement = $pdo->prepare("INSERT INTO users (usersEmail,usersPassword,usersPseudo) 
+                                               VALUES (:usersEmail, :usersPassword, :usersPseudo)");
+                $usersHasBeenInserted = $pdoStatement->execute([
+                    ':usersEmail' => $email,
+                    ':usersPassword' => password_hash($password_register, PASSWORD_DEFAULT),
+                    ':usersPseudo' => $pseudo,
+                ]);
+                $pdoStatement = $pdo->prepare("SELECT usersId FROM users 
                                        WHERE usersEmail = :usersEmail");
-        $getUsersId = $pdoStatement->execute([
-            ':usersEmail' => $email
-        ]);
-        $user = $pdoStatement->fetch();
-        if ($user !== false) {
-            $usersId = $user->usersId;
-            mkdir('userFiles/'.$usersId, 0777, false);
-        }
-        else {
-            throw new Exception("Erreur");
+                $getUsersId = $pdoStatement->execute([
+                    ':usersEmail' => $email
+                ]);
+                $user = $pdoStatement->fetch();
+                if ($user !== false) {
+                    $usersId = $user->usersId;
+                    mkdir('userFiles/'.$usersId, 0777, false);
+                }
+                else {
+                    throw new Exception("Erreur lors de la création du compte");
+                }
+                if (!$usersHasBeenInserted) { //sécurité en + 
+                    throw new Exception("Une erreur s'est produite lors de l'insertion dans la base de données.");
+                }
+
+            } catch (Exception $e) { // sécurité en +
+                echo "Erreur : " . $e->getMessage();
+            }
         }
     }
 }
