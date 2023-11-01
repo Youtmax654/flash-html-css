@@ -75,7 +75,10 @@ if (isset($_POST["oldPassword"])) {
         }
     }
 }
-
+if(isset($_SESSION['profilePictureHasChanged'])) {
+    $MessageConnexion = $_SESSION['profilePictureHasChanged'];
+    unset($_SESSION['profilePictureHasChanged']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -89,8 +92,8 @@ if (isset($_POST["oldPassword"])) {
         <div class="pages_banner"> <!-- Div pour la bannière des pages -->
             <h1>MON COMPTE</h1>
         </div>
-        <?php if (isset($_POST['newEmail']) || isset($_POST['oldPassword'])) : ?>
-            <p class="errorMessage"><?= $MessageConnexion; ?></p>
+        <?php if (isset($MessageConnexion)) : ?>
+            <p class="errorMessage"><?= $MessageConnexion ?></p>
         <?php endif ?>
         <div class="myAccount">
             <div class="myAccount_profile">
