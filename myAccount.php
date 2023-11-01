@@ -55,14 +55,19 @@ if(isset($_POST["oldPassword"])){
     if(!$user == false){
         if(password_verify($_POST["oldPassword"], $user->usersPassword)){
             if($_POST["newPassword"] === $_POST["verifiedNewPassword"]){
-                $pdo = connectToDbAndGetPdo();
-                $pdoStatement = $pdo->prepare('UPDATE users SET usersPassword = :newPassword WHERE usersId = :id');
-                $pdoStatement->execute([
-                    ":newPassword" => password_hash($_POST["newPassword"], PASSWORD_DEFAULT),
-                    ":id" => $_SESSION["userId"],
-                ]);
-                $user = $pdoStatement->fetch();
-                $MessageConnexion = "Mot de passe changer";
+                $passwordPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/';
+                if (preg_match($passwordPattern, $_POST["newPassword"])) { //regarde si le format du mot de passe convient
+                    $pdo = connectToDbAndGetPdo();
+                    $pdoStatement = $pdo->prepare('UPDATE users SET usersPassword = :newPassword WHERE usersId = :id');
+                    $pdoStatement->execute([
+                        ":newPassword" => password_hash($_POST["newPassword"], PASSWORD_DEFAULT),
+                        ":id" => $_SESSION["userId"],
+                    ]);
+                    $user = $pdoStatement->fetch();
+                    $MessageConnexion = "Mot de passe changer";
+                }else{
+                    $MessageConnexion = "Le mot de passe ne convient pas";
+                }
             }else{
                 $MessageConnexion = "erreur dans la vérification de vos mots de passe ";
             }
