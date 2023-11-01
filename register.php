@@ -39,7 +39,7 @@ if (!empty($_POST['register'])) {
                         ':usersPassword' => password_hash($password_register, PASSWORD_DEFAULT),
                         ':usersPseudo' => $pseudo,
                     ]);
-                    $pdoStatement = $pdo->prepare("SELECT usersId FROM users 
+                    $pdoStatement = $pdo->prepare("SELECT usersId,usersPseudo FROM users 
                                        WHERE usersEmail = :usersEmail");
                     $getUsersId = $pdoStatement->execute([
                         ':usersEmail' => $email
@@ -57,6 +57,10 @@ if (!empty($_POST['register'])) {
                 }
             }
         }
+        session_start();
+        $_SESSION["userId"] = $user->usersId;
+        $_SESSION["userName"] = $user->usersPseudo;
+        header("Location: index.php");
     } catch (Exception $e) { // sécurité en +
         $errorMessage = "Erreur : " . $e->getMessage();
     }

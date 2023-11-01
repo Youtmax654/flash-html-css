@@ -16,11 +16,11 @@ if(isset($_POST['email_login'])){
         <div class="pages_banner"> <!-- Div pour la bannière des pages -->
             <h1>CONNEXION</h1>
         </div>
+        <?php if(isset($_POST['email_login'])): ?>
+                    <p class="errorMessage"><?= $MessageConnexion; ?></p>
+        <?php endif ?>
         <div class="login_form"> <!-- Div pour le formulaire de connexion-->
             <form action="#" method="post">
-                <?php if(isset($_POST['email_login'])): ?>
-                    <p><?= $MessageConnexion; ?></p>
-                <?php endif ?>
                 <label for="email_login"></label>
                 <input type="email" id="email_login" name="email_login" placeholder="Email">
                 <label for="password_login"></label>
