@@ -2,10 +2,58 @@
 require 'utils/common.php'; 
 require SITE_ROOT . 'utils/database.php';
 
-if(isset($_POST["newEmail"])){
+/* if(isset($_POST["newEmail"])){
     if(filter_var($_POST["newEmail"], FILTER_VALIDATE_EMAIL)){
-
-}
+        $pdo = connectToDbAndGetPdo();
+        $pdoStatement = $pdo->prepare('SELECT usersPassword FROM users WHERE `usersId` = :id');
+        $pdoStatement->execute([
+            ":id" => $_SESSION["usersId"],
+        ]);
+        $user = $pdoStatement->fetch();
+        if(!$user == false){
+            if(password_verify($_POST["password"], $user->usersPassword)){
+                $pdo = connectToDbAndGetPdo();
+                $pdoStatement = $pdo->prepare('UPDATE users SET usersEmail = :newEmail WHERE usersId = :id');
+                $pdoStatement->execute([
+                    ":newEmail" => $_POST["newEmail"],
+                    ":id" => $_SESSION["usersId"];
+                ]);
+                $user = $pdoStatement->fetch();
+                $MessageConnexion = "Email changer"
+            }else{
+                $MessageConnexion = "erreur avec l'email ou le mot de passe"
+            }
+        }
+    }else{
+        $MessageConnexion = "erreur avec l'email ou le mot de passe"
+    }
+} */
+/* if(isset($_POST["oldPassword"])){
+    $pdo = connectToDbAndGetPdo();
+    $pdoStatement = $pdo->prepare('SELECT * FROM users WHERE `usersPassword` = :id');
+    $pdoStatement->execute([
+        ":id" => $_SESSION["usersId"],
+    ]);
+    $user = $pdoStatement->fetch();
+    if(!$user == false){
+        if(password_verify($_POST["oldPassword"], $user->usersPassword)){
+            if($_POST["newPassword"] == $_POST["verifiedNewPassord"]){
+                $pdo = connectToDbAndGetPdo();
+                $pdoStatement = $pdo->prepare('UPDATE users SET usersPassword = :newPassword WHERE usersId = :id');
+                $pdoStatement->execute([
+                    ":newPassword" => $_POST["newPassword"],
+                    ":id" => $_SESSION["usersId"];
+                ]);
+                $user = $pdoStatement->fetch();
+                $MessageConnexion = "Mot de passe changer"
+            }else{
+                $MessageConnexion = "erreur dans la vérification de vos mots de passe"
+            }
+        }else{
+            $MessageConnexion = "erreur avec le mot de passe"
+        }
+    }
+} */
 
 ?>
 
@@ -22,7 +70,7 @@ if(isset($_POST["newEmail"])){
         <div class="login_form"> <!-- Div pour le formulaire de connexion-->
             <form action="#" method="post">
                 <label for="OldEmail"></label>
-                <input type="email" id="OldEmail" placeholder="Ancien Email : jacke@gmail.com" readonly>
+                <input type="email" id="OldEmail" placeholder="Ancien Email : <?= $_SESSION["usersId"] ?>" readonly>
                 <label for="NewEmail"></label>
                 <input type="email" id="NewEmail" name="newEmail" placeholder="Nouveau Email">
                 <label for="password"></label>
@@ -33,11 +81,11 @@ if(isset($_POST["newEmail"])){
         <div class="login_form"> <!-- Div pour le formulaire de connexion-->
             <form action="#" method="post">
                 <label for="OldPassword"></label>
-                <input type="email" id="OldPassword" placeholder="Ancien Mot de passe">
+                <input type="email" id="OldPassword" name="oldPassword" placeholder="Ancien Mot de passe">
                 <label for="NewPassword"></label>
-                <input type="email" id="NewPassword" placeholder="Nouveau Mots de passe">
+                <input type="email" id="NewPassword" name="newPassword" placeholder="Nouveau Mots de passe">
                 <label for="ConfirmPassword"></label>
-                <input type="password" id="ConfirmPassword" placeholder="Confirmer le Mot de passe">
+                <input type="password" id="ConfirmPassword" name="verifiedNewPassword" placeholder="Confirmer le Mot de passe">
                 <input type="submit" value="Valider">
             </form>
         </div>
