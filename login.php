@@ -3,7 +3,6 @@ require 'utils/common.php';
 require SITE_ROOT . 'utils/userConnexion.php';
 if(isset($_POST['email_login'])){
     $MessageConnexion = ConnexionUser($_POST['email_login'], $_POST['password_login']);
-    header("Location: index.php");
 }
 ?>
 
