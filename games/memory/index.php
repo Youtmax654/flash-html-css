@@ -1,5 +1,10 @@
 <?php require '../../utils/common.php'; ?>
 
+<?php 
+    if (isset($_POST['sendMessage'])) {
+    if(!empty($_POST['']) and !empty($_post))}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <?php require SITE_ROOT. 'partials/head.php'; ?>
@@ -64,7 +69,7 @@
                         </div>
 
                         <div class="send">
-                            <input type="submit" value="Envoyer">
+                            <input type="submit" value="Envoyer" name="sendMessage">
                         </div>
                     </div>
                 </div>

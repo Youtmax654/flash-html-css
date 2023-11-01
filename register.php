@@ -61,7 +61,7 @@ if (!empty($_POST['register'])) {
         if (strpos($e->getMessage(), 'index_email') !== false) {
             $errorMessage = "Cet email existe déjà !";
         }else if  (strpos($e->getMessage(), 'index_pseudo') !== false) {
-            $errorMessage = "Ce nom d'utilisateur est déjà prit";
+            $errorMessage = "Ce nom d'utilisateur est déjà prit !";
         } else {
             $errorMessage = "Erreur : " . $e->getMessage();
         }
