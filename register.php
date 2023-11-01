@@ -57,8 +57,14 @@ if (!empty($_POST['register'])) {
                 }
             }
         }
-    } catch (Exception $e) { // sécurité en +
-        $errorMessage = "Erreur : " . $e->getMessage();
+    } catch (Exception $e) {
+        if (strpos($e->getMessage(), 'index_email') !== false) {
+            $errorMessage = "Cet email existe déjà !";
+        }else if  (strpos($e->getMessage(), 'index_pseudo') !== false) {
+            $errorMessage = "Ce nom d'utilisateur est déjà prit";
+        } else {
+            $errorMessage = "Erreur : " . $e->getMessage();
+        }
     }
 }
 ?>
