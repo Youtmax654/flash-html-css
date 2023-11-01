@@ -312,6 +312,20 @@ body {
 }
 
 /* login.html, register.html, myAccount.html */
+.errorMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+    height: 4vw;
+    background-color: orangered;
+    color: white;
+    font-size: 1vw;
+    margin-left: 39vw;
+    margin-bottom: -3vw;
+    border-radius: 5px;
+}
+
 .myAccount {
     display: flex;
     justify-content: center;
