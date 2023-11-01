@@ -48,6 +48,8 @@ if (!empty($_POST['register'])) {
                     if ($user !== false) {
                         $usersId = $user->usersId;
                         mkdir('userFiles/' . $usersId, 0777, true);
+                        copy(SITE_ROOT. "assets/images/newUsers_pp.jpg", SITE_ROOT. "userFiles/$usersId/newUsers_pp.jpg");
+                        rename(SITE_ROOT. "userFiles/$usersId/newUsers_pp.jpg",SITE_ROOT. "userFiles/$usersId/userProfilePicture.jpg");
                     } else {
                         throw new Exception("Erreur lors de la création du compte");
                     }

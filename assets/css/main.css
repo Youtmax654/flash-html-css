@@ -342,12 +342,32 @@ body {
     width: 8vw;
     height: 8vw;
     border-radius: 50%;
-    background-image: url("../images/newUsers_pp.jpg");
-    background-size: 100%;
 }
 
 .myAccount .myAccount_profile p {
     color: white;
+}
+
+.myAccount .myAccount_profile form {
+    color: white;
+    font-size: 1vw;
+    display: flex;
+    flex-direction: column;
+}
+
+button, [type="button"], [type="reset"], [type="submit"] {
+    width: 8vw;
+    height: 2.5vw;
+    color: white;
+    background-color: rgb(236, 146, 36);
+    border: none;
+    border-radius: 0.2vw;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+input#profilePictureToUpload {
+    margin-bottom: 1vw;
 }
 
 .login_form form,
