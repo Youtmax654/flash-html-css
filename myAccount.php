@@ -9,30 +9,41 @@ $pdoStatement->execute([
 $usersEmail = $pdoStatement->fetch();
 
 if(isset($_POST["newEmail"])){
-    if(filter_var($_POST["newEmail"], FILTER_VALIDATE_EMAIL)){
-        $pdo = connectToDbAndGetPdo();
-        $pdoStatement = $pdo->prepare('SELECT usersPassword FROM users WHERE `usersId` = :id');
-        $pdoStatement->execute([
-            ":id" => $_SESSION["userId"],
-        ]);
-        $user = $pdoStatement->fetch();
-        if(!$user == false){
-            if(password_verify($_POST["password"], $user->usersPassword)){
-                $pdo = connectToDbAndGetPdo();
-                $pdoStatement = $pdo->prepare('UPDATE users SET usersEmail = :newEmail WHERE usersId = :id');
-                $pdoStatement->execute([
-                    ":newEmail" => $_POST["newEmail"],
-                    ":id" => $_SESSION["userId"],
-                ]);
-                $user = $pdoStatement->fetch();
-                $MessageConnexion = "Email changer";
-            }else{
-                $MessageConnexion = "erreur avec l'email ou le mot de passe";
+    $pdo = connectToDbAndGetPdo();
+    $pdoStatement = $pdo->prepare('SELECT COUNT(*) as nbr FROM users WHERE `usersEmail` = :email');
+    $pdoStatement->execute([
+        ":email" => $_POST["newEmail"],
+    ]);
+    $verifieEmail = $pdoStatement->fetch();
+    if($verifieEmail->nbr == 0){
+        if(filter_var($_POST["newEmail"], FILTER_VALIDATE_EMAIL)){
+            $pdo = connectToDbAndGetPdo();
+            $pdoStatement = $pdo->prepare('SELECT usersPassword FROM users WHERE `usersId` = :id');
+            $pdoStatement->execute([
+                ":id" => $_SESSION["userId"],
+            ]);
+            $user = $pdoStatement->fetch();
+            if(!$user == false){
+                if(password_verify($_POST["password"], $user->usersPassword)){
+                    $pdo = connectToDbAndGetPdo();
+                    $pdoStatement = $pdo->prepare('UPDATE users SET usersEmail = :newEmail WHERE usersId = :id');
+                    $pdoStatement->execute([
+                        ":newEmail" => $_POST["newEmail"],
+                        ":id" => $_SESSION["userId"],
+                    ]);
+                    $user = $pdoStatement->fetch();
+                    $MessageConnexion = "Email changer";
+                }else{
+                    $MessageConnexion = "erreur avec l'email ou le mot de passe";
+                }
             }
+        }else{
+            $MessageConnexion = "erreur avec l'email ou le mot de passe";
         }
     }else{
-        $MessageConnexion = "erreur avec l'email ou le mot de passe";
+        $MessageConnexion = "email deja utiliser";
     }
+
 }
 if(isset($_POST["oldPassword"])){
     $pdo = connectToDbAndGetPdo();
