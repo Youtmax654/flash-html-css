@@ -32,16 +32,16 @@ if(isset($_POST["newEmail"])){
                         ":id" => $_SESSION["userId"],
                     ]);
                     $user = $pdoStatement->fetch();
-                    $MessageConnexion = "Email changer";
+                    $MessageConnexion = "Votre email a bien été modifié";
                 }else{
-                    $MessageConnexion = "erreur avec l'email ou le mot de passe";
+                    $MessageConnexion = "L'email ou le mot de passe est incorrect";
                 }
             }
         }else{
-            $MessageConnexion = "erreur avec l'email ou le mot de passe";
+            $MessageConnexion = "L'email ou le mot de passe est incorrect";
         }
     }else{
-        $MessageConnexion = "email deja utiliser";
+        $MessageConnexion = "Cet email est déjà utilisé";
     }
 
 }
@@ -64,15 +64,15 @@ if(isset($_POST["oldPassword"])){
                         ":id" => $_SESSION["userId"],
                     ]);
                     $user = $pdoStatement->fetch();
-                    $MessageConnexion = "Mot de passe changer";
+                    $MessageConnexion = "Votre mot de passe a bien été modifié";
                 }else{
-                    $MessageConnexion = "Le mot de passe ne convient pas";
+                    $MessageConnexion = "Le nouveau mot de passe ne convient pas";
                 }
             }else{
-                $MessageConnexion = "erreur dans la vérification de vos mots de passe ";
+                $MessageConnexion = "Votre mot de passe est incorrect";
             }
         }else{
-            $MessageConnexion = "erreur avec le mot de passe";
+            $MessageConnexion = "Votre mot de passe est incorrect";
         }
     }
 }
@@ -91,12 +91,12 @@ if(isset($_POST["oldPassword"])){
             <h1>MON COMPTE</h1>
         </div>
         <?php if(isset($_POST['newEmail']) || isset($_POST['oldPassword'])): ?>
-            <p><?= $MessageConnexion; ?></p>
+            <p class="errorMessage"><?= $MessageConnexion; ?></p>
         <?php endif ?>
         <div class="myAccount">
             <div class="myAccount_profile">
                 <div class="profilePicture"></div>
-                <p>USERNAME</p>
+                <?="<p>$_SESSION[userName]</p>" ?>
             </div>
             <div class="myAccount_form">
                 <div class="login_form"> <!-- Div pour le formulaire de connexion-->
