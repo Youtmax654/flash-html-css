@@ -27,6 +27,20 @@ else{
 $pdoStatement = $pdo->prepare('SELECT COUNT(*) AS nbr FROM `users`');
 $pdoStatement->execute();
 $NbrUser = $pdoStatement->fetch();
+//alert message from register.php
+if(isset($_SESSION['successfulRegister']) or isset($_SESSION['successfulLogin'])){
+    if(isset($_SESSION['successfulRegister'])) {
+    echo "<script>
+            alert('" . $_SESSION['successfulRegister'] . "');
+          </script>";
+    } else {
+        echo "<script>
+            alert('" . $_SESSION['successfulLogin'] . "');
+          </script>";
+    }
+    //to not make the error message appear again after refresh:
+    unset($_SESSION['successfulRegister'], $_SESSION['successfulLogin']);
+}
 ?>
 
 <!DOCTYPE html>

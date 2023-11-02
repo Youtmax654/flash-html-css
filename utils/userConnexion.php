@@ -9,20 +9,22 @@ function ConnexionUser($postEmail, $postPassword){
             ":email" => $postEmail,
         ]);
         $user = $pdoStatement->fetch();
-        if(!$user == false){
+        if($user !== false){
             if(password_verify($postPassword, $user->usersPassword)){
+                session_start();
                 $_SESSION["userId"] = $user->usersId;
-                return "Vous etes connecter." ;
+                $_SESSION["userName"] = $user->usersPseudo;
+                $_SESSION['successfulLogin'] = "Vous êtes bien connecté !";
+                header("Location: index.php");
+                $pdo->query('UPDATE users SET usersLastConnexion = DEFAULT WHERE usersId = '.$_SESSION["userId"].'');
             }else{
-                return "Il y as une erreur avec votre email ou votre mot de passe";
+                return "Il y a une erreur avec votre email ou votre mot de passe";
             }
         }else{
-            return "Il y as une erreur avec votre email ou votre mot de passe";
+            return "Il y a une erreur avec votre email ou votre mot de passe";
         }
         
     }else{
         return "Le format de l'email est incorrect";
     }
 }
-
-    

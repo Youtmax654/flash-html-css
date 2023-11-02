@@ -1,4 +1,7 @@
-<?php require '../../utils/common.php'; ?>
+<?php 
+require '../../utils/common.php'; 
+require SITE_ROOT . 'utils/userConnexion.php';
+?>
 
 <!DOCTYPE html>
 <html lang="fr">

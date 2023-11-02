@@ -312,6 +312,64 @@ body {
 }
 
 /* login.html, register.html, myAccount.html */
+.errorMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+    height: 4vw;
+    background-color: orangered;
+    color: white;
+    font-size: 1vw;
+    margin-left: 39vw;
+    margin-bottom: -3vw;
+    border-radius: 5px;
+}
+
+.myAccount {
+    display: flex;
+    justify-content: center;
+}
+
+.myAccount .myAccount_profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 6vw;
+}
+
+.myAccount .myAccount_profile .profilePicture {
+    width: 8vw;
+    height: 8vw;
+    border-radius: 50%;
+}
+
+.myAccount .myAccount_profile p {
+    color: white;
+}
+
+.myAccount .myAccount_profile form {
+    color: white;
+    font-size: 1vw;
+    display: flex;
+    flex-direction: column;
+}
+
+button, [type="button"], [type="reset"], [type="submit"] {
+    width: 8vw;
+    height: 2.5vw;
+    color: white;
+    background-color: rgb(236, 146, 36);
+    border: none;
+    border-radius: 0.2vw;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+input#profilePictureToUpload {
+    margin-bottom: 1vw;
+}
+
 .login_form form,
 .register_form form {
     display: flex;
@@ -332,7 +390,7 @@ body {
     /* Longueur des inputs sauf le submit */
     height: 2.5vw;
     /* Largeur des inputs sauf le submit */
-    margin-bottom: 3.5%;
+    margin-bottom: 1.5vw;
     /* Espacement entre les inputs */
     border-radius: 0.3vw;
     /* Arrondir les bords des inputs */
@@ -342,7 +400,7 @@ body {
     /* Retirer les bordures */
     color: white;
     outline: none;
-    padding-left: 2%;
+    padding-left: 0.6vw;
 
 }
 
@@ -384,7 +442,7 @@ body {
 .contact_infos {
     display: flex;
     justify-content: center;
-    margin-top: 8vw;
+    margin-top: 3vw;
     margin-bottom: 2vw;
 }
 
@@ -746,7 +804,15 @@ table#big img {
 }
 
 /* scores.html */
+form.scoresSearchBar {
+    display:flex; 
+    align-items:center; 
+    flex-direction:column
+}
+
 .scores_table {
+    margin-top: 2vw;
+    margin-bottom: 5vw;
     margin-left: 24vw;
     font-size: 0.9vw;
     background-color: rgba(14, 11, 38, 255);
