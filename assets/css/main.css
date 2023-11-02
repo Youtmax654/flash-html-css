@@ -656,14 +656,11 @@ input#profilePictureToUpload {
     margin-top: 1vw;
 }
 .msger-tchat .msg-left-msg .msg-img {
-    background-image: url("../images/chat_robot2.png");
     width: 2vw;
     height: 2vw;
     border-radius: 50%;
-    background-size: 100%;
     padding: 0.8vw;
     margin-top: 1.4vw;
-    background-repeat: no-repeat;
 }
 
 .msg-bubble {
