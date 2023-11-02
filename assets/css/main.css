@@ -654,6 +654,16 @@ input#profilePictureToUpload {
 
 .msger-tchat {
     margin-top: 1vw;
+    height: 27vw;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.msger-tchat::-webkit-scrollbar{
+    width: 0.5vw;
+    background-color: white;
+}
+.msger-tchat::-webkit-scrollbar-thumb{
+    background-color: rgb(159, 159, 159);
 }
 .msger-tchat .msg-left-msg .msg-img {
     background-image: url("../images/chat_robot2.png");
@@ -741,7 +751,6 @@ input#profilePictureToUpload {
 .msg-write-form {
     display: flex;
     justify-content: flex-start;
-    margin-top: 8vw;
     margin-left: 1vw;
 }
 
