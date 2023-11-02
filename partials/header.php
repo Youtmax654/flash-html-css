@@ -2,7 +2,7 @@
 $currentPage = $_SERVER['REQUEST_URI'];
 if(isset($_SESSION["userId"])){
     $pdo = connectToDbAndGetPdo();
-    $pdoStatement = $pdo->prepare('UPDATE `users` SET `usersLastConnexion`= NOW() WHERE usersId = 7');
+    $pdoStatement = $pdo->prepare('UPDATE `users` SET `usersLastConnexion`= NOW() WHERE usersId = :id');
     $pdoStatement->execute([
         ":id" => $_SESSION["userId"],
     ]);

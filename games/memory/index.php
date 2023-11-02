@@ -7,6 +7,7 @@ require SITE_ROOT . 'utils/userConnexion.php';
 <html lang="fr">
 <?php require SITE_ROOT. 'partials/head.php'; ?>
 <body>
+    <?php require SITE_ROOT. 'chat.php'; ?>
     <?php require SITE_ROOT. 'partials/header.php'; ?>
     <main>
         <div class="pages_banner"> <!-- Div pour la bannière des pages -->
@@ -170,7 +171,6 @@ require SITE_ROOT . 'utils/userConnexion.php';
                 <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
             </tr>
         </table>
-        <?php require SITE_ROOT. 'chat.php'; ?>
     </main>
     <?php require SITE_ROOT. 'partials/footer.php';?>
 </body>
