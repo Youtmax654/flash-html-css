@@ -45,8 +45,7 @@ $scores = $pdoStatement->fetchAll(); ?>
             }
         ?>
         <form method="get" class="scoresSearchBar">
-            <input type="search" name="scoresSearch" id="scoresSearch" placeholder="Recherche..."
-            style="width: 50vw; margin:2vw">
+            <input type="search" name="scoresSearch" id="scoresSearch" placeholder="Recherche...">
             <input type="submit" value="Rechercher">
         </form>
         <div class="scores_table">

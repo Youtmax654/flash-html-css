@@ -1,5 +1,8 @@
 <?php
 require 'utils/common.php';
+if (isset($_SESSION['userId'])) {
+    header("Location: index.php");
+}
 require SITE_ROOT . 'utils/database.php';
 $pdo = connectToDbAndGetPdo();
 

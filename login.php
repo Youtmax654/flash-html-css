@@ -1,5 +1,8 @@
 <?php 
 require 'utils/common.php';
+if (isset($_SESSION['userId'])) {
+    header("Location: index.php");
+}
 require SITE_ROOT . 'utils/userConnexion.php';
 if(isset($_POST['email_login'])){
     $MessageConnexion = ConnexionUser($_POST['email_login'], $_POST['password_login']);
