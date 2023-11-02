@@ -62,6 +62,11 @@ body {
     margin: 20vw auto 0;
 }
 
+p1.errorMessage {
+    margin-top: 13vw;
+    margin-bottom: -17vw;
+}
+
 #welcome p {
     font-family: 'Roboto', sans-serif;
     position: relative;
@@ -342,12 +347,32 @@ body {
     width: 8vw;
     height: 8vw;
     border-radius: 50%;
-    background-image: url("../images/newUsers_pp.jpg");
-    background-size: 100%;
 }
 
 .myAccount .myAccount_profile p {
     color: white;
+}
+
+.myAccount .myAccount_profile form {
+    color: white;
+    font-size: 1vw;
+    display: flex;
+    flex-direction: column;
+}
+
+button, [type="button"], [type="reset"], [type="submit"] {
+    width: 8vw;
+    height: 2.5vw;
+    color: white;
+    background-color: rgb(236, 146, 36);
+    border: none;
+    border-radius: 0.2vw;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+input#profilePictureToUpload {
+    margin-bottom: 1vw;
 }
 
 .login_form form,
@@ -422,7 +447,7 @@ body {
 .contact_infos {
     display: flex;
     justify-content: center;
-    margin-top: 8vw;
+    margin-top: 3vw;
     margin-bottom: 2vw;
 }
 
@@ -633,17 +658,26 @@ body {
 }
 
 .msger-tchat {
+    display: flex;
     margin-top: 1vw;
+    height: 22vw;
+    overflow: scroll;
+    overflow-x: hidden;
+    flex-direction: column-reverse;
+}
+.msger-tchat::-webkit-scrollbar{
+    width: 0.5vw;
+    background-color: white;
+}
+.msger-tchat::-webkit-scrollbar-thumb{
+    background-color: rgb(159, 159, 159);
 }
 .msger-tchat .msg-left-msg .msg-img {
-    background-image: url("../images/chat_robot2.png");
     width: 2vw;
     height: 2vw;
     border-radius: 50%;
-    background-size: 100%;
     padding: 0.8vw;
     margin-top: 1.4vw;
-    background-repeat: no-repeat;
 }
 
 .msg-bubble {
@@ -716,22 +750,20 @@ body {
     align-items: baseline;
     justify-content: space-between;
     margin-bottom: 2vw;
+    padding-top: 1vw;
 }
 
 .msg-write-form {
     display: flex;
     justify-content: flex-start;
-    margin-top: 8vw;
     margin-left: 1vw;
 }
 
 .msg-write-form input:not(input:last-of-type) {
     border-radius: 0.3vw;
     color: black;
-    padding-left: 2%;
     line-height: normal;
-    padding-left: 2%;
-
+    width: 100%;
 }
 
 .msg-write-form input::placeholder {
@@ -739,8 +771,10 @@ body {
     left: 2%;
     font-size: 100%;
 }
-
-.msg-write-form input:last-of-type {
+.msg-write-form form{
+    display: flex;
+}
+.msg-write-form input#chat-text {
     width: 16vw;
     height: 2.5vw;
     padding-right: 0.3vw;
@@ -750,7 +784,8 @@ body {
     font-size: 1.1vw;
 }
 
-.send input:last-of-type {
+input.send {
+    
     width: 6vw;
     height: 2.5vw;
     color: black;
@@ -856,6 +891,13 @@ form.scoresSearchBar {
 }
 .snap li::before{
     content: "" !important;
+}
+.cuteCat{ 
+    position: absolute;
+    right: 2vw;
+    width: 5vw; 
+    height: 2vw;
+    border-radius: 10px;
 }
 /* Media Quieries */
 @media screen and (max-width: 468px) {
