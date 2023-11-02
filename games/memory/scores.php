@@ -1,6 +1,10 @@
 <?php require '../../utils/common.php';
 require SITE_ROOT . 'utils/database.php';
-$connectedUsersId = 2;
+if (isset($_SESSION['userId'])) {
+    $connectedUsersId = $_SESSION['userId'];
+} else {
+    $connectedUsersId = NULL;
+}
 $pdo = connectToDbAndGetPdo();
 $pdoStatement = $pdo->prepare('SELECT gameName, usersPseudo, scoresDifficulty, scoresPoints, users.usersId,
                                DATE_FORMAT(scoresDate, "%d/%m/%Y à %Hh%i") AS DateScores
