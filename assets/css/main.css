@@ -807,6 +807,11 @@ table#big img {
 .snap li::before{
     content: "" !important;
 }
+.cuteCat{ 
+    display: block; 
+    margin: 5vw auto; 
+    width: 20vw; 
+}
 /* Media Quieries */
 @media screen and (max-width: 468px) {
     .pages_banner {
