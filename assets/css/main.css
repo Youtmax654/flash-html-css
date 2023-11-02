@@ -757,10 +757,8 @@ input#profilePictureToUpload {
 .msg-write-form input:not(input:last-of-type) {
     border-radius: 0.3vw;
     color: black;
-    padding-left: 2%;
     line-height: normal;
-    padding-left: 2%;
-
+    width: 100%;
 }
 
 .msg-write-form input::placeholder {
@@ -782,6 +780,7 @@ input#profilePictureToUpload {
 }
 
 input.send {
+    
     width: 6vw;
     height: 2.5vw;
     color: black;
@@ -885,9 +884,10 @@ form.scoresSearchBar {
     content: "" !important;
 }
 .cuteCat{ 
-    display: block; 
-    margin: 5vw auto; 
-    width: 20vw; 
+    position: absolute;
+    right: 2vw;
+    width: 5vw; 
+    height: 2vw;
 }
 /* Media Quieries */
 @media screen and (max-width: 468px) {

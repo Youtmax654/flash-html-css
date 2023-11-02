@@ -1,18 +1,19 @@
 <?php
+$catApi = json_decode(file_get_contents("https://api.thecatapi.com/v1/images/search?mime_types=gif"))[0];
 $pdo = connectToDbAndGetPdo();
 $gameId = "1";
 $usersId = $_SESSION['userId'];
-$pdoStatement = $pdo->prepare('SELECT chatMessage, usersPseudo, users.usersId,
-                                DATE_FORMAT(chatDate, "%d/%m/%Y à %Hh%i") AS DateChat,
+$pdoStatement = $pdo->prepare("SELECT chatMessage, usersPseudo, users.usersId,
+                                DATE_FORMAT(chatDate, '%d/%m/%Y à %Hh%i') AS DateChat,
                                 CASE 
-                                    WHEN chat.usersId = 1 THEN "true"
-                                    ELSE "false"
+                                    WHEN chat.usersId = $usersId THEN 'true'
+                                    ELSE 'false'
                                 END AS isSender
                                 FROM chat
                                 LEFT JOIN users
                                 ON chat.usersId = users.usersId
                                 WHERE chatDate >= NOW() - INTERVAL 1 DAY
-                                ORDER BY chatDate DESC');
+                                ORDER BY chatDate DESC");
 $pdoStatement->execute();
 $chat = $pdoStatement->fetchAll();
 
@@ -26,7 +27,7 @@ if (isset($_POST["submitChatMessage"])) {
         ":chatMessage" => $chatMessage,
     ]);
     $sendChatMessage = $pdoStatement->fetchAll();
-    header("Refresh: 1");
+    header("Refresh: 0");
 }
 
 ?>
@@ -36,6 +37,7 @@ if (isset($_POST["submitChatMessage"])) {
         <div class="tchat_head">
             <div class="image_robot"></div>
             <p><span>Chat général</span></p>
+            <img src="<?= $catApi->url ?>" alt="a cute cat" class="cuteCat">
         </div>
         <div class="tchat_body">
             <div class="msger-tchat">
