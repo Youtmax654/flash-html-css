@@ -653,10 +653,12 @@ input#profilePictureToUpload {
 }
 
 .msger-tchat {
+    display: flex;
     margin-top: 1vw;
-    height: 27vw;
+    height: 22vw;
     overflow: scroll;
     overflow-x: hidden;
+    flex-direction: column-reverse;
 }
 .msger-tchat::-webkit-scrollbar{
     width: 0.5vw;

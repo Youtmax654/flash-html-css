@@ -12,7 +12,7 @@ $pdoStatement = $pdo->prepare('SELECT chatMessage, usersPseudo, users.usersId,
                                 LEFT JOIN users
                                 ON chat.usersId = users.usersId
                                 WHERE chatDate >= NOW() - INTERVAL 1 DAY
-                                ORDER BY chatDate ASC');
+                                ORDER BY chatDate DESC');
 $pdoStatement->execute();
 $chat = $pdoStatement->fetchAll();
 
