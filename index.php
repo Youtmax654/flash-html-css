@@ -30,13 +30,9 @@ $NbrUser = $pdoStatement->fetch();
 //alert message from register.php
 if(isset($_SESSION['successfulRegister']) or isset($_SESSION['successfulLogin'])){
     if(isset($_SESSION['successfulRegister'])) {
-    echo "<script>
-            alert('" . $_SESSION['successfulRegister'] . "');
-          </script>";
+        $errorMessage = "$_SESSION[successfulRegister]";
     } else {
-        echo "<script>
-            alert('" . $_SESSION['successfulLogin'] . "');
-          </script>";
+        $errorMessage = "$_SESSION[successfulLogin]";
     }
     //to not make the error message appear again after refresh:
     unset($_SESSION['successfulRegister'], $_SESSION['successfulLogin']);
@@ -51,9 +47,12 @@ if(isset($_SESSION['successfulRegister']) or isset($_SESSION['successfulLogin'])
     <main>
         <div id="home"></div>
         <article id="welcome">
+            <?php if(isset($errorMessage)) {
+                echo "<p1 class='errorMessage'>$errorMessage</p1>";
+            } ?>
             <h1>Bienvenue dans notre studio !</h1>
             <p>Venez challenger les cerveaux les plus agiles !</p>
-            <a href="login.php" id="button">Jouer !</a>
+            <a href=<?=isset($_SESSION['userId']) ? PROJECT_FOLDER.'games/memory/index.php' : 'login.php' ?> id="button">Jouer !</a>
         </article>
         <div id="IlluImg">
             <div id="AllImg">
