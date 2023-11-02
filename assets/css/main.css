@@ -654,6 +654,16 @@ input#profilePictureToUpload {
 
 .msger-tchat {
     margin-top: 1vw;
+    height: 27vw;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.msger-tchat::-webkit-scrollbar{
+    width: 0.5vw;
+    background-color: white;
+}
+.msger-tchat::-webkit-scrollbar-thumb{
+    background-color: rgb(159, 159, 159);
 }
 .msger-tchat .msg-left-msg .msg-img {
     width: 2vw;
@@ -738,7 +748,6 @@ input#profilePictureToUpload {
 .msg-write-form {
     display: flex;
     justify-content: flex-start;
-    margin-top: 8vw;
     margin-left: 1vw;
 }
 
@@ -869,6 +878,11 @@ form.scoresSearchBar {
 }
 .snap li::before{
     content: "" !important;
+}
+.cuteCat{ 
+    display: block; 
+    margin: 5vw auto; 
+    width: 20vw; 
 }
 /* Media Quieries */
 @media screen and (max-width: 468px) {

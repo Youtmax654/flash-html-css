@@ -1,5 +1,6 @@
-<?php require '../../utils/common.php'; 
-require SITE_ROOT . 'utils/database.php';
+<?php 
+require '../../utils/common.php'; 
+require SITE_ROOT . 'utils/userConnexion.php';
 ?>
 
 <!DOCTYPE html>

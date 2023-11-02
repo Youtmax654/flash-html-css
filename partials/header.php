@@ -1,4 +1,15 @@
-<?php $currentPage = $_SERVER['REQUEST_URI']; ?>
+<?php 
+$currentPage = $_SERVER['REQUEST_URI'];
+if(isset($_SESSION["userId"])){
+    $pdo = connectToDbAndGetPdo();
+    $pdoStatement = $pdo->prepare('UPDATE `users` SET `usersLastConnexion`= NOW() WHERE usersId = 7');
+    $pdoStatement->execute([
+        ":id" => $_SESSION["userId"],
+    ]);
+    $user = $pdoStatement->fetch();
+}
+
+?>
  
 <header class="<?= $currentPage == "/flash_memory/index.php" ? 'header_index' : 'header' ?>">
     <p>The Power Of Memory</p>
