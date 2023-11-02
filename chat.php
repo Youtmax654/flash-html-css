@@ -1,5 +1,7 @@
 <?php
 require 'utils/common.php';
+require SITE_ROOT . 'utils/userConnexion.php';
+
 $catApi = json_decode(file_get_contents("https://api.thecatapi.com/v1/images/search?mime_types=gif"))[0];
 ?>
 <!DOCTYPE html>

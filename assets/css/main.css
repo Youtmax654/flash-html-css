@@ -768,8 +768,10 @@ input#profilePictureToUpload {
     left: 2%;
     font-size: 100%;
 }
-
-.msg-write-form input:last-of-type {
+.msg-write-form form{
+    display: flex;
+}
+.msg-write-form input#chat-text {
     width: 16vw;
     height: 2.5vw;
     padding-right: 0.3vw;
@@ -779,7 +781,7 @@ input#profilePictureToUpload {
     font-size: 1.1vw;
 }
 
-.send input:last-of-type {
+input.send {
     width: 6vw;
     height: 2.5vw;
     color: black;

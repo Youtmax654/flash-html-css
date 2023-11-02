@@ -62,12 +62,9 @@ require SITE_ROOT . 'utils/userConnexion.php';
                                 <form action="#">
                                     <label for="chat-text"></label>
                                     <input type="text" id="chat-text" placeholder="Votre message...">
+                                    <input type="submit" value="Envoyer" class="send">
                                 </form>
                             </div>
-                        </div>
-
-                        <div class="send">
-                            <input type="submit" value="Envoyer">
                         </div>
                     </div>
                 </div>
