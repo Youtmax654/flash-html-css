@@ -35,28 +35,30 @@ if (!empty($_POST['register'])) {
                 if ($password_register !== $check_register) { //compare le mdp et le mdp de confirmation et renvoie une erreur si il est différent 
                     throw new Exception("Veuillez entrer le même mot de passe !");
                 } else {
+                    //insertion des informations de l'utilisateur dans la base de données
                     $pdoStatement = $pdo->prepare("INSERT INTO users (usersEmail,usersPassword,usersPseudo) 
                                                VALUES (:usersEmail, :usersPassword, :usersPseudo)");
-                    $usersHasBeenInserted = $pdoStatement->execute([
+                    $usersHasBeenInserted = $pdoStatement->execute([ // remplacement des paramètres nommés par les valeurs correspondantes
                         ':usersEmail' => $email,
-                        ':usersPassword' => password_hash($password_register, PASSWORD_DEFAULT),
+                        ':usersPassword' => password_hash($password_register, PASSWORD_DEFAULT), // Le mot de passe est haché avant d'être stocké
                         ':usersPseudo' => $pseudo,
                     ]);
-                    $pdoStatement = $pdo->prepare("SELECT usersId,usersPseudo FROM users 
+                    // Prépare une requête pour récupérer l'identifiant (usersId) et le pseudo (usersPseudo) de l'utilisateur
+                    $pdoStatement = $pdo->prepare("SELECT usersId,usersPseudo FROM users  
                                        WHERE usersEmail = :usersEmail");
-                    $getUsersId = $pdoStatement->execute([
+                    $getUsersId = $pdoStatement->execute([ // recherche l'utilisateur par son adresse e-mail
                         ':usersEmail' => $email
                     ]);
                     $user = $pdoStatement->fetch();
-                    if ($user !== false) {
+                    if ($user !== false) { //si utilisateur correspondant alors récupération de l'id de l'utilisateur 
                         $usersId = $user->usersId;
-                        mkdir('userFiles/' . $usersId, 0777, true);
-                        copy(SITE_ROOT. "assets/images/newUsers_pp.jpg", SITE_ROOT. "userFiles/$usersId/newUsers_pp.jpg");
+                        mkdir('userFiles/' . $usersId, 0777, true); // Crée un répertoire pour l'utilisateur dans le système de fichiers
+                        copy(SITE_ROOT. "assets/images/newUsers_pp.jpg", SITE_ROOT. "userFiles/$usersId/newUsers_pp.jpg"); // Copie une image de profil par défaut dans le répertoire de l'utilisateur
                         rename(SITE_ROOT. "userFiles/$usersId/newUsers_pp.jpg",SITE_ROOT. "userFiles/$usersId/userProfilePicture.jpg");
                     } else {
                         throw new Exception("Erreur lors de la création du compte");
                     }
-                    if (!$usersHasBeenInserted) { //sécurité en + 
+                    if (!$usersHasBeenInserted) { // Vérifie si l'insertion des données dans la base de données a échoué, sécurité en + 
                         throw new Exception("Une erreur s'est produite lors de l'insertion dans la base de données.");
                     }
                 }
@@ -67,13 +69,13 @@ if (!empty($_POST['register'])) {
         $_SESSION["userName"] = $user->usersPseudo;
         $_SESSION['successfulRegister'] = "Vous êtes bien inscrit !";
         header("Location: index.php");
-    } catch (Exception $e) {
-        if (strpos($e->getMessage(), 'index_email') !== false) {
+    } catch (Exception $e) { // Vérifie le message d'erreur de l'exception pour déterminer le type d'erreur
+        if (strpos($e->getMessage(), 'index_email') !== false) { //erreur email
             $errorMessage = "Cet email existe déjà !";
-        }else if  (strpos($e->getMessage(), 'index_pseudo') !== false) {
+        }else if  (strpos($e->getMessage(), 'index_pseudo') !== false) { //erreur pseudo
             $errorMessage = "Ce nom d'utilisateur est déjà prit";
         } else {
-            $errorMessage = "Erreur : " . $e->getMessage();
+            $errorMessage = "Erreur : " . $e->getMessage(); //autres erreurs
         }
     }
 }
