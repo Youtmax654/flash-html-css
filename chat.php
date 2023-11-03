@@ -1,4 +1,5 @@
 <?php
+require 'utils/common.php';
 $catApi = json_decode(file_get_contents("https://api.thecatapi.com/v1/images/search?mime_types=gif"))[0];
 $pdo = connectToDbAndGetPdo();
 $gameId = "1";
