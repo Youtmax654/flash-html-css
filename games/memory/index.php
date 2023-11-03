@@ -1,6 +1,11 @@
 <?php 
 require '../../utils/common.php'; 
 require SITE_ROOT . 'utils/userConnexion.php';
+
+// Vérification si l'utilisateur est déjà connecté en vérifiant la présence de la variable de session 'userId', si oui -> redirection 
+if (!isset($_SESSION['userId'])) { 
+    header("Location: ".PROJECT_FOLDER."login.php");
+}
 ?>
 
 <!DOCTYPE html>
