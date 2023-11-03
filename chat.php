@@ -7,16 +7,16 @@ $usersId = $_SESSION['userId'];
 
 //Récupération des messages du chat récents
 $pdoStatement = $pdo->prepare("SELECT chatMessage, usersPseudo, users.usersId,
-                                DATE_FORMAT(chatDate, '%d/%m/%Y à %Hh%i') AS DateChat,
-                                CASE 
-                                    WHEN chat.usersId = $usersId THEN 'true'
-                                    ELSE 'false'
-                                END AS isSender
-                                FROM chat
-                                LEFT JOIN users
-                                ON chat.usersId = users.usersId
-                                WHERE chatDate >= NOW() - INTERVAL 1 DAY
-                                ORDER BY chatDate DESC");
+                               DATE_FORMAT(chatDate, '%d/%m/%Y à %Hh%i') AS DateChat,
+                               CASE 
+                                   WHEN chat.usersId = $usersId THEN 'true'
+                                   ELSE 'false'
+                               END AS isSender
+                               FROM chat
+                               LEFT JOIN users
+                               ON chat.usersId = users.usersId
+                               WHERE chatDate >= NOW() - INTERVAL 1 DAY
+                               ORDER BY chatDate DESC");
 $pdoStatement->execute();
 $chat = $pdoStatement->fetchAll();
 
