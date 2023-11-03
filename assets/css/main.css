@@ -763,7 +763,8 @@ input#profilePictureToUpload {
     border-radius: 0.3vw;
     color: black;
     line-height: normal;
-    width: 100%;
+    width: 17vw;
+    font-size: 1.2vw;
 }
 
 .msg-write-form input::placeholder {
