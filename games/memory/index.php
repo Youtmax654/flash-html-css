@@ -13,165 +13,24 @@ require SITE_ROOT . 'utils/userConnexion.php';
         <div class="pages_banner"> <!-- Div pour la bannière des pages -->
             <h1>JEU</h1>
         </div>
+        <form>
+            <select name="theme" id="theme">
+                <option value="JV">Jeux Vidéo</option>
+                <option value="Fruit">Fruit</option>
+                <option value="Animaux">Animaux</option>
+            </select>
+            <select name="difficulty" id="difficulty">
+                <option value="1">Facile</option>
+                <option value="2">Moyen</option>
+                <option value="3">Difficile</option>
+            </select>
+        </form>
+        <button id="submit">Submit</button>
         <table class="tableGame">
-            <tr>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-            </tr>
-            <tr>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-            </tr>
-            <tr>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-            </tr>
-            <tr>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-            </tr>
-        </table>
-        <table class="tableGame hidden">
-            <tr>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-            </tr>
-            <tr>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-            </tr>
-            <tr>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-            </tr>
-            <tr>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-            </tr>
-            <tr>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-            </tr>
-            <tr>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-            </tr>
-        </table>
-        <table class="tableGame hidden" id="big">
-            <tr>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-            </tr>
-            <tr>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-            </tr>
-            <tr>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-            </tr>
-            <tr>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-            </tr>
-            <tr>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-            </tr>
-            <tr>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-            </tr>
-            <tr>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-            </tr>
-            <tr>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-                <td><img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte"></td>
-            </tr>
+
         </table>
     </main>
     <?php require SITE_ROOT. 'partials/footer.php';?>
+    <script src="<?= PROJECT_FOLDER . "assets/js/memory.js" ?>"></script>
 </body>
 </html>
