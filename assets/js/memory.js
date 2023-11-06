@@ -1,0 +1,1 @@
+let tableVideoGames = ["amogus.png","assassin.png","automata.png","csgo.png","detroitBecomeHuman.jpeg","fifa.jpeg","fortnite.png","ghostOfTsushima.jpg","Gmod.png","goatSimulator.png","godOfWars.jpg" ];
