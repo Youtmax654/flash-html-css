@@ -20,6 +20,7 @@ if(isset($_SESSION["userId"])){
     <nav class="header-right">
         <ul>
             <li><a href="<?= PROJECT_FOLDER ?>index.php" class="<?= PROJECT_FOLDER . "index.php" == $currentPage ? "current" : NULL; ?>">ACCUEIL</a></li>
+            <li><a href="<?= PROJECT_FOLDER ?>games/memory/index.php" class="<?= PROJECT_FOLDER . "games/memory/index.php" == $currentPage ? "current" : NULL; ?>">JEU</a></li>
             <li><a href="<?= PROJECT_FOLDER ?>games/memory/scores.php" class="<?= PROJECT_FOLDER . "games/memory/scores.php" == $currentPage ? "current" : NULL; ?>">SCORES</a></li>
             <li><a href="<?= PROJECT_FOLDER ?>contact.php" class="<?= PROJECT_FOLDER . "contact.php" == $currentPage ? "current" : NULL; ?>">NOUS CONTACTER</a></li>
             
@@ -29,7 +30,6 @@ if(isset($_SESSION["userId"])){
                 <li><a href="<?= PROJECT_FOLDER ?>register.php" class="<?=  PROJECT_FOLDER . "register.php" == $currentPage ? "current" : NULL; ?>">INSCRIPTION</a></li>
             <?php else : ?>
                 <!-- Si l'utilisateur est connecté, afficher des liens pour le jeu, le compte de l'utilisateur et la déconnexion -->
-                <li><a href="<?= PROJECT_FOLDER ?>games/memory/index.php" class="<?= PROJECT_FOLDER . "games/memory/index.php" == $currentPage ? "current" : NULL; ?>">JEU</a></li>
                 <li><a href="<?= PROJECT_FOLDER ?>myAccount.php" class="<?=  PROJECT_FOLDER . "myAccount.php" == $currentPage ? "current" : NULL; ?>"><?= strtoupper($_SESSION["userName"]) ?></a></li>
                 <li><a href="<?= PROJECT_FOLDER ?>disconnect.php" onclick="return confirm('Vous allez être déconnecté')">SE DECONNECTER</a></li>
             <?php endif; ?>

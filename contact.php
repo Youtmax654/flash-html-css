@@ -3,24 +3,31 @@ require 'utils/common.php';
 require SITE_ROOT . 'utils/userConnexion.php';
 
 try {
-    if (isset($_POST["contactEmail"]) && isset($_POST["contactName"])) {
+    //si les champs "contactEmail" et "contactName" sont définis dans le formulaire on récupère l'email et du pseudo 
+    if (isset($_POST["contactEmail"]) && isset($_POST["contactName"])) { 
         $email = $_POST["contactEmail"];
         $name = $_POST["contactName"];
+
+        // Vérifie si le champ "subject" est vide et définit un message d'erreur dans ce cas
         if (empty($_POST['subject'])) {
             $errorMessage = "Votre sujet est vide";
         } else {
+            //idem pour message
             if (empty($_POST['message'])) {
                 $errorMessage = "Votre message est vide";
             } else {
+                //verif du format d'email
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     throw new Exception("Le format de l'email n'est pas valide");
                 } else {
+                    //formulaire soumis ?
                     if (isset($_POST["contactSubmit"])) {
-                        $to = "powerofmemoryparis@gmail.com";
-                        $subject = $_POST["subject"];
-                        $message = "From $name ($email)\nMessage:\n" . $_POST["message"];
-                        $headers = "From: powerofmemoryparis@gmail.com";
+                        $to = "powerofmemoryparis@gmail.com"; //email de destination
+                        $subject = $_POST["subject"]; //sujet du message
+                        $message = "From $name ($email)\nMessage:\n" . $_POST["message"]; //Corps du message
+                        $headers = "From: powerofmemoryparis@gmail.com"; // En-tête du message
                     
+                        //envoie du courier et confimation d'envoie
                         if (mail($to, $subject, $message, $headers)) {
                             $errorMessage = "Votre message a bien été envoyé. Vous aurez une réponse sous 48h.";
                         }

@@ -14,14 +14,14 @@ if (!empty($_POST['register'])) {
     $password_register = $_POST['mdp'];
     $check_register = $_POST['mdp_check'];
 
-    try { //insertion des  valeurs dans la base de donnée quand les conditions du dessus sont respectées
+    try { //si conditions respectées alors insertion bdd
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             throw new Exception("Le format de l'email n'est pas valide");
         } else {
 
             $pseudoLenght = strlen($pseudo); // obtient la longueur du pseudo
 
-            if ($pseudoLenght < 4) { //le pseudo ne doit pas faire moins de 4 caractères
+            if ($pseudoLenght < 4) { 
                 throw new Exception("Votre pseudo doit contenir au moins 4 caractères");
             }
 
@@ -29,51 +29,53 @@ if (!empty($_POST['register'])) {
                 throw new Exception("Le mot de passe ne convient pas");
             } else {
 
-                $password_register = trim($password_register); //supprime les espaces blancs inutiles pour éviter un faussage du mot de passe
-                $check_register = trim($check_register); //idem
+                //supprime les espaces blancs inutiles pour éviter un faussage du mot de passe
+                $password_register = trim($password_register); 
+                $check_register = trim($check_register); 
 
                 if ($password_register !== $check_register) { //compare le mdp et le mdp de confirmation et renvoie une erreur si il est différent 
                     throw new Exception("Veuillez entrer le même mot de passe !");
                 } else {
+                    //insertion infos user dans la bdd
                     $pdoStatement = $pdo->prepare("INSERT INTO users (usersEmail,usersPassword,usersPseudo) 
                                                VALUES (:usersEmail, :usersPassword, :usersPseudo)");
-                    $usersHasBeenInserted = $pdoStatement->execute([
+                    $usersHasBeenInserted = $pdoStatement->execute([ // remplacement des paramètres nommés par les valeurs correspondantes
                         ':usersEmail' => $email,
-                        ':usersPassword' => password_hash($password_register, PASSWORD_DEFAULT),
+                        ':usersPassword' => password_hash($password_register, PASSWORD_DEFAULT), // Le mot de passe est haché avant d'être stocké
                         ':usersPseudo' => $pseudo,
                     ]);
-                    $pdoStatement = $pdo->prepare("SELECT usersId,usersPseudo FROM users 
+                    // récupération de l'identifiant (usersId) et le pseudo (usersPseudo) de l'utilisateur
+                    $pdoStatement = $pdo->prepare("SELECT usersId,usersPseudo FROM users  
                                        WHERE usersEmail = :usersEmail");
-                    $getUsersId = $pdoStatement->execute([
+                    $pdoStatement->execute([ // recherche l'utilisateur par son adresse e-mail
                         ':usersEmail' => $email
                     ]);
                     $user = $pdoStatement->fetch();
-                    if ($user !== false) {
+                    if ($user !== false) { //si utilisateur correspondant alors récupération de l'id de l'utilisateur 
                         $usersId = $user->usersId;
-                        mkdir('userFiles/' . $usersId, 0777, true);
-                        copy(SITE_ROOT. "assets/images/newUsers_pp.jpg", SITE_ROOT. "userFiles/$usersId/newUsers_pp.jpg");
+                        mkdir('userFiles/' . $usersId, 0777, true); // Crée un répertoire pour l'utilisateur dans le système de fichiers
+                        copy(SITE_ROOT. "assets/images/newUsers_pp.jpg", SITE_ROOT. "userFiles/$usersId/newUsers_pp.jpg"); // Copie une image de profil par défaut dans le répertoire de l'utilisateur
                         rename(SITE_ROOT. "userFiles/$usersId/newUsers_pp.jpg",SITE_ROOT. "userFiles/$usersId/userProfilePicture.jpg");
                     } else {
                         throw new Exception("Erreur lors de la création du compte");
                     }
-                    if (!$usersHasBeenInserted) { //sécurité en + 
+                    if (!$usersHasBeenInserted) { // Vérifie si l'insertion des données dans la base de données a échoué, sécurité en + 
                         throw new Exception("Une erreur s'est produite lors de l'insertion dans la base de données.");
                     }
                 }
             }
         }
-        session_start();
         $_SESSION["userId"] = $user->usersId;
         $_SESSION["userName"] = $user->usersPseudo;
         $_SESSION['successfulRegister'] = "Vous êtes bien inscrit !";
         header("Location: index.php");
-    } catch (Exception $e) {
-        if (strpos($e->getMessage(), 'index_email') !== false) {
+    } catch (Exception $e) { // Vérifie le message d'erreur de l'exception pour déterminer le type d'erreur
+        if (strpos($e->getMessage(), 'index_email') !== false) { //erreur email
             $errorMessage = "Cet email existe déjà !";
         }else if  (strpos($e->getMessage(), 'index_pseudo') !== false) {
             $errorMessage = "Ce nom d'utilisateur est déjà prit !";
         } else {
-            $errorMessage = "Erreur : " . $e->getMessage();
+            $errorMessage = "Erreur : " . $e->getMessage(); //autres erreurs
         }
     }
 }
