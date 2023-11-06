@@ -1,31 +1,30 @@
 <?php
 require 'utils/common.php';
-require SITE_ROOT . 'utils/database.php';
+require SITE_ROOT . 'utils/database.php'; 
 $pdo = connectToDbAndGetPdo();
+
+// Récupération de l'email de l'utilisateur actuellement connecté.
 $pdoStatement = $pdo->prepare('SELECT usersEmail FROM users WHERE `usersId` = :id');
 $pdoStatement->execute([
-    ":id" => $_SESSION["userId"],
+    ":id" => $_SESSION["userId"]
 ]);
 $usersEmail = $pdoStatement->fetch();
 
+// Traitement du formulaire de changement d'email.
 if (isset($_POST["newEmail"])) {
-    $pdo = connectToDbAndGetPdo();
+    // Vérification si le nouvel email n'est pas déjà utilisé.
     $pdoStatement = $pdo->prepare('SELECT COUNT(*) as nbr FROM users WHERE `usersEmail` = :email');
-    $pdoStatement->execute([
-        ":email" => $_POST["newEmail"],
-    ]);
+    $pdoStatement->execute([":email" => $_POST["newEmail"]]);
     $verifieEmail = $pdoStatement->fetch();
     if ($verifieEmail->nbr == 0) {
         if (filter_var($_POST["newEmail"], FILTER_VALIDATE_EMAIL)) {
-            $pdo = connectToDbAndGetPdo();
+            // Vérification du mot de passe actuel pour autoriser le changement d'email.
             $pdoStatement = $pdo->prepare('SELECT usersPassword FROM users WHERE `usersId` = :id');
-            $pdoStatement->execute([
-                ":id" => $_SESSION["userId"],
-            ]);
+            $pdoStatement->execute([":id" => $_SESSION["userId"]]);
             $user = $pdoStatement->fetch();
             if (!$user == false) {
                 if (password_verify($_POST["password"], $user->usersPassword)) {
-                    $pdo = connectToDbAndGetPdo();
+                    // Mise à jour de l'email de l'utilisateur dans la base de données.
                     $pdoStatement = $pdo->prepare('UPDATE users SET usersEmail = :newEmail WHERE usersId = :id');
                     $pdoStatement->execute([
                         ":newEmail" => $_POST["newEmail"],
@@ -44,19 +43,21 @@ if (isset($_POST["newEmail"])) {
         $MessageConnexion = "Cet email est déjà utilisé";
     }
 }
+
+// Traitement du formulaire de changement de mot de passe.
 if (isset($_POST["oldPassword"])) {
-    $pdo = connectToDbAndGetPdo();
     $pdoStatement = $pdo->prepare('SELECT * FROM users WHERE `usersId` = :id');
     $pdoStatement->execute([
-        ":id" => $_SESSION["userId"],
+        ":id" => $_SESSION["userId"]
     ]);
     $user = $pdoStatement->fetch();
     if (!$user == false) {
         if (password_verify($_POST["oldPassword"], $user->usersPassword)) {
             if ($_POST["newPassword"] === $_POST["verifiedNewPassword"]) {
+                // Validation du nouveau mot de passe.
                 $passwordPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/';
-                if (preg_match($passwordPattern, $_POST["newPassword"])) { //regarde si le format du mot de passe convient
-                    $pdo = connectToDbAndGetPdo();
+                if (preg_match($passwordPattern, $_POST["newPassword"])) {
+                    // Mise à jour du mot de passe dans la base de données.
                     $pdoStatement = $pdo->prepare('UPDATE users SET usersPassword = :newPassword WHERE usersId = :id');
                     $pdoStatement->execute([
                         ":newPassword" => password_hash($_POST["newPassword"], PASSWORD_DEFAULT),
@@ -75,6 +76,7 @@ if (isset($_POST["oldPassword"])) {
         }
     }
 }
+// Afficher un message si la photo de profil de l'utilisateur a changé
 if(isset($_SESSION['profilePictureHasChanged'])) {
     $MessageConnexion = $_SESSION['profilePictureHasChanged'];
     unset($_SESSION['profilePictureHasChanged']);
@@ -89,24 +91,27 @@ if(isset($_SESSION['profilePictureHasChanged'])) {
     <?php require SITE_ROOT . 'partials/header.php'; ?>
     <main>
         <div id="homeAccount"></div>
-        <div class="pages_banner"> <!-- Div pour la bannière des pages -->
+        <div class="pages_banner"> <!-- Bannière pour les pages -->
             <h1>MON COMPTE</h1>
         </div>
         <?php if (isset($MessageConnexion)) : ?>
             <p class="errorMessage"><?= $MessageConnexion ?></p>
         <?php endif ?>
         <div class="myAccount">
+            <!-- Affichage du profil de l'utilisateur -->
             <div class="myAccount_profile">
                 <img src="<?=PROJECT_FOLDER?>userFiles/<?=$_SESSION['userId']?>/userProfilePicture.jpg" alt="profile picture" class="profilePicture">
                 <?= "<p>$_SESSION[userName]</p>" ?>
+                <!-- Formulaire de changement de photo de profil -->
                 <form action="<?= PROJECT_FOLDER ?>utils/upload.php" method="post" enctype="multipart/form-data">
                     <p>Changer de photo de profil :</p>
                     <input type="file" name="profilePictureToUpload" id="profilePictureToUpload">
                     <input type="submit" value="Valider">
                 </form>
             </div>
+            <!-- Formulaire de changement d'email et de mot de passe -->
             <div class="myAccount_form">
-                <div class="login_form"> <!-- Div pour le formulaire de connexion-->
+                <div class="login_form"> 
                     <form action="#" method="post">
                         <label for="OldEmail"></label>
                         <input type="email" id="OldEmail" placeholder="Ancien Email : <?= $usersEmail->usersEmail ?>" readonly>
@@ -117,7 +122,7 @@ if(isset($_SESSION['profilePictureHasChanged'])) {
                         <input type="submit" value="Valider">
                     </form>
                 </div>
-                <div class="login_form"> <!-- Div pour le formulaire de connexion-->
+                <div class="login_form"> 
                     <form action="#" method="post">
                         <label for="OldPassword"></label>
                         <input type="password" id="OldPassword" name="oldPassword" placeholder="Ancien Mot de passe">
@@ -134,5 +139,4 @@ if(isset($_SESSION['profilePictureHasChanged'])) {
     </main>
     <?php require SITE_ROOT . 'partials/footer.php'; ?>
 </body>
-
 </html>

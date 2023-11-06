@@ -369,6 +369,7 @@ button, [type="button"], [type="reset"], [type="submit"] {
     border-radius: 0.2vw;
     cursor: pointer;
     transition: 0.5s;
+    font-size: 1.2vw;
 }
 
 input#profilePictureToUpload {
@@ -786,7 +787,6 @@ input#profilePictureToUpload {
 }
 
 input.send {
-    
     width: 6vw;
     height: 2.5vw;
     color: black;
@@ -827,7 +827,14 @@ table#big img {
 form.scoresSearchBar {
     display:flex; 
     align-items:center; 
-    flex-direction:column
+    flex-direction:column;
+    font-size: 1.2vw;
+}
+
+input#scoresSearch {
+    margin:2vw;
+    width: 40vw;
+    padding: 0.5vw;
 }
 
 .scores_table {
