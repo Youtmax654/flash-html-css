@@ -801,6 +801,22 @@ input.send {
 .tableGame {
     margin: 50px auto;
     border-spacing: 1vw;
+    display: flex;
+    justify-content: center;
+}
+
+.tableGame td.card .frontCard { 
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.tableGame td.card .backCard {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
 }
 
 .tableGame tr td img {
@@ -808,6 +824,22 @@ input.send {
     height: 6vw;
     margin: 0 auto;
     display: block;
+}
+
+.tableGame .card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: all 0.8s ease;
+}
+
+.tableGame .card:hover {
+    cursor: pointer;
+}
+
+.tableGame .flipCard {
+    transform: rotateY(180deg);
 }
 
 table#big img {
