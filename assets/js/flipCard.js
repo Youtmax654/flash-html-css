@@ -47,9 +47,12 @@ if (document.querySelectorAll("tr")) {
                 if (isFlippedLength === cardsLength) {
                     clearInterval(intervalId);
                     setTimeout(function () {
-                        alert("Vous avez un scores de : " + minutes + " minutes, " + sec + " secondes et " + time + " ms")
-                        var usersScores = minutes * 60 + sec * 100 + time
-                        console.log(usersScores)
+                        let usersMemoryScoresText = "Vous avez un score de " + minutes + " minutes, " + sec + " secondes et " + time + " ms";
+                        let usersMemoryScores = (minutes * 60 + sec) * 100 + time;
+                        let popup = document.getElementById("popup");
+                        let popupScores = document.getElementById("score");
+                        popupScores.innerText = usersMemoryScoresText;
+                        popup.classList.add('appear');
                     }, 800);
                 }
             }
@@ -74,4 +77,21 @@ function timer() {
     }
     timerElement.innerText = (minutes < 10 ? "0" : "") + minutes + ":" + (sec < 10 ? "0" : "") + sec + ":" + (time < 10 ? "0" : "") + time;
     time++;
+}
+
+function replayMemory() {
+    document.querySelector('.tableGame').innerHTML = "";
+    createTable();
+    cards.forEach(function (card) {
+    card.classList.remove("flipCard");
+    isFlipped.pop(card);
+    nbClick = 0;
+    selectedCards = [];
+    time = 0;
+    sec = 0;
+    minutes = 0;
+    timerElement.innerText = "00:00:00";
+    popup.classList.remove('appear');
+    timerStarted = false;
+    })
 }

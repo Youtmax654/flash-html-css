@@ -366,7 +366,7 @@ button, [type="button"], [type="reset"], [type="submit"] {
     color: white;
     background-color: rgb(236, 146, 36);
     border: none;
-    border-radius: 0.2vw;
+    border-radius: 5px;
     cursor: pointer;
     transition: 0.5s;
     font-size: 1.2vw;
@@ -438,11 +438,10 @@ input#profilePictureToUpload {
     cursor: pointer;
     transition: 0.5s;
 }
-.login_form input:last-of-type:hover,
-.register_form input:last-of-type:hover {
+button:hover,
+input:last-of-type:hover {
     color: rgb(236, 146, 36);
     background-color: white;
-
 }
 /* contact.html */
 .contact_infos {
@@ -798,12 +797,52 @@ input.send {
 }
 
 #timer {
+    visibility: hidden;
     display: flex;
     justify-content: center;
     margin: 2vw auto;
     font-size: 1.5vw;
     font-weight: bold;
     color: white;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40vw;
+    width: 80vw;
+    font-size: 3vw;
+    background-color: rgba(180, 187, 217, 255);
+    padding: 8vw;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 999;
+    transition: all 1s ease;
+    transform:scale(0.2);
+}
+
+.popup button {
+    width: 16vw;
+    height: 5vw;
+    font-size: 3vw;
+}
+
+.popup.appear {
+    display: block;
+    transform:scale(0.5);
+    transition: all 1s ease;
+}
+
+.popup button {
+    margin: 1vw;
 }
 
 .tableGame {

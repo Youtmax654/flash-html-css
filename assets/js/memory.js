@@ -6,7 +6,9 @@ let difficulty = document.getElementById("difficulty");
 let submit = document.getElementById("submit");
 let TableauDeJeu = document.querySelectorAll(".tableGame")[0];
 let gameChoice = document.getElementById("gameChoice");
-submit.addEventListener("click", function () {
+submit.addEventListener("click", createTable)
+
+function createTable() {
     gameChoice.classList.add("hidden");
     let ChoiceTheme;
     let TailleGrille;
@@ -107,4 +109,8 @@ submit.addEventListener("click", function () {
     let newScript = document.createElement("script");
     newScript.src = "/flash_memory/assets/js/flipCard.js";
     document.body.appendChild(newScript);
-});
+
+    // Afficher le timer
+    let timer = document.getElementById('timer');
+    timer.style.visibility = "visible";
+}
