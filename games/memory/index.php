@@ -13,19 +13,21 @@ require SITE_ROOT . 'utils/userConnexion.php';
         <div class="pages_banner"> <!-- Div pour la bannière des pages -->
             <h1>JEU</h1>
         </div>
-        <form>
-            <select name="theme" id="theme">
-                <option value="JV">Jeux Vidéo</option>
-                <option value="Fruit">Fruit</option>
-                <option value="Animaux">Animaux</option>
-            </select>
-            <select name="difficulty" id="difficulty">
-                <option value="1">Facile</option>
-                <option value="2">Moyen</option>
-                <option value="3">Difficile</option>
-            </select>
-        </form>
-        <button id="submit">Submit</button>
+        <div id="gameChoice">
+           <form>
+                <select name="theme" id="theme">
+                    <option value="JV">Jeux Vidéo</option>
+                    <option value="Fruit">Fruit</option>
+                    <option value="Animaux">Animaux</option>
+                </select>
+                <select name="difficulty" id="difficulty">
+                    <option value="1">Facile</option>
+                    <option value="2">Moyen</option>
+                    <option value="3">Difficile</option>
+                </select>
+            </form>
+            <button id="submit">Submit</button> 
+        </div>
         <table class="tableGame">
 
         </table>
