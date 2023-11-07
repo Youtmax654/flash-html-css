@@ -18,6 +18,8 @@ if (!isset($_SESSION['userId'])) {
         <div class="pages_banner"> <!-- Div pour la bannière des pages -->
             <h1>JEU</h1>
         </div>
+        
+        <div id="timer">00:00:00</div>
         <table class="tableGame">
             <tr>
                 <td class="card">
@@ -41,7 +43,7 @@ if (!isset($_SESSION['userId'])) {
                         <img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte">
                     </div>
                     <div class="backCard">
-                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/osu" alt="face de la carte">
+                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/csgo.png" alt="face de la carte">
                     </div>
                 </td>
                 <td class="card">
@@ -49,41 +51,7 @@ if (!isset($_SESSION['userId'])) {
                         <img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte">
                     </div>
                     <div class="backCard">
-                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/osu" alt="face de la carte">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="card">
-                    <div class="frontCard">
-                        <img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte">
-                    </div>
-                    <div class="backCard">
-                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/osu" alt="face de la carte">
-                    </div>
-                </td>
-                <td class="card">
-                    <div class="frontCard">
-                        <img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte">
-                    </div>
-                    <div class="backCard">
-                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/osu" alt="face de la carte">
-                    </div>
-                </td>
-                <td class="card">
-                    <div class="frontCard">
-                        <img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte">
-                    </div>
-                    <div class="backCard">
-                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/osu" alt="face de la carte">
-                    </div>
-                </td>
-                <td class="card">
-                    <div class="frontCard">
-                        <img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte">
-                    </div>
-                    <div class="backCard">
-                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/osu" alt="face de la carte">
+                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/csgo.png" alt="face de la carte">
                     </div>
                 </td>
             </tr>
@@ -93,7 +61,7 @@ if (!isset($_SESSION['userId'])) {
                         <img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte">
                     </div>
                     <div class="backCard">
-                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/osu" alt="face de la carte">
+                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/valorant.jpg" alt="face de la carte">
                     </div>
                 </td>
                 <td class="card">
@@ -101,7 +69,7 @@ if (!isset($_SESSION['userId'])) {
                         <img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte">
                     </div>
                     <div class="backCard">
-                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/osu" alt="face de la carte">
+                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/valorant.jpg" alt="face de la carte">
                     </div>
                 </td>
                 <td class="card">
@@ -109,7 +77,7 @@ if (!isset($_SESSION['userId'])) {
                         <img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte">
                     </div>
                     <div class="backCard">
-                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/osu" alt="face de la carte">
+                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/overwatch.jpg" alt="face de la carte">
                     </div>
                 </td>
                 <td class="card">
@@ -117,7 +85,7 @@ if (!isset($_SESSION['userId'])) {
                         <img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte">
                     </div>
                     <div class="backCard">
-                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/osu" alt="face de la carte">
+                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/overwatch.jpg" alt="face de la carte">
                     </div>
                 </td>
             </tr>
@@ -127,7 +95,7 @@ if (!isset($_SESSION['userId'])) {
                         <img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte">
                     </div>
                     <div class="backCard">
-                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/osu" alt="face de la carte">
+                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/minecraft.png" alt="face de la carte">
                     </div>
                 </td>
                 <td class="card">
@@ -135,7 +103,7 @@ if (!isset($_SESSION['userId'])) {
                         <img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte">
                     </div>
                     <div class="backCard">
-                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/osu" alt="face de la carte">
+                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/minecraft.png" alt="face de la carte">
                     </div>
                 </td>
                 <td class="card">
@@ -143,7 +111,7 @@ if (!isset($_SESSION['userId'])) {
                         <img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte">
                     </div>
                     <div class="backCard">
-                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/osu" alt="face de la carte">
+                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/lol.jpg" alt="face de la carte">
                     </div>
                 </td>
                 <td class="card">
@@ -151,7 +119,41 @@ if (!isset($_SESSION['userId'])) {
                         <img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte">
                     </div>
                     <div class="backCard">
-                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/osu" alt="face de la carte">
+                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/lol.jpg" alt="face de la carte">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="card">
+                    <div class="frontCard">
+                        <img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte">
+                    </div>
+                    <div class="backCard">
+                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/fortnite.png" alt="face de la carte">
+                    </div>
+                </td>
+                <td class="card">
+                    <div class="frontCard">
+                        <img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte">
+                    </div>
+                    <div class="backCard">
+                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/fortnite.png" alt="face de la carte">
+                    </div>
+                </td>
+                <td class="card">
+                    <div class="frontCard">
+                        <img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte">
+                    </div>
+                    <div class="backCard">
+                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/assassin.png" alt="face de la carte">
+                    </div>
+                </td>
+                <td class="card">
+                    <div class="frontCard">
+                        <img src="<?=PROJECT_FOLDER?>assets/images/carte.png" alt="dos de carte">
+                    </div>
+                    <div class="backCard">
+                        <img src="<?=PROJECT_FOLDER?>assets/images/jeux-videos/assassin.png" alt="face de la carte">
                     </div>
                 </td>
             </tr>
