@@ -26,7 +26,7 @@ require SITE_ROOT . 'utils/userConnexion.php';
                     <option value="3">Difficile</option>
                 </select>
             </form>
-            <button id="submit">Submit</button> 
+            <button id="submitGame">Submit</button> 
         </div>
         <table class="tableGame">
 
@@ -34,5 +34,6 @@ require SITE_ROOT . 'utils/userConnexion.php';
     </main>
     <?php require SITE_ROOT. 'partials/footer.php';?>
     <script src="<?= PROJECT_FOLDER . "assets/js/memory.js" ?>"></script>
+    <script src="<?= PROJECT_FOLDER . "assets/js/chat.js" ?>"></script>
 </body>
 </html>

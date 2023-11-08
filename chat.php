@@ -39,6 +39,7 @@ if (isset($_POST["submitChatMessage"])) {
             <p><span>Chat général</span></p>
             <img src="<?= $catApi->url ?>" alt="a cute cat" class="cuteCat">
         </div>
+        <input type="hidden" id="SessionId" value="<?= $_SESSION["userId"] ?>">
         <div class="tchat_body">
             <div class="msger-tchat">
                 <?php
@@ -73,10 +74,10 @@ if (isset($_POST["submitChatMessage"])) {
             <div class="tchat-body-bottom">
                 <div class="msg-write">
                     <div class="msg-write-form">
-                        <form method="post">
+                        <form>
                             <label for="chatMessage"></label>
-                            <input type="text" name="chatMessage" placeholder="Votre message..." required="required">
-                            <input type="submit" name="submitChatMessage" value="Envoyer" class="send">
+                            <input type="text" name="chatMessage" id="TextPlace" placeholder="Votre message..." required="required">
+                            <input type="text" name="submitChatMessage" id="submit" value="Envoyer" class="send" readonly>
                         </form>
                     </div>
                 </div>
