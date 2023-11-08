@@ -659,7 +659,6 @@ input:last-of-type:hover {
 
 .msger-tchat {
     display: flex;
-    margin-top: 1vw;
     height: 22vw;
     overflow: scroll;
     overflow-x: hidden;
@@ -694,6 +693,9 @@ input:last-of-type:hover {
     border-radius: 10px;
     font-size: 0.9vw;
     color: black;
+    width: fit-content;
+    max-width: 10vw;
+    word-wrap:break-word;
 }
 
 .msg-info-name,.msg-info-time {
@@ -727,6 +729,8 @@ input:last-of-type:hover {
     font-size: 0.9vw;
     color: white;
     width: fit-content;
+    max-width: 12vw;
+    word-wrap:break-word;
 }
 
 .msg-right-msg .msg-info-name {

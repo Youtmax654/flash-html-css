@@ -4,7 +4,7 @@ if (isset($_SESSION['userId'])) {
     header("Location: index.php");
 }
 require SITE_ROOT . 'utils/database.php';
-$pdo = connectToDbAndGetPdo();
+$pdo = connectToDbAndGetPdo();  
 
 $passwordPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/';
 

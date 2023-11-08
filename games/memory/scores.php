@@ -74,7 +74,7 @@ $scores = $pdoStatement->fetchAll();
                             <td><?= $score->gameName ?></td>
                             <td><?= $score->usersPseudo ?></td>
                             <td><?= $score->scoresDifficulty ?></td>
-                            <td><?= number_format($score->scoresPoints / 1000, 2) . " sec" ?></td>
+                            <td><?= $score->scoresPoints > 5999 ? floor($score->scoresPoints / 6000)." min et ".number_format($score->scoresPoints % 6000 /100, 2)." sec" : $score->scoresPoints / 100 ." sec" ?></td>
                             <td><?= $score->DateScores ?></td>
                         </tr>
                     <?php endforeach ?>

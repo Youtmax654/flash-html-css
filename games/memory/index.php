@@ -1,10 +1,33 @@
 <?php
 require '../../utils/common.php';
-require SITE_ROOT . 'utils/userConnexion.php';
+
+require SITE_ROOT . 'utils/database.php';
+$pdo = connectToDbAndGetPdo();
 
 // Vérification si l'utilisateur est déjà connecté en vérifiant la présence de la variable de session 'userId', si oui -> redirection 
 if (!isset($_SESSION['userId'])) {
     header("Location: " . PROJECT_FOLDER . "login.php");
+}
+// Envoie des données vers la base de données
+if(isset($_POST['usersMemoryScores'])) {
+    $usersMemoryScores = $_POST['usersMemoryScores'];
+    $memoryDifficulty = $_POST['memoryDifficulty'];
+    $insertScores = $pdo->prepare("UPDATE scores SET scoresPoints = :scoresPoints, scoresDate = DEFAULT
+                                   WHERE usersId = :usersId AND gameId = :gameId AND scoresDifficulty = :scoresDifficulty;
+                                   
+                                   INSERT INTO scores (`usersId`,`gameId`,`scoresDifficulty`,`scoresPoints`)
+                                   SELECT :usersId, :gameId, :scoresDifficulty, :scoresPoints
+                                   WHERE NOT EXISTS (SELECT 1
+                                                     FROM scores
+                                                     WHERE usersId = :usersId
+                                                     AND gameId = :gameId
+                                                     AND scoresDifficulty = :scoresDifficulty)");
+    $scoresHasBeenInserted = $insertScores->execute([
+        ':scoresPoints' => $usersMemoryScores,
+        ':usersId' => $_SESSION['userId'],
+        ':gameId' => 1,
+        ':scoresDifficulty' => $memoryDifficulty,
+    ]);
 }
 ?>
 

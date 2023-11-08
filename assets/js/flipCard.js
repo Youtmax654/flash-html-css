@@ -51,8 +51,16 @@ if (document.querySelectorAll("tr")) {
                         let usersMemoryScores = (minutes * 60 + sec) * 100 + time;
                         let popup = document.getElementById("popup");
                         let popupScores = document.getElementById("score");
+                        let difficulty = document.getElementById("difficulty");
                         popupScores.innerText = usersMemoryScoresText;
                         popup.classList.add('appear');
+                        // Partie AJAX pour envoyer les données vers la base de données
+                        let memoryDifficulty = difficulty.value;
+                        $.ajax({
+                            type: "POST",
+                            url: "/flash_memory/games/memory/index.php",
+                            data: "usersMemoryScores=" + usersMemoryScores + "&memoryDifficulty=" + memoryDifficulty,
+                        });
                     }, 800);
                 }
             }
@@ -83,15 +91,15 @@ function replayMemory() {
     document.querySelector('.tableGame').innerHTML = "";
     createTable();
     cards.forEach(function (card) {
-    card.classList.remove("flipCard");
-    isFlipped.pop(card);
-    nbClick = 0;
-    selectedCards = [];
-    time = 0;
-    sec = 0;
-    minutes = 0;
-    timerElement.innerText = "00:00:00";
-    popup.classList.remove('appear');
-    timerStarted = false;
+        card.classList.remove("flipCard");
+        isFlipped.pop(card);
+        nbClick = 0;
+        selectedCards = [];
+        time = 0;
+        sec = 0;
+        minutes = 0;
+        timerElement.innerText = "00:00:00";
+        popup.classList.remove('appear');
+        timerStarted = false;
     })
 }
