@@ -9,12 +9,13 @@ if (!isset($_SESSION['userId'])) {
     header("Location: " . PROJECT_FOLDER . "login.php");
 }
 // Envoie des données vers la base de données
-if(isset($_POST['usersMemoryScores'])) {
+if (isset($_POST['usersMemoryScores'])) {
     $usersMemoryScores = $_POST['usersMemoryScores'];
     $memoryDifficulty = $_POST['memoryDifficulty'];
-    $getUsersScore = $pdo->prepare("SELECT scoresPoints
-                                    FROM scores
-                                    WHERE usersId = :usersId AND gameId = :gameId AND scoresDifficulty = :scoresDifficulty;");
+    $getUsersScore = $pdo->prepare("SELECT scoresPoints FROM scores
+                                    WHERE usersId = :usersId 
+                                    AND gameId = :gameId 
+                                    AND scoresDifficulty = :scoresDifficulty;");
     $getUsersScore->execute([
         ':usersId' => $_SESSION['userId'],
         ':gameId' => 1,
@@ -22,18 +23,23 @@ if(isset($_POST['usersMemoryScores'])) {
     ]);
     $actualUsersScore = $getUsersScore->fetch();
 
-    echo $actualUsersScore->scoresPoints;
-    if($actualUsersScore->scoresPoints === false || $usersMemoryScores < $actualUsersScore->scoresPoints) {
-        $insertScores = $pdo->prepare("UPDATE scores SET scoresPoints = :scoresPoints, scoresDate = DEFAULT
-                                       WHERE usersId = :usersId AND gameId = :gameId AND scoresDifficulty = :scoresDifficulty;
-                                       
-                                       INSERT INTO scores (`usersId`,`gameId`,`scoresDifficulty`,`scoresPoints`)
-                                       SELECT :usersId, :gameId, :scoresDifficulty, :scoresPoints
-                                       WHERE NOT EXISTS (SELECT 1
-                                                         FROM scores
-                                                         WHERE usersId = :usersId
-                                                         AND gameId = :gameId
-                                                         AND scoresDifficulty = :scoresDifficulty)");
+    echo $getUsersScore->rowCount();
+    if ($getUsersScore->rowCount() === 1) {
+        if ($actualUsersScore->scoresPoints > $usersMemoryScores) {
+            $updateScores = $pdo->prepare("UPDATE scores SET scoresPoints = :scoresPoints, scoresDate = DEFAULT
+                                       WHERE usersId = :usersId 
+                                       AND gameId = :gameId 
+                                       AND scoresDifficulty = :scoresDifficulty");
+            $updateScores->execute([
+                ':scoresPoints' => $usersMemoryScores,
+                ':usersId' => $_SESSION['userId'],
+                ':gameId' => 1,
+                ':scoresDifficulty' => $memoryDifficulty,
+            ]);
+        }
+    } elseif ($getUsersScore->rowCount() === 0) {
+        $insertScores = $pdo->prepare("INSERT INTO scores (`usersId`,`gameId`,`scoresDifficulty`,`scoresPoints`)
+                                       VALUES (:usersId, :gameId, :scoresDifficulty, :scoresPoints)");
         $insertScores->execute([
             ':scoresPoints' => $usersMemoryScores,
             ':usersId' => $_SESSION['userId'],

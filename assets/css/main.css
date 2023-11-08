@@ -919,8 +919,7 @@ form.scoresSearchBar {
 }
 
 input#scoresSearch {
-    margin:2vw;
-    width: 40vw;
+    width: 12vw;
     padding: 0.5vw;
 }
 
@@ -994,6 +993,99 @@ input#scoresSearch {
     height: 2vw;
     border-radius: 10px;
 }
+
+/* Dropdown */
+/* Dropdown Button */
+.dropbtn {
+    background-color: rgba(14, 11, 38, 255);
+    color: rgb(236, 146, 36);
+    border: none;
+    cursor: pointer;  
+    width: 10vw;
+    height: 4vw;
+    border-radius: 0px;
+    transition: 0.5s;
+    font-size: 1.2vw;
+    font-weight: 1000;
+    position: relative;
+  }
+
+  td .dropbtn .fa-chevron-down {
+    position: absolute;
+    right: 0.5vw;
+    top: 35%;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    color: white;
+    background-color: rgb(236, 146, 36);
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: grey;
+    min-width: 10vw;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #ddd;}
+
+  .dropcontentbtn {
+    background-color: rgb(206, 206, 206);
+    color: black;
+    border: none;
+    cursor: pointer;
+    width: 10vw;
+    height: 4vw;
+    border-radius: 0px;
+    transition: 0.5s;
+    font-size: 1.2vw;
+    font-weight: 1000;
+}
+
+#searchBar {
+    background-color: rgb(206, 206, 206);
+    color: black;
+    border: none;
+    cursor: pointer;
+    width: 10vw;
+    height: 4vw;
+    border-radius: 0px;
+    transition: 0.5s;
+    font-size: 1.2vw;
+    font-weight: 1000;
+}
+
+    .dropcontentbtn:hover, .dropcontentbtn:focus {
+        background-color: rgb(179, 179, 179);
+        color: black;
+    }
+  
+  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+  .show {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* Media Quieries */
 @media screen and (max-width: 468px) {
     .pages_banner {
