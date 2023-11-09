@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Bar</title>
+    <link rel="stylesheet" href="assets/css/strongbar.css">
+</head>
+<body>
+
+    <div class="password">
+        <label for="password_register" style="width: 400px; margin: auto;"></label>
+        <input type="password" id="password_register" name="mdp" placeholder="Mot de passe" onkeyup="passwordStrength(this.value)" required />
+        <div class="strongbar" id="password-strength-bar"></div>
+        <small class="help-block" id="password-text"></small>
+    </div>
+
+    <script src="assets/js/strongbar.js"></script>
+</body>
+</html>
