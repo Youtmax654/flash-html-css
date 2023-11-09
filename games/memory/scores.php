@@ -18,54 +18,6 @@ $pdoStatement = $pdo->prepare('SELECT gameName, usersPseudo, scoresDifficulty, s
                                ORDER BY gameName ASC, scoresDifficulty DESC, scoresPoints ASC');
 $pdoStatement->execute();
 $scores = $pdoStatement->fetchAll();
-// if (isset($_POST['gameId']) && isset($_POST['searchValue']) && isset($_POST['gameDifficulty'])) {
-//     $pdoStatement = $pdo->prepare('SELECT gameName, usersPseudo, scoresDifficulty, scoresPoints, users.usersId,
-//                                    DATE_FORMAT(scoresDate, "%d/%m/%Y à %Hh%i") AS DateScores
-//                                    FROM scores
-//                                    INNER JOIN game
-//                                    ON scores.gameId = game.gameId
-//                                    INNER JOIN users
-//                                    ON scores.usersId = users.usersId
-//                                    WHERE gameId = :gameId
-//                                    AND usersPseudo LIKE "%:searchValue%"
-//                                    AND scoresDifficulty = :scoresDifficulty
-//                                    ORDER BY gameName ASC, scoresDifficulty DESC, scoresPoints ASC');
-//     $pdoStatement->execute([
-//         ':gameId' => $_POST['gameId'],
-//         ':searchValue' => $_POST['searchValue'],
-//         ':scoresDifficulty' => $_POST['gameDifficulty']
-//     ]);
-//     $scores = $pdoStatement->fetchAll();
-// }  else
-if (isset($_POST['gameId'])) {
-    $pdoStatement = $pdo->prepare('SELECT gameName, usersPseudo, scoresDifficulty, scoresPoints, users.usersId,
-                                   DATE_FORMAT(scoresDate, "%d/%m/%Y à %Hh%i") AS DateScores
-                                   FROM scores
-                                   INNER JOIN game
-                                   ON scores.gameId = game.gameId
-                                   INNER JOIN users
-                                   ON scores.usersId = users.usersId
-                                   WHERE gameId = :gameId
-                                   ORDER BY gameName ASC, scoresDifficulty DESC, scoresPoints ASC');
-    $pdoStatement->execute([
-        ':gameId' => $_POST['gameId'],
-    ]);
-    $scores = $pdoStatement->fetchAll();
-} elseif (isset($_GET['searchValue'])) {
-    $pdoStatement = $pdo->prepare('SELECT gameName, usersPseudo, scoresDifficulty, scoresPoints, users.usersId,
-                                   DATE_FORMAT(scoresDate, "%d/%m/%Y à %Hh%i") AS DateScores
-                                   FROM scores
-                                   INNER JOIN game
-                                   ON scores.gameId = game.gameId
-                                   INNER JOIN users
-                                   ON scores.usersId = users.usersId
-                                   WHERE usersPseudo LIKE "%":searchValue"%"
-                                   ORDER BY gameName ASC, scoresDifficulty DESC, scoresPoints ASC');
-    $pdoStatement->execute([
-        ':searchValue' => $_GET['searchValue'],
-    ]);
-    $scores = $pdoStatement->fetchAll();
-}
 ?>
 
 <!DOCTYPE html>
@@ -103,42 +55,40 @@ if (isset($_POST['gameId'])) {
                 <thead>
                     <tr>
                         <td>
-                            <button onclick="gameDropdown()" class="dropbtn">Jeu<i class="fa fa-chevron-down"></i></button>
+                            <button id="gameDropdownBtn" class="dropbtn">Jeu<i class="fa fa-chevron-down game"></i></button>
                             <div id="gameDropdown" class="dropdown-content">
-                                <button onclick="firstGame()" class="dropcontentbtn">Power of Memory</button>
-                                <button onclick="secondGame()" class="dropcontentbtn">2048</button>
+                                <button id="firstGame" class="dropcontentbtn">Power of Memory</button>
+                                <button id="secondGame" class="dropcontentbtn">2048</button>
                             </div>
                         </td>
                         <td>
-                            <button onclick="pseudoDropdown()" class="dropbtn">Pseudo<i class="fa fa-chevron-down"></i></button>
+                            <button id="pseudoDropdownBtn" class="dropbtn">Pseudo<i class="fa fa-chevron-down pseudo"></i></button>
                             <div id="pseudoDropdown" class="dropdown-content">
-                                <input type="search" onkeyup="pseudoSearch()" name="scoresSearch" id="scoresSearch" class="scoresSearch" placeholder="Recherche...">
+                                <input type="search" name="scoresSearch" id="scoresSearch" class="scoresSearch" placeholder="Recherche...">
                             </div>
                         </td>
                         <td>
-                            <button onclick="difficultyDropdown()" class="dropbtn">Difficulté<i class="fa fa-chevron-down"></i></button>
+                            <button id="difficultyDropdownBtn" class="dropbtn">Difficulté<i class="fa fa-chevron-down difficulty"></i></button>
                             <div id="difficultyDropdown" class="dropdown-content">
-                                <button onclick="easyDifficulty()" class="dropcontentbtn">Facile</button>
-                                <button onclick="mediumDifficulty()" class="dropcontentbtn">Moyen</button>
-                                <button onclick="hardDifficulty()" class="dropcontentbtn">Difficile</button>
+                                <button id="easyDifficulty" class="dropcontentbtn">Facile</button>
+                                <button id="mediumDifficulty" class="dropcontentbtn">Moyen</button>
+                                <button id="hardDifficulty" class="dropcontentbtn">Difficile</button>
                             </div>
                         </td>
                         <td>Score</td>
                         <td>Date et heure</td>
                     </tr>
                 </thead>
-                <tbody>
-                    <div id="scoresTable">
-                        <?php foreach ($scores as $score) : ?>
-                            <tr style="<?= $connectedUsersId == $score->usersId ? 'background-color: rgba(22, 17, 60, 255); color: white;' : ''; ?>">
-                                <td><?= $score->gameName ?></td>
-                                <td><?= $score->usersPseudo ?></td>
-                                <td><?= $score->scoresDifficulty == 1 ? "Facile" : ($score->scoresDifficulty == 2 ? "Moyen" : "Difficile") ?></td>
-                                <td><?= $score->scoresPoints > 5999 ? floor($score->scoresPoints / 6000) . " min et " . number_format($score->scoresPoints % 6000 / 100, 2) . " sec" : number_format($score->scoresPoints / 100, 2) . " sec" ?></td>
-                                <td><?= $score->DateScores ?></td>
-                            </tr>
-                        <?php endforeach ?>
-                    </div>
+                <tbody id="scoresTable">
+                    <?php foreach ($scores as $score) : ?>
+                        <tr style="<?= $connectedUsersId == $score->usersId ? 'background-color: rgba(22, 17, 60, 255); color: white;' : ''; ?>">
+                            <td><?= $score->gameName ?></td>
+                            <td><?= $score->usersPseudo ?></td>
+                            <td><?= $score->scoresDifficulty == 1 ? "Facile" : ($score->scoresDifficulty == 2 ? "Moyen" : "Difficile") ?></td>
+                            <td><?= $score->scoresPoints > 5999 ? floor($score->scoresPoints / 6000) . " min et " . number_format($score->scoresPoints % 6000 / 100, 2) . " sec" : number_format($score->scoresPoints / 100, 2) . " sec" ?></td>
+                            <td><?= $score->DateScores ?></td>
+                        </tr>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>

@@ -1010,13 +1010,13 @@ input#scoresSearch {
     position: relative;
   }
 
-  td .dropbtn .fa-chevron-down {
+  td .dropbtn .fa {
     position: absolute;
     right: 0.5vw;
     top: 35%;
   }
   
-  .dropbtn:hover, .dropbtn:focus {
+  .dropbtn:hover, .dropbtn.focus {
     color: white;
     background-color: rgb(236, 146, 36);
   }
@@ -1061,6 +1061,10 @@ input#scoresSearch {
     font-weight: 1000;
 }
 
+.scores_table .checked {
+    background-color: green;
+}
+
 #searchBar {
     background-color: rgb(206, 206, 206);
     color: black;
@@ -1074,13 +1078,13 @@ input#scoresSearch {
     font-weight: 1000;
 }
 
-    .dropcontentbtn:hover, .dropcontentbtn:focus {
+    .dropcontentbtn:hover {
         background-color: rgb(179, 179, 179);
         color: black;
     }
   
   /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-  .show {
+  .showDropdown {
     display: flex;
     flex-direction: column;
     align-items: center;
