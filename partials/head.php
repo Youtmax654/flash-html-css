@@ -6,4 +6,6 @@
     <link rel="stylesheet" href="<?=PROJECT_FOLDER?>assets/css/header.css">
     <link rel="stylesheet" href="<?=PROJECT_FOLDER?>assets/css/main.css">
     <link rel="stylesheet" href="<?=PROJECT_FOLDER?>assets/css/footer.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    <script src="<?=PROJECT_FOLDER?>assets/js/dropdown.js"></script>
 </head>
