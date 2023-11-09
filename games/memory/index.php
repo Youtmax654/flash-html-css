@@ -29,7 +29,7 @@ require SITE_ROOT . 'utils/userConnexion.php';
             <button id="submitGame">Submit</button> 
         </div>
         <table class="tableGame">
-
+            
         </table>
     </main>
     <?php require SITE_ROOT. 'partials/footer.php';?>
