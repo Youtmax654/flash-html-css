@@ -202,19 +202,27 @@ submitGame.addEventListener("click", function(){
 document.addEventListener("keyup", function(){
     if(playable){
         switch(event.key){
-            case "z","i":
+            case "z":
+            case "i":
+            case "ArrowUp":
                 Move(AllCase,"up");
                 GenerateRandom(AllCase);
                 break;
-            case "s","k":
+            case "s":
+            case "k":
+            case "ArrowDown":
                 Move(AllCase, "down");
                 GenerateRandom(AllCase);
                 break;
-            case "q","j":
+            case "q":
+            case "j":
+            case "ArrowLeft":
                 Move(AllCase, "left");
                 GenerateRandom(AllCase);
                 break;
-            case "d","l":
+            case "d":
+            case "l":
+            case "ArrowRight":
                 Move(AllCase, "right");
                 GenerateRandom(AllCase);
                 break;
