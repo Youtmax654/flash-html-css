@@ -85,7 +85,12 @@ $scores = $pdoStatement->fetchAll();
                             <td><?= $score->gameName ?></td>
                             <td><?= $score->usersPseudo ?></td>
                             <td><?= $score->scoresDifficulty == 1 ? "Facile" : ($score->scoresDifficulty == 2 ? "Moyen" : "Difficile") ?></td>
-                            <td><?= $score->scoresPoints > 5999 ? floor($score->scoresPoints / 6000) . " min et " . number_format($score->scoresPoints % 6000 / 100, 2) . " sec" : number_format($score->scoresPoints / 100, 2) . " sec" ?></td>
+                            <td> <?php if($score->gameName === "Power of Memory") {
+                                echo $score->scoresPoints > 5999 ? floor($score->scoresPoints / 6000) . " min et " . number_format($score->scoresPoints % 6000 / 100, 2) . " sec" : number_format($score->scoresPoints / 100, 2) . " sec";
+                            } elseif($score->gameName === "2048") {
+                                echo $score->scoresPoints;
+                            } ?>
+                            </td>
                             <td><?= $score->DateScores ?></td>
                         </tr>
                     <?php endforeach ?>

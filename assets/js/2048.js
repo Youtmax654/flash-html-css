@@ -11,87 +11,98 @@ function isGameOver(Table) {
     for (let i = 0; i < Table.length; i++) {
         for (let j = 0; j < Table[i].length; j++) {
             if (Table[i][j].firstChild.innerText == "") {
-                return false; 
+                return false;
             }
             if ((j > 0 && Table[i][j].firstChild.innerText == Table[i][j - 1].firstChild.innerText) ||
                 (j < Table[i].length - 1 && Table[i][j].firstChild.innerText == Table[i][j + 1].firstChild.innerText) ||
                 (i > 0 && Table[i][j].firstChild.innerText == Table[i - 1][j].firstChild.innerText) ||
                 (i < Table.length - 1 && Table[i][j].firstChild.innerText == Table[i + 1][j].firstChild.innerText)) {
-                return false; 
+                return false;
             }
         }
     }
-    return true; 
+    return true;
 }
 function checkGameOver() {
     if (isGameOver(AllCase)) {
-        alert("Partie Terminée, votre score est de " + score)
+        let game2048ScoresText = "Votre score est de " + score;
+        let popup = document.getElementById("popup");
+        let popupScores = document.getElementById("score");
+        popupScores.innerText = game2048ScoresText;
+        popup.classList.add('appear');
+        // Partie AJAX pour envoyer les données vers la base de données
+        game2048Difficulty = difficulty.value;
+        $.ajax({
+            type: "POST",
+            url: "/flash_memory/games/2048/index.php",
+            data: "users2048Scores=" + score + "&game2048Difficulty=" + game2048Difficulty,
+        });
     }
 }
-function ChangeClass(){
+function ChangeClass() {
     let p = document.querySelectorAll("#tableGame2048 tr td p");
-    let randomColor = (Math.floor(Math.random()*0xFFFFFF)).toString(16).padStart(6, 0);
+    let randomColor = (Math.floor(Math.random() * 0xFFFFFF)).toString(16).padStart(6, 0);
     p.forEach((element) => {
-        if(element.innerText != ""){
-            if(ColorNumber[element.innerHTML] == undefined){
+        if (element.innerText != "") {
+            if (ColorNumber[element.innerHTML] == undefined) {
                 ColorNumber[element.innerHTML] = randomColor;
             }
             element.parentElement.style.background = "#" + ColorNumber[element.innerHTML];
-        }else{
+        } else {
             element.parentElement.style.background = "";
         }
     });
 }
-function Move(Table, direction){
+function Move(Table, direction) {
     let canChange = true;
-    switch(direction){
+    switch (direction) {
         case "left":
             Table.forEach((element) => {
-                for(let i = 0; i < element.length; i++){
-                    if(element[i].firstChild.innerText != ""){
+                for (let i = 0; i < element.length; i++) {
+                    if (element[i].firstChild.innerText != "") {
                         let continuer = true;
                         let tempI = i;
-                        while(continuer){
-                            if(element[tempI-1] != undefined && element[tempI-1].firstChild.innerText == ""){
-                                element[tempI-1].firstChild.innerText = element[tempI].firstChild.innerText;
+                        while (continuer) {
+                            if (element[tempI - 1] != undefined && element[tempI - 1].firstChild.innerText == "") {
+                                element[tempI - 1].firstChild.innerText = element[tempI].firstChild.innerText;
                                 element[tempI].firstChild.innerText = "";
-                            }else{
+                            } else {
                                 continuer = false;
                                 canChange = true;
                             }
-                            if(canChange && element[tempI-1] != undefined && element[tempI-1].firstChild.innerText == element[tempI].firstChild.innerText){
-                                element[tempI-1].firstChild.innerText = element[tempI].firstChild.innerText * 2;
+                            if (canChange && element[tempI - 1] != undefined && element[tempI - 1].firstChild.innerText == element[tempI].firstChild.innerText) {
+                                element[tempI - 1].firstChild.innerText = element[tempI].firstChild.innerText * 2;
                                 element[tempI].firstChild.innerText = "";
                                 canChange = false;
-                                score += parseInt(element[tempI-1].firstChild.innerText);
+                                score += parseInt(element[tempI - 1].firstChild.innerText);
                             }
                             tempI--;
                         }
                     }
                 }
             });
-        break;
+            break;
         case "right":
             Table.forEach((element) => {
-                for(let i = 0; i < element.length; i++){
+                for (let i = 0; i < element.length; i++) {
                     let rowIndex = element.length - 1 - i;
-                    if(element[rowIndex].firstChild.innerText != ""){
+                    if (element[rowIndex].firstChild.innerText != "") {
                         let continuer = true;
                         let tempI = rowIndex;
-                        while(continuer){
-                            if(element[tempI+1] !== undefined && element[tempI+1].firstChild.innerText == ""){
-                                element[tempI+1].firstChild.innerText = element[tempI].firstChild.innerText;
+                        while (continuer) {
+                            if (element[tempI + 1] !== undefined && element[tempI + 1].firstChild.innerText == "") {
+                                element[tempI + 1].firstChild.innerText = element[tempI].firstChild.innerText;
                                 element[tempI].firstChild.innerText = "";
                             }
-                            else{
+                            else {
                                 continuer = false;
                                 canChange = true;
                             }
-                            if(canChange && element[tempI+1] != undefined && element[tempI+1].firstChild.innerText == element[tempI].firstChild.innerText){
-                                element[tempI+1].firstChild.innerText = element[tempI].firstChild.innerText * 2;
+                            if (canChange && element[tempI + 1] != undefined && element[tempI + 1].firstChild.innerText == element[tempI].firstChild.innerText) {
+                                element[tempI + 1].firstChild.innerText = element[tempI].firstChild.innerText * 2;
                                 element[tempI].firstChild.innerText = "";
                                 canChange = false;
-                                score += parseInt(element[tempI+1].firstChild.innerText);
+                                score += parseInt(element[tempI + 1].firstChild.innerText);
                             }
                             tempI++;
                         }
@@ -100,24 +111,24 @@ function Move(Table, direction){
             });
             break;
         case "up":
-            for(let j = 0; j < Table.length; j++){
-                for(let i = 0; i < Table[j].length; i++){
-                    if(Table[j][i].firstChild.innerText != ""){
+            for (let j = 0; j < Table.length; j++) {
+                for (let i = 0; i < Table[j].length; i++) {
+                    if (Table[j][i].firstChild.innerText != "") {
                         let continuer = true;
                         let tempJ = j;
-                        while(continuer){
-                            if(Table[tempJ-1] != undefined && Table[tempJ-1][i].firstChild.innerText == ""){
-                                Table[tempJ-1][i].firstChild.innerText = Table[tempJ][i].firstChild.innerText;
+                        while (continuer) {
+                            if (Table[tempJ - 1] != undefined && Table[tempJ - 1][i].firstChild.innerText == "") {
+                                Table[tempJ - 1][i].firstChild.innerText = Table[tempJ][i].firstChild.innerText;
                                 Table[tempJ][i].firstChild.innerText = "";
-                            }else{
+                            } else {
                                 continuer = false;
                                 canChange = true;
                             }
-                            if(canChange && Table[tempJ-1] != undefined && Table[tempJ-1][i].firstChild.innerText == Table[tempJ][i].firstChild.innerText){
-                                Table[tempJ-1][i].firstChild.innerText = Table[tempJ][i].firstChild.innerText * 2;
+                            if (canChange && Table[tempJ - 1] != undefined && Table[tempJ - 1][i].firstChild.innerText == Table[tempJ][i].firstChild.innerText) {
+                                Table[tempJ - 1][i].firstChild.innerText = Table[tempJ][i].firstChild.innerText * 2;
                                 Table[tempJ][i].firstChild.innerText = "";
                                 canChange = false;
-                                score += parseInt(Table[tempJ-1][i].firstChild.innerText);
+                                score += parseInt(Table[tempJ - 1][i].firstChild.innerText);
                             }
                             tempJ--;
                         }
@@ -155,30 +166,30 @@ function Move(Table, direction){
         default:
             break;
     }
-    
+
 }
-function GenerateRandom(Table){
+function GenerateRandom(Table) {
     let possible = [];
     Table.forEach((element) => {
         element.forEach((SubElement) => {
-            if(SubElement.firstChild.innerText == ""){
+            if (SubElement.firstChild.innerText == "") {
                 possible.push(SubElement);
             }
-            
+
         })
     })
     let randomCase = Math.floor(Math.random() * possible.length);
     let pourcent = Math.floor(Math.random() * 100);
-    if(pourcent >= 90){
+    if (pourcent >= 90) {
         possible[randomCase].firstChild.innerText = "4";
-    }else{
+    } else {
         possible[randomCase].firstChild.innerText = "2";
     }
 }
 
-submitGame.addEventListener("click", function(){
+submitGame.addEventListener("click", function () {
     let sizeTable;
-    switch(difficulty.value){
+    switch (difficulty.value) {
         case "1":
             sizeTable = 3;
             break;
@@ -191,9 +202,9 @@ submitGame.addEventListener("click", function(){
         default:
             break;
     }
-    for(let i = 0; i < sizeTable; i++){
+    for (let i = 0; i < sizeTable; i++) {
         let tr = document.createElement("tr");
-        for(let j = 0; j < sizeTable; j++){
+        for (let j = 0; j < sizeTable; j++) {
             let td = document.createElement("td");
             let p = document.createElement("p");
             td.classList.add("case2048");
@@ -209,24 +220,24 @@ submitGame.addEventListener("click", function(){
     );
     playable = true;
     let older;
-    for(let i = 0; i < 2; i++){
+    for (let i = 0; i < 2; i++) {
         let randomPlace = AllCase[Math.floor(Math.random() * AllCase.length)][Math.floor(Math.random() * AllCase.length)];
-        if(randomPlace != older){
+        if (randomPlace != older) {
             randomPlace.firstChild.innerText = "2";
             older = randomPlace;
-        }else{
+        } else {
             i--;
         }
     }
     ChangeClass();
 })
-document.addEventListener("keyup", function(){
-    if(playable){
-        switch(event.key){
+document.addEventListener("keyup", function () {
+    if (playable) {
+        switch (event.key) {
             case "z":
             case "i":
             case "ArrowUp":
-                Move(AllCase,"up");
+                Move(AllCase, "up");
                 GenerateRandom(AllCase);
                 break;
             case "s":
@@ -255,3 +266,40 @@ document.addEventListener("keyup", function(){
     ChangeClass();
     scoreZone.innerText = "Score = " + score;
 })
+// function restartGame() {
+//     // Effacer le tableau existant
+//     tableGame.innerHTML = "";
+    
+//     // Réinitialiser les variables
+//     AllCase = [];
+//     ColorNumber = {};
+//     score = 0;
+//     scoreZone.innerText = "Score = " + score;
+
+//     // Réinitialiser l'état de jeu
+//     playable = false;
+
+//     // Afficher à nouveau les options de jeu
+//     GameChoice.classList.remove("hidden");
+
+//     // Supprimer la classe "appear" du popup s'il est visible
+//     let popup = document.getElementById("popup");
+//     if (popup.classList.contains('appear')) {
+//         popup.classList.remove('appear');
+//     }
+
+//     // Réattacher l'événement de clic au bouton de soumission
+//     submitGame.addEventListener("click", function () {
+//         // ... (le code pour générer le tableau et commencer le jeu)
+//     });
+
+//     // Réattacher l'événement de touche pour le jeu
+//     document.addEventListener("keyup", function () {
+//         // ... (le code pour gérer les mouvements et vérifier la fin du jeu)
+//     });
+// }
+
+// // Vous pouvez appeler cette fonction lorsque la partie est terminée
+// // par exemple, après la fermeture de la popup de fin de jeu.
+// // Ajoutez la ligne suivante à votre code existant où vous gérez la fin du jeu :
+// // restartGame();

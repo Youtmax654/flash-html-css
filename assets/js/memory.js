@@ -77,6 +77,7 @@ function createTable() {
             let newImg = document.createElement("img");
             let newImgBack = document.createElement("img");
             newImg.src = "/flash_memory/assets/images/carte.png";
+            newImg.draggable = false;
             let link;
             switch (theme.value) {
                 case "JV":
@@ -96,6 +97,7 @@ function createTable() {
                 let randomChose = Math.floor(Math.random() * tempsCard.length);
                 if (TakingCard[randomChose][1] < 2) {
                     newImgBack.src = "/flash_memory/assets/images" + link + tempsCard[randomChose];
+                    newImgBack.draggable = false;
                     TakingCard[randomChose][1]++;
                     FrontCard.appendChild(newImg);
                     BackCard.appendChild(newImgBack);
