@@ -81,15 +81,15 @@ if (isset($_POST['usersMemoryScores'])) {
                     <option value="3">Difficile</option>
                 </select>
             </form>
-            <button id="submit">Submit</button>
+            <button id="submitGame">Submit</button> 
         </div>
         <table class="tableGame">
-
+            
         </table>
     </main>
     <?php require SITE_ROOT . 'partials/footer.php'; ?>
     <script src="<?= PROJECT_FOLDER . "assets/js/memory.js" ?>"></script>
-
+    <script src="<?= PROJECT_FOLDER . "assets/js/chat.js" ?>"></script>
 </body>
 
 </html>

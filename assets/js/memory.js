@@ -4,7 +4,7 @@ let tableAnimaux = ["aigle.png", "araigné.png", "baleine.png", "chat.png", "che
 let tableFruits = ["abricot.png", "ananas.png", "banane.png", "canneberge.png", "carambola.png", "cerise.png", "citron.png", "coco.png", "datte.jpeg", "durian.png", "figue.png", "fraise.png", "framboise.png", "goyave.png", "grenade.jpeg", "kiwi.png", "litchi.png", "mandarine.png", "mangue.png", "melon.png", "murres.png", "myrtille.png", "orange.png", "pamplemousse.png", "papaye.png", "passion.png", "pasteque.png", "peche.png", "poire.png", "pomelo.png", "pomme.jpeg", "raisin.png"];
 let theme = document.getElementById("theme");
 let difficulty = document.getElementById("difficulty");
-let submit = document.getElementById("submit");
+let submit = document.getElementById("submitGame");
 let TableauDeJeu = document.querySelectorAll(".tableGame")[0];
 let gameChoice = document.getElementById("gameChoice");
 submit.addEventListener("click", createTable)
