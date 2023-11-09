@@ -7,6 +7,27 @@ let playable = false;
 let AllCase = [];
 let ColorNumber = {};
 let score = 0;
+function isGameOver(Table) {
+    for (let i = 0; i < Table.length; i++) {
+        for (let j = 0; j < Table[i].length; j++) {
+            if (Table[i][j].firstChild.innerText == "") {
+                return false; 
+            }
+            if ((j > 0 && Table[i][j].firstChild.innerText == Table[i][j - 1].firstChild.innerText) ||
+                (j < Table[i].length - 1 && Table[i][j].firstChild.innerText == Table[i][j + 1].firstChild.innerText) ||
+                (i > 0 && Table[i][j].firstChild.innerText == Table[i - 1][j].firstChild.innerText) ||
+                (i < Table.length - 1 && Table[i][j].firstChild.innerText == Table[i + 1][j].firstChild.innerText)) {
+                return false; 
+            }
+        }
+    }
+    return true; 
+}
+function checkGameOver() {
+    if (isGameOver(AllCase)) {
+        alert("Partie Terminée, votre score est de " + score)
+    }
+}
 function ChangeClass(){
     let p = document.querySelectorAll("#tableGame2048 tr td p");
     let randomColor = (Math.floor(Math.random()*0xFFFFFF)).toString(16).padStart(6, 0);
@@ -230,6 +251,7 @@ document.addEventListener("keyup", function(){
                 break;
         }
     }
+    checkGameOver();
     ChangeClass();
     scoreZone.innerText = "Score = " + score;
 })
