@@ -20,8 +20,8 @@ if(isset($_SESSION["userId"])){
     <nav class="header-right">
         <ul>
             <li><a href="<?= PROJECT_FOLDER ?>index.php" class="<?= PROJECT_FOLDER . "index.php" == $currentPage ? "current" : NULL; ?>">ACCUEIL</a></li>
-            <li><a href="<?= PROJECT_FOLDER ?>games/memory/index.php" class="<?= PROJECT_FOLDER . "games/memory/index.php" == $currentPage ? "current" : NULL; ?>">JEU</a></li>
-            <li><a href="<?= PROJECT_FOLDER ?>games/memory/scores.php" class="<?= PROJECT_FOLDER . "games/memory/scores.php" == $currentPage ? "current" : NULL; ?>">SCORES</a></li>
+            <li><a href="<?= PROJECT_FOLDER ?>games/index.php" class="<?= PROJECT_FOLDER . "games/index.php" == $currentPage ? "current" : NULL; ?>">JEU</a></li>
+            <li><a href="<?= PROJECT_FOLDER ?>games/scores.php" class="<?= PROJECT_FOLDER . "games/scores.php" == $currentPage ? "current" : NULL; ?>">SCORES</a></li>
             <li><a href="<?= PROJECT_FOLDER ?>contact.php" class="<?= PROJECT_FOLDER . "contact.php" == $currentPage ? "current" : NULL; ?>">NOUS CONTACTER</a></li>
             
             <?php if (!isset($_SESSION['userId'])) : ?>

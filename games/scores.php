@@ -1,5 +1,5 @@
 <?php
-require '../../utils/common.php';
+require '../utils/common.php';
 require SITE_ROOT . 'utils/database.php';
 
 // Récupération de l'userId du joueur connecté

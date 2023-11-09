@@ -16,9 +16,9 @@ require SITE_ROOT . 'utils/userConnexion.php';
         <div id="gameChoice2048">
            <form>
                 <select name="difficulty" id="difficulty2048">
-                    <option value="1">Facile (3X3)</option>
-                    <option value="2">Moyen (4X4)</option>
-                    <option value="3">Difficile (5X5)</option>
+                    <option value="3">Facile (5x5)</option>
+                    <option value="2">Moyen (4x4)</option>
+                    <option value="1">Difficile (3x3)</option>
                 </select>
             </form>
             <button id="submitGame2048">Submit</button> 

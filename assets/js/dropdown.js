@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
             secondGame.classList.remove("checked")
             $.ajax({
                 type: "POST",
-                url: "/flash_memory/games/memory/scoresAjax.php",
+                url: "/flash_memory/games/scoresAjax.php",
                 data: "gameId=1",
                 success: function (data) {
                     $("#scoresTable").html(data);
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
             firstGame.classList.remove("checked")
             $.ajax({
                 type: "POST",
-                url: "/flash_memory/games/memory/scoresAjax.php",
+                url: "/flash_memory/games/scoresAjax.php",
                 data: "gameId=2",
                 success: function (data) {
                     $("#scoresTable").html(data);
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
             hardDifficulty.classList.remove("checked")
             $.ajax({
                 type: "POST",
-                url: "/flash_memory/games/memory/scoresAjax.php",
+                url: "/flash_memory/games/scoresAjax.php",
                 data: "gameDifficulty=1",
                 success: function (data) {
                     $("#scoresTable").html(data);
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
             hardDifficulty.classList.remove("checked")
             $.ajax({
                 type: "POST",
-                url: "/flash_memory/games/memory/scoresAjax.php",
+                url: "/flash_memory/games/scoresAjax.php",
                 data: "gameDifficulty=2",
                 success: function (data) {
                     $("#scoresTable").html(data);
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
             easyDifficulty.classList.remove("checked")
             $.ajax({
                 type: "POST",
-                url: "/flash_memory/games/memory/scoresAjax.php",
+                url: "/flash_memory/games/scoresAjax.php",
                 data: "gameDifficulty=3",
                 success: function (data) {
                     $("#scoresTable").html(data);
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
             let scoresSearchValue = scoresSearch.value;
             $.ajax({
                 type: "POST",
-                url: "/flash_memory/games/memory/scoresAjax.php",
+                url: "/flash_memory/games/scoresAjax.php",
                 data: "searchValue=" + scoresSearchValue,
                 success: function (data) {
                     $("#scoresTable").html(data);

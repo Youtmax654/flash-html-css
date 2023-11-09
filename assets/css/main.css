@@ -1093,15 +1093,45 @@ input#scoresSearch {
     align-items: center;
 }
 
+.gameSelect {
+    display: flex;
+    justify-content: space-evenly;
+    height: 10vw;
+    width: 20vw;
+    align-items: center;
+    margin: 0 auto;
+}
 
 #gameChoice {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 5vw;
 }
 
-#gameChoice #submit {
+#gameChoice form {
+    display: flex !important; 
+
+}
+
+#gameChoice #themeSelect {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2vw;
+    font-weight: bold;
+}
+#gameChoice label {
+    color: white;
+}
+
+#gameChoice #difficultySelect {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2vw;
+    color: white;
+    font-weight: bold;
+}
+
+#gameChoice #submitGame {
     margin-top: 1.5vw;
 }
 

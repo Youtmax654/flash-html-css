@@ -1,5 +1,5 @@
 <?php
-require '../../utils/common.php';
+require '../utils/common.php';
 require SITE_ROOT . 'utils/database.php';
 $pdo = connectToDbAndGetPdo();
 $connectedUsersId = isset($_SESSION['userId']) ? $_SESSION['userId'] : NULL;
