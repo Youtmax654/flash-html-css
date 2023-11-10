@@ -8,7 +8,7 @@ function connectToDbAndGetPdo(){
 
     // Informations d'identification pour la base de données
     $user = 'root';
-    $pass = '';
+    $pass = 'root';
 
     $driver_options = [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
