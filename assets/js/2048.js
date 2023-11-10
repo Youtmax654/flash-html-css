@@ -24,7 +24,7 @@ function isGameOver(Table) {
     return true;
 }
 function checkGameOver() {
-    if (isGameOver( )) {
+    if (isGameOver(AllCase)) {
         let game2048ScoresText = "Votre score est de " + score;
         let popup = document.getElementById("popup");
         let popupScores = document.getElementById("scoreMessage");
