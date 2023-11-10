@@ -75,7 +75,7 @@ if (isset($_POST['usersMemoryScores'])) {
                         <option value="Animaux">Animaux</option>
                     </select>
                 </div>
-                <div id="difficultySelect">
+                <div class="difficultySelect">
                     <label for="difficulty">Difficulté :</label>
                     <select name="difficulty" id="difficulty">
                         <option value="1">Facile</option>
