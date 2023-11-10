@@ -391,7 +391,8 @@ input#profilePictureToUpload {
 
 
 .login_form input:not(input:last-of-type),
-.register_form input:not(input:last-of-type) {
+.register_form input:not(input:last-of-type),
+.passwordShow {
     width: 35vw;
     /* Longueur des inputs sauf le submit */
     height: 2.5vw;
@@ -407,7 +408,25 @@ input#profilePictureToUpload {
     color: white;
     outline: none;
     padding-left: 0.6vw;
+}
+.passwordShow{
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0.6vw;
 
+}
+.passwordShow input{
+    height: 2.1vw;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    width: 100%;
+    padding-left: 0.6vw;
+}
+.passwordShow i{
+    cursor: pointer;
 }
 
 .login_form input::placeholder,
@@ -421,8 +440,8 @@ input#profilePictureToUpload {
 
 }
 
-.login_form input:last-of-type,
-.register_form input:last-of-type {
+.login_form > input:last-of-type,
+.register_form > input:last-of-type {
     width: 8vw;
     /* Longueur du submit */
     height: 2.5vw;
@@ -438,8 +457,8 @@ input#profilePictureToUpload {
     cursor: pointer;
     transition: 0.5s;
 }
-.login_form input:last-of-type:hover,
-.register_form input:last-of-type:hover {
+.login_form > input:last-of-type:hover,
+.register_form > input:last-of-type:hover {
     color: rgb(236, 146, 36);
     background-color: white;
 

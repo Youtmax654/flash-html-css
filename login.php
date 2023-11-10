@@ -27,7 +27,11 @@ if(isset($_POST['email_login'])){
                 <label for="email_login"></label>
                 <input type="email" id="email_login" name="email_login" placeholder="Email">
                 <label for="password_login"></label>
-                <input type="password" id="password_login" name="password_login" placeholder="Mot de passe">
+                <div class="passwordShow">
+                    <input type="password" id="password_login" name="password_login" placeholder="Mot de passe">
+                    <i class="fa-solid fa-eye showPassword"></i>
+                </div>
+                
                 <input type="submit" value="Connexion">
             </form>
         </div>

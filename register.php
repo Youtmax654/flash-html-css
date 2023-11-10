@@ -101,9 +101,15 @@ if (!empty($_POST['register'])) {
                 <label for="pseudo_register"></label>
                 <input type="text" id="pseudo_register" name="pseudo" placeholder="Pseudo" required>
                 <label for="password_register"></label>
-                <input type="password" id="password_register" name="mdp" placeholder="Mot de passe" required>
+                <div class="passwordShow">
+                    <input type="password" id="password_register" name="mdp" placeholder="Mot de passe" required>
+                    <i class="fa-solid fa-eye showPassword"></i>
+                </div>
                 <label for="check_register"></label>
-                <input type="password" id="check_register" name="mdp_check" placeholder="Confirmer le mot de passe" required>
+                <div class="passwordShow">
+                    <input type="password" id="check_register" name="mdp_check" placeholder="Confirmer le mot de passe" required>
+                    <i class="fa-solid fa-eye showPassword"></i>
+                </div>
                 <input type="submit" value="Inscription" name="register">
 
             </form>
