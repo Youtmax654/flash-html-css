@@ -52,7 +52,7 @@ if(isset($_SESSION['successfulRegister']) or isset($_SESSION['successfulLogin'])
             } ?>
             <h1>Bienvenue dans notre studio !</h1>
             <p>Venez challenger les cerveaux les plus agiles !</p>
-            <a href=<?=isset($_SESSION['userId']) ? PROJECT_FOLDER.'games/memory/index.php' : 'login.php' ?> id="button">Jouer !</a>
+            <a href=<?=isset($_SESSION['userId']) ? PROJECT_FOLDER.'games/index.php' : 'login.php' ?> id="button">Jouer !</a>
         </article>
         <div id="IlluImg">
             <div id="AllImg">
