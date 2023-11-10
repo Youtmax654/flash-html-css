@@ -262,45 +262,8 @@ document.addEventListener("keyup", function () {
             default:
                 break;
         }
+        checkGameOver();
+        ChangeClass();
+        scoreZone.innerText = "Score = " + score;
     }
-    checkGameOver();
-    ChangeClass();
-    scoreZone.innerText = "Score = " + score;
 })
-// function restartGame() {
-//     // Effacer le tableau existant
-//     tableGame.innerHTML = "";
-    
-//     // Réinitialiser les variables
-//     AllCase = [];
-//     ColorNumber = {};
-//     score = 0;
-//     scoreZone.innerText = "Score = " + score;
-
-//     // Réinitialiser l'état de jeu
-//     playable = false;
-
-//     // Afficher à nouveau les options de jeu
-//     GameChoice.classList.remove("hidden");
-
-//     // Supprimer la classe "appear" du popup s'il est visible
-//     let popup = document.getElementById("popup");
-//     if (popup.classList.contains('appear')) {
-//         popup.classList.remove('appear');
-//     }
-
-//     // Réattacher l'événement de clic au bouton de soumission
-//     submitGame.addEventListener("click", function () {
-//         // ... (le code pour générer le tableau et commencer le jeu)
-//     });
-
-//     // Réattacher l'événement de touche pour le jeu
-//     document.addEventListener("keyup", function () {
-//         // ... (le code pour gérer les mouvements et vérifier la fin du jeu)
-//     });
-// }
-
-// // Vous pouvez appeler cette fonction lorsque la partie est terminée
-// // par exemple, après la fermeture de la popup de fin de jeu.
-// // Ajoutez la ligne suivante à votre code existant où vous gérez la fin du jeu :
-// // restartGame();

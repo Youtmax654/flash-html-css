@@ -118,6 +118,23 @@ window.addEventListener("keydown", function(event){
         this.document.querySelector("body").classList.add("snap");
     }
 });
-buttonShow.addEventListener("click", function(){
-    buttonShow.classList.toggle("show");
-});
+if(buttonShow != null){
+    buttonShow.addEventListener("click", function(){
+        buttonShow.classList.toggle("show");
+    });
+}
+
+let showPass = document.querySelectorAll(".showPassword");
+
+showPass.forEach((element) => {
+    element.addEventListener("click", function(){
+        let div = element.parentElement;
+        if(div.children[0].type == "password"){
+            div.children[0].type = "text";
+        }else{
+            div.children[0].type = "password";
+        }
+        
+    })
+
+})

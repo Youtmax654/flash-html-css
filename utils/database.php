@@ -22,4 +22,4 @@ function connectToDbAndGetPdo(){
     } catch (PDOException $e) {
         echo 'La connexion à la base de données a échouée.';
     }
-}   
+}

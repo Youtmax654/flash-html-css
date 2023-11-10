@@ -106,13 +106,19 @@ if (!empty($_POST['register'])) {
                 <input type="text" id="pseudo_register" name="pseudo" placeholder="Pseudo" required/>
                     <div class="password">
                         <label for="password_register"></label>
+                        <div class="passwordShow">
                         <input type="password" id="password_register" name="mdp" placeholder="Mot de passe" onkeyup="passwordStrength(this.value)" required />
+                        <i class="fa-solid fa-eye showPassword"></i>
+                        </div>
                         <div class="strongbar" id="password-strength-bar"></div>
                         <small class="help-block" id="password-text"></small>
                     </div>
                 <label for="check_register"></label>
-                <input type="password" id="check_register" name="mdp_check" placeholder="Confirmer le mot de passe"  required/>
-                <input type="submit" value="Inscription" name="register"/>
+                <div class="passwordShow">
+                    <input type="password" id="check_register" name="mdp_check" placeholder="Confirmer le mot de passe" required>
+                    <i class="fa-solid fa-eye showPassword"></i>
+                </div>
+                <input type="submit" value="Inscription" name="register">
 
             </form>
         </div>

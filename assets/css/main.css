@@ -400,23 +400,44 @@ input#profilePictureToUpload {
   font-size: 0.9vw;
 }
 
-.login_form input:not(input[type="submit"]),
-.register_form input:not(input[type="submit"]) {
-  width: 35vw;
-  /* Longueur des inputs sauf le submit */
-  height: 2.5vw;
-  /* Largeur des inputs sauf le submit */
-  margin-bottom: 1.5vw;
-  /* Espacement entre les inputs */
-  border-radius: 0.3vw;
-  /* Arrondir les bords des inputs */
-  background-color: rgb(39, 38, 69);
-  /* Couleur de fonds des inputs */
-  border: none;
-  /* Retirer les bordures */
-  color: white;
-  outline: none;
-  padding-left: 0.6vw;
+
+.login_form input:not(input:last-of-type),
+.register_form input:not(input:last-of-type),
+.passwordShow {
+    width: 35vw;
+    /* Longueur des inputs sauf le submit */
+    height: 2.5vw;
+    /* Largeur des inputs sauf le submit */
+    margin-bottom: 1.5vw;
+    /* Espacement entre les inputs */
+    border-radius: 0.3vw;
+    /* Arrondir les bords des inputs */
+    background-color: rgb(39, 38, 69);
+    /* Couleur de fonds des inputs */
+    border: none;
+    /* Retirer les bordures */
+    color: white;
+    outline: none;
+    padding-left: 0.6vw;
+}
+.passwordShow{
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0.6vw;
+
+}
+.passwordShow input{
+    height: 2.1vw;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    width: 100%;
+    padding-left: 0.6vw;
+}
+.passwordShow i{
+    cursor: pointer;
 }
 
 .login_form input::placeholder,
