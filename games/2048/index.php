@@ -68,13 +68,16 @@ if (isset($_POST['users2048Scores'])) {
             <button onclick="restartGame()">Rejouer</button>
             <button onclick="location.href = '../index.php'">Jeu</button>
         </div>
-        <div id="gameChoice2048">
+        <div id="gameChoice2048" style="margin-top: 2vw;">
             <form>
+            <div class="difficultySelect">
+                <label for="difficulty2048">Difficulté</label>
                 <select name="difficulty" id="difficulty2048">
                     <option value="1">Facile (5x5)</option>
                     <option value="2">Moyen (4x4)</option>
                     <option value="3">Difficile (3x3)</option>
                 </select>
+            </div>
             </form>
             <button id="submitGame2048">Submit</button>
         </div>

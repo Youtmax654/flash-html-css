@@ -1082,6 +1082,16 @@ td .dropbtn .fa {
   background-color: green;
 }
 
+#gameChoice2048 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+select#difficulty2048 {
+  margin: 0 0 2vw 0;
+}
+
 #searchBar {
   background-color: rgb(206, 206, 206);
   color: black;
@@ -1136,7 +1146,7 @@ td .dropbtn .fa {
   color: white;
 }
 
-#gameChoice #difficultySelect {
+.difficultySelect {
   display: flex;
   flex-direction: column;
   font-size: 1.2vw;
