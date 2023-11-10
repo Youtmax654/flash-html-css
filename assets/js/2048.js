@@ -25,7 +25,7 @@ function isGameOver(Table) {
 }
 function checkGameOver() {
     if (isGameOver(AllCase)) {
-        alert("Partie Terminée, votre score est de " + score)
+        alert("Partie Terminée, votre score est de " + score);
     }
 }
 function ChangeClass(){
@@ -250,8 +250,8 @@ document.addEventListener("keyup", function(){
             default:
                 break;
         }
+        checkGameOver();
+        ChangeClass();
+        scoreZone.innerText = "Score = " + score;
     }
-    checkGameOver();
-    ChangeClass();
-    scoreZone.innerText = "Score = " + score;
 })
