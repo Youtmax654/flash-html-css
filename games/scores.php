@@ -23,7 +23,7 @@ $scores = $pdoStatement->fetchAll();
 <!DOCTYPE html>
 <html lang="fr">
 <?php require SITE_ROOT . 'partials/head.php'; ?>
-
+<script src="<?=PROJECT_FOLDER?>assets/js/scores.js"></script>
 <body>
     <?php require SITE_ROOT . 'partials/header.php'; ?>
     <main>
@@ -31,25 +31,6 @@ $scores = $pdoStatement->fetchAll();
         <div class="pages_banner">
             <h1>SCORES</h1>
         </div>
-
-        <?php
-        // Récupération de la variable GET 'scoresSearch' pour effectuer une recherche
-        if (isset($_GET['scoresSearch'])) {
-            $scoresSearch = $_GET['scoresSearch'];
-            // Requête SQL pour rechercher des scores en fonction de la recherche
-            $scoresSearchResult = $pdo->query('SELECT usersPseudo, gameName, `scoresDifficulty`, `scoresPoints`, users.usersId,
-                                               DATE_FORMAT(scoresDate, "%d/%m/%Y à %Hh%i") AS DateScores
-                                               FROM `scores`
-                                               INNER JOIN game
-                                               ON scores.gameId = game.gameId
-                                               INNER JOIN users
-                                               ON scores.usersId = users.usersId
-                                               WHERE usersPseudo LIKE "%' . $scoresSearch . '%"
-                                               ORDER BY gameName ASC, scoresDifficulty DESC, scoresPoints ASC
-                                               LIMIT 10');
-            $scores = $scoresSearchResult->fetchAll();
-        }
-        ?>
         <div class="scores_table">
             <table>
                 <thead>

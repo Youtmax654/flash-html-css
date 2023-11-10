@@ -25,11 +25,11 @@ if (isset($_POST['users2048Scores'])) {
 
     echo $getUsersScore->rowCount();
     if ($getUsersScore->rowCount() === 1) {
-        if ($actualUsersScore->scoresPoints > $users2048Scores) {
+        if ($users2048Scores > $actualUsersScore->scoresPoints) {
             $updateScores = $pdo->prepare("UPDATE scores SET scoresPoints = :scoresPoints, scoresDate = DEFAULT
-                                       WHERE usersId = :usersId 
-                                       AND gameId = :gameId 
-                                       AND scoresDifficulty = :scoresDifficulty");
+                                           WHERE usersId = :usersId 
+                                           AND gameId = :gameId 
+                                           AND scoresDifficulty = :scoresDifficulty");
             $updateScores->execute([
                 ':scoresPoints' => $users2048Scores,
                 ':usersId' => $_SESSION['userId'],
@@ -63,7 +63,7 @@ if (isset($_POST['users2048Scores'])) {
         </div>
         <div id="popup" class="popup">
             <h1>La partie est terminé !</h1>
-            <h2><span id="score">0</span></h2>
+            <h2><span id="scoreMessage">0</span></h2>
             <button onclick="location.href = '../scores.php'">Scores</button>
             <button onclick="restartGame()">Rejouer</button>
             <button onclick="location.href = '../index.php'">Jeu</button>
@@ -71,14 +71,14 @@ if (isset($_POST['users2048Scores'])) {
         <div id="gameChoice2048">
             <form>
                 <select name="difficulty" id="difficulty2048">
-                    <option value="3">Facile (5x5)</option>
+                    <option value="1">Facile (5x5)</option>
                     <option value="2">Moyen (4x4)</option>
-                    <option value="1">Difficile (3x3)</option>
+                    <option value="3">Difficile (3x3)</option>
                 </select>
             </form>
             <button id="submitGame2048">Submit</button>
         </div>
-        <p id="score"></p>
+        <p id="score" style="color: white"></p>
         <table id="tableGame2048">
 
         </table>

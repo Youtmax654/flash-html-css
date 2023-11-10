@@ -1078,6 +1078,10 @@ td .dropbtn .fa {
   background-color: green;
 }
 
+.scores_table .checked:hover {
+  background-color: green;
+}
+
 #searchBar {
   background-color: rgb(206, 206, 206);
   color: black;

@@ -4,10 +4,6 @@ require '../../utils/common.php';
 require SITE_ROOT . 'utils/database.php';
 $pdo = connectToDbAndGetPdo();
 
-// Vérification si l'utilisateur est déjà connecté en vérifiant la présence de la variable de session 'userId', si oui -> redirection 
-if (!isset($_SESSION['userId'])) {
-    header("Location: " . PROJECT_FOLDER . "login.php");
-}
 // Envoie des données vers la base de données
 if (isset($_POST['usersMemoryScores'])) {
     $usersMemoryScores = $_POST['usersMemoryScores'];

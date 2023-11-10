@@ -27,7 +27,8 @@ function checkGameOver() {
     if (isGameOver(AllCase)) {
         let game2048ScoresText = "Votre score est de " + score;
         let popup = document.getElementById("popup");
-        let popupScores = document.getElementById("score");
+        let popupScores = document.getElementById("scoreMessage");
+        console.log(popupScores)
         popupScores.innerText = game2048ScoresText;
         popup.classList.add('appear');
         // Partie AJAX pour envoyer les données vers la base de données
@@ -190,13 +191,13 @@ function GenerateRandom(Table) {
 submitGame.addEventListener("click", function () {
     let sizeTable;
     switch (difficulty.value) {
-        case "1":
+        case "3":
             sizeTable = 3;
             break;
         case "2":
             sizeTable = 4;
             break;
-        case "3":
+        case "1":
             sizeTable = 5;
             break;
         default:

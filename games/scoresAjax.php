@@ -3,7 +3,7 @@ require '../utils/common.php';
 require SITE_ROOT . 'utils/database.php';
 $pdo = connectToDbAndGetPdo();
 $connectedUsersId = isset($_SESSION['userId']) ? $_SESSION['userId'] : NULL;
-// if (isset($_POST['gameId'], $_POST['searchValue'], $_POST['gameDifficulty'])) {
+// if (isset($_POST['gameId']) && isset($_POST['searchValue']) && isset($_POST['gameDifficulty'])) {
 //     $pdoStatement = $pdo->prepare('SELECT gameName, usersPseudo, scoresDifficulty, scoresPoints, users.usersId,
 //                                    DATE_FORMAT(scoresDate, "%d/%m/%Y à %Hh%i") AS DateScores
 //                                    FROM scores
@@ -21,8 +21,7 @@ $connectedUsersId = isset($_SESSION['userId']) ? $_SESSION['userId'] : NULL;
 //         ':scoresDifficulty' => $_POST['gameDifficulty'],
 //     ]);
 //     $scores = $pdoStatement->fetchAll();
-// }
-// if (isset($_POST['gameId'], $_POST['searchValue'])) {
+// } elseif (isset($_POST['gameId']) && isset($_POST['searchValue'])) {
 //     $pdoStatement = $pdo->prepare('SELECT gameName, usersPseudo, scoresDifficulty, scoresPoints, users.usersId,
 //                                    DATE_FORMAT(scoresDate, "%d/%m/%Y à %Hh%i") AS DateScores
 //                                    FROM scores
@@ -39,8 +38,7 @@ $connectedUsersId = isset($_SESSION['userId']) ? $_SESSION['userId'] : NULL;
 //         ':scoresDifficulty' => $_POST['gameDifficulty'],
 //     ]);
 //     $scores = $pdoStatement->fetchAll();
-// }
-// if (isset($_POST['gameId'], $_POST['gameDifficulty'])) {
+// } elseif (isset($_POST['gameId']) && isset($_POST['gameDifficulty'])) {
 //     $pdoStatement = $pdo->prepare('SELECT gameName, usersPseudo, scoresDifficulty, scoresPoints, users.usersId,
 //                                    DATE_FORMAT(scoresDate, "%d/%m/%Y à %Hh%i") AS DateScores
 //                                    FROM scores
@@ -57,8 +55,7 @@ $connectedUsersId = isset($_SESSION['userId']) ? $_SESSION['userId'] : NULL;
 //         ':scoresDifficulty' => $_POST['gameDifficulty'],
 //     ]);
 //     $scores = $pdoStatement->fetchAll();
-// }
-// if (isset($_POST['searchValue'], $_POST['gameDifficulty'])) {
+// } elseif (isset($_POST['searchValue']) && isset($_POST['gameDifficulty'])) {
 //     $pdoStatement = $pdo->prepare('SELECT gameName, usersPseudo, scoresDifficulty, scoresPoints, users.usersId,
 //                                    DATE_FORMAT(scoresDate, "%d/%m/%Y à %Hh%i") AS DateScores
 //                                    FROM scores
@@ -75,7 +72,7 @@ $connectedUsersId = isset($_SESSION['userId']) ? $_SESSION['userId'] : NULL;
 //         ':scoresDifficulty' => $_POST['gameDifficulty'],
 //     ]);
 //     $scores = $pdoStatement->fetchAll();
-// }
+// } else
 if (isset($_POST['gameId'])) {
     $pdoStatement = $pdo->prepare('SELECT gameName, usersPseudo, scoresDifficulty, scoresPoints, users.usersId,
                                    DATE_FORMAT(scoresDate, "%d/%m/%Y à %Hh%i") AS DateScores
@@ -90,8 +87,7 @@ if (isset($_POST['gameId'])) {
         ':gameId' => $_POST['gameId'],
     ]);
     $scores = $pdoStatement->fetchAll();
-}
-if (isset($_POST['searchValue'])) {
+} elseif (isset($_POST['searchValue'])) {
     $pdoStatement = $pdo->prepare('SELECT gameName, usersPseudo, scoresDifficulty, scoresPoints, users.usersId,
                                DATE_FORMAT(scoresDate, "%d/%m/%Y à %Hh%i") AS DateScores
                                FROM scores
@@ -105,8 +101,7 @@ if (isset($_POST['searchValue'])) {
         ':searchValue' => $_POST['searchValue'],
     ]);
     $scores = $pdoStatement->fetchAll();
-}
-if (isset($_POST['gameDifficulty'])) {
+} elseif (isset($_POST['gameDifficulty'])) {
     $pdoStatement = $pdo->prepare('SELECT gameName, usersPseudo, scoresDifficulty, scoresPoints, users.usersId,
                                    DATE_FORMAT(scoresDate, "%d/%m/%Y à %Hh%i") AS DateScores
                                    FROM scores
@@ -120,6 +115,17 @@ if (isset($_POST['gameDifficulty'])) {
         ':scoresDifficulty' => $_POST['gameDifficulty'],
     ]);
     $scores = $pdoStatement->fetchAll();
+} else {
+    $pdoStatement = $pdo->prepare('SELECT gameName, usersPseudo, scoresDifficulty, scoresPoints, users.usersId,
+                               DATE_FORMAT(scoresDate, "%d/%m/%Y à %Hh%i") AS DateScores
+                               FROM scores
+                               INNER JOIN game
+                               ON scores.gameId = game.gameId
+                               INNER JOIN users
+                               ON scores.usersId = users.usersId
+                               ORDER BY gameName ASC, scoresDifficulty DESC, scoresPoints ASC');
+    $pdoStatement->execute();
+    $scores = $pdoStatement->fetchAll();
 }
 ?>
 <?php foreach ($scores as $score) : ?>
@@ -127,7 +133,12 @@ if (isset($_POST['gameDifficulty'])) {
         <td><?= $score->gameName ?></td>
         <td><?= $score->usersPseudo ?></td>
         <td><?= $score->scoresDifficulty == 1 ? "Facile" : ($score->scoresDifficulty == 2 ? "Moyen" : "Difficile") ?></td>
-        <td><?= $score->scoresPoints > 5999 ? floor($score->scoresPoints / 6000) . " min et " . number_format($score->scoresPoints % 6000 / 100, 2) . " sec" : number_format($score->scoresPoints / 100, 2) . " sec" ?></td>
+        <td> <?php if ($score->gameName === "Power of Memory") {
+                    echo $score->scoresPoints > 5999 ? floor($score->scoresPoints / 6000) . " min et " . number_format($score->scoresPoints % 6000 / 100, 2) . " sec" : number_format($score->scoresPoints / 100, 2) . " sec";
+                } elseif ($score->gameName === "2048") {
+                    echo $score->scoresPoints;
+                } ?>
+        </td>
         <td><?= $score->DateScores ?></td>
     </tr>
 <?php endforeach ?>
