@@ -17,7 +17,7 @@ $select-height: 40px;
     color: #fff;
     padding: 5px 10px;
     margin: 0 5px;
-    background-color: darken($select-background, 2);
+    background-color: darken(select-color = rgba(236, 146, 36, 255), 2);
     @include transition(all 0.2s ease-in);
     &:hover {
       background-color: darken($select-background, 5);
